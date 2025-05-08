@@ -1,5 +1,10 @@
-import { MdDashboard, MdManageAccounts } from "react-icons/md";
-import { FaUsers, FaChevronRight, FaFileAlt, FaCog } from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
+import {
+  FaUsers,
+  FaChevronRight,
+  FaCog,
+  FaHome,
+} from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -9,7 +14,7 @@ const AdminItems = [
   {
     key: "dashboard",
     label: "Dashboard",
-    icon: MdDashboard,
+    icon: FaHome,
     link: "/",
   },
   {
@@ -23,12 +28,6 @@ const AdminItems = [
     label: "Seller Management",
     icon: MdManageAccounts,
     link: "/dashboard/seller-management",
-  },
-  {
-    key: "subscription",
-    label: "Subscription",
-    icon: FaFileAlt,
-    link: "/dashboard/subscription",
   },
   {
     key: "categorymanagement",
@@ -138,9 +137,9 @@ const SideBar = () => {
   };
 
   return (
-    <div className="custom-sidebar min-h-[100vh] bg-[#FF914C]">
-      <div className="custom-sidebar-logo flex justify-center bg-gray-600">
-        <img src={logo} alt="Logo" className="w-[95px]" />
+    <div className="custom-sidebar min-h-[100vh] bg-[#FFFFFF]">
+      <div className="custom-sidebar-logo flex justify-center">
+        <img src={logo} alt="Logo" className="w-[150px] mt-5" />
       </div>
       <div className="menu-items">
         <div>
@@ -166,7 +165,7 @@ const SideBar = () => {
                     isSettingsActive ||
                     isCreatorActive ||
                     isCategoriesActive
-                      ? "bg-[#0B704E] text-white rounded-md"
+                      ? "bg-[#0E9ADF] text-white rounded-md"
                       : "bg-white rounded-md hover:bg-[#B3D3C8]"
                   }`}
                   onClick={(e) => {
