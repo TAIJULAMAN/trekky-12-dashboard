@@ -77,7 +77,7 @@ const Faq = () => {
         <div className="text-white">
           <button
             onClick={showModal2}
-            className="bg-[#14803c] text-white font-semibold px-5 py-2 rounded transition duration-200"
+            className="bg-[#0b7bb3] text-white font-semibold px-5 py-2 rounded transition duration-200"
           >
             + Add FAQ
           </button>
@@ -102,15 +102,15 @@ const Faq = () => {
                 <FaChevronDown
                   className={`w-5 h-5 text-[#0D0D0D] transition-all duration-300 ${
                     isAccordionOpen === index &&
-                    "rotate-[180deg] !text-[#14803c]"
+                    "rotate-[180deg] !text-[#0b7bb3]"
                   }`}
                 />
-                <div className="border-2 px-1.5 py-1 rounded border-[#14803c] bg-[#f0fcf4]">
+                <div className="border-2 px-1.5 py-1 rounded border-[#0b7bb3] bg-[#f0fcf4]">
                   <button className="" onClick={showModal3}>
-                    <CiEdit className="text-2xl cursor-pointer text-[#14803c] font-bold transition-all" />
+                    <CiEdit className="text-2xl cursor-pointer text-[#0b7bb3] font-bold transition-all" />
                   </button>
                 </div>
-                <div className="border-2 px-1.5 py-1 rounded border-[#14803c] bg-[#f0fcf4]">
+                <div className="border-2 px-1.5 py-1 rounded border-[#0b7bb3] bg-[#f0fcf4]">
                   <button className="" onClick={showModal}>
                     <RiDeleteBin6Line className="text-2xl cursor-pointer text-red-500 transition-all" />
                   </button>
@@ -141,7 +141,7 @@ const Faq = () => {
           <div className="text-center py-5">
             <button
               onClick={handleOk}
-              className="bg-[#14803c] text-white font-semibold w-full py-2 rounded transition duration-200"
+              className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded transition duration-200"
             >
               YES,DELETE
             </button>
@@ -149,7 +149,7 @@ const Faq = () => {
           <div className="text-center pb-5">
             <button
               onClick={handleOk}
-              className="text-[#14803c] border-2 border-green-600 bg-white font-semibold w-full py-2 rounded transition duration-200"
+              className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded transition duration-200"
             >
               NO,DON’T DELETE
             </button>
@@ -215,7 +215,7 @@ const Faq = () => {
 
             <button
               onClick={handleCancel2}
-              className="py-2 px-4 rounded-lg bg-green-600 text-white"
+              className="py-2 px-4 rounded-lg bg-[#0b7bb3] text-white"
             >
               Save
             </button>
@@ -248,7 +248,7 @@ const Faq = () => {
                 id="question"
                 type="text"
                 placeholder="Enter the FAQ"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
               />
@@ -281,7 +281,7 @@ const Faq = () => {
 
             <button
               onClick={handleCancel3}
-              className="py-2 px-4 rounded-lg bg-green-600 text-white"
+              className="py-2 px-4 rounded-lg bg-[#0b7bb3] text-white"
             >
               Save
             </button>
