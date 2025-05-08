@@ -3,6 +3,7 @@ import { IoSearch } from "react-icons/io5";
 import { MdBlockFlipped } from "react-icons/md";
 import PageHeading from "../../shared/PageHeading";
 import { ConfigProvider, Modal, Table } from "antd";
+import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,220 +20,250 @@ const Users = () => {
     {
       key: "1",
       no: "1",
-      userName: "Shah Aman",
+      name: "Shah Aman",
       email: "shahaman@example.com",
-      phoneNumber: "123-456-7890",
+      joinedDate: "2022-01-01",
+      location: "Pakistan",
     },
     {
       key: "2",
       no: "2",
-      userName: "Jane Doe",
-      email: "janedoe@example.com",
-      phoneNumber: "234-567-8901",
+      name: "John Doe",
+      email: "johndoe@example.com",
+      joinedDate: "2022-02-12",
+      location: "USA",
     },
     {
       key: "3",
       no: "3",
-      userName: "John Smith",
-      email: "johnsmith@example.com",
-      phoneNumber: "345-678-9012",
+      name: "Jane Smith",
+      email: "janesmith@example.com",
+      joinedDate: "2022-03-15",
+      location: "Canada",
     },
     {
       key: "4",
       no: "4",
-      userName: "Alice Johnson",
-      email: "alicej@example.com",
-      phoneNumber: "456-789-0123",
+      name: "Mohammed Ali",
+      email: "mohammedali@example.com",
+      joinedDate: "2022-04-20",
+      location: "UK",
     },
     {
       key: "5",
       no: "5",
-      userName: "Bob Brown",
-      email: "bobb@example.com",
-      phoneNumber: "567-890-1234",
+      name: "Laila Noor",
+      email: "lailanoor@example.com",
+      joinedDate: "2022-05-25",
+      location: "India",
     },
     {
       key: "6",
       no: "6",
-      userName: "Charlie Davis",
-      email: "charlied@example.com",
-      phoneNumber: "678-901-2345",
+      name: "Ahmed Khan",
+      email: "ahmedkhan@example.com",
+      joinedDate: "2022-06-10",
+      location: "Pakistan",
     },
     {
       key: "7",
       no: "7",
-      userName: "Dana Evans",
-      email: "danae@example.com",
-      phoneNumber: "789-012-3456",
+      name: "Sadia Shah",
+      email: "sadiashah@example.com",
+      joinedDate: "2022-07-01",
+      location: "Bangladesh",
     },
     {
       key: "8",
       no: "8",
-      userName: "Evan Foster",
-      email: "evanf@example.com",
-      phoneNumber: "890-123-4567",
+      name: "Aliya Rizvi",
+      email: "aliyarizvi@example.com",
+      joinedDate: "2022-08-15",
+      location: "Pakistan",
     },
     {
       key: "9",
       no: "9",
-      userName: "Fiona Gray",
-      email: "fionag@example.com",
-      phoneNumber: "901-234-5678",
+      name: "Zain Baig",
+      email: "zainbaig@example.com",
+      joinedDate: "2022-09-22",
+      location: "Saudi Arabia",
     },
     {
       key: "10",
       no: "10",
-      userName: "George Hall",
-      email: "georgeh@example.com",
-      phoneNumber: "012-345-6789",
+      name: "Fatima Ali",
+      email: "fatimaali@example.com",
+      joinedDate: "2022-10-30",
+      location: "UAE",
     },
     {
       key: "11",
       no: "11",
-      userName: "Hannah Ives",
-      email: "hannahi@example.com",
-      phoneNumber: "111-222-3333",
+      name: "Imran Akhtar",
+      email: "imranakhtar@example.com",
+      joinedDate: "2022-11-13",
+      location: "Pakistan",
     },
     {
       key: "12",
       no: "12",
-      userName: "Ian Jones",
-      email: "ianj@example.com",
-      phoneNumber: "222-333-4444",
+      name: "Sara Ahsan",
+      email: "saraahsan@example.com",
+      joinedDate: "2022-12-05",
+      location: "Canada",
     },
     {
       key: "13",
       no: "13",
-      userName: "Julia King",
-      email: "juliak@example.com",
-      phoneNumber: "333-444-5555",
+      name: "Ali Hassan",
+      email: "alihassan@example.com",
+      joinedDate: "2023-01-20",
+      location: "Pakistan",
     },
     {
       key: "14",
       no: "14",
-      userName: "Kevin Lee",
-      email: "kevinl@example.com",
-      phoneNumber: "444-555-6666",
+      name: "Maya Shahid",
+      email: "mayashahid@example.com",
+      joinedDate: "2023-02-11",
+      location: "USA",
     },
     {
       key: "15",
       no: "15",
-      userName: "Laura Moore",
-      email: "lauram@example.com",
-      phoneNumber: "555-666-7777",
+      name: "Omar Farooq",
+      email: "omarfarooq@example.com",
+      joinedDate: "2023-03-14",
+      location: "UK",
     },
     {
       key: "16",
       no: "16",
-      userName: "Mike Nguyen",
-      email: "miken@example.com",
-      phoneNumber: "666-777-8888",
+      name: "Nida Khokhar",
+      email: "nidakhokhar@example.com",
+      joinedDate: "2023-04-05",
+      location: "Pakistan",
     },
     {
       key: "17",
       no: "17",
-      userName: "Nina Owens",
-      email: "ninao@example.com",
-      phoneNumber: "777-888-9999",
+      name: "Samar Ahmed",
+      email: "samarahmed@example.com",
+      joinedDate: "2023-05-17",
+      location: "UAE",
     },
     {
       key: "18",
       no: "18",
-      userName: "Oscar Patel",
-      email: "oscarp@example.com",
-      phoneNumber: "888-999-0000",
+      name: "Raheel Khan",
+      email: "raheelkhan@example.com",
+      joinedDate: "2023-06-29",
+      location: "Saudi Arabia",
     },
     {
       key: "19",
       no: "19",
-      userName: "Paula Quinn",
-      email: "paulaq@example.com",
-      phoneNumber: "999-000-1111",
+      name: "Hassan Raza",
+      email: "hassanraza@example.com",
+      joinedDate: "2023-07-22",
+      location: "Pakistan",
     },
     {
       key: "20",
       no: "20",
-      userName: "Quinn Ross",
-      email: "quinnr@example.com",
-      phoneNumber: "000-111-2222",
+      name: "Mariam Baig",
+      email: "mariambaig@example.com",
+      joinedDate: "2023-08-10",
+      location: "India",
     },
     {
       key: "21",
       no: "21",
-      userName: "Rachel Scott",
-      email: "rachels@example.com",
-      phoneNumber: "101-202-3030",
+      name: "Nashit Khan",
+      email: "nashitkhan@example.com",
+      joinedDate: "2023-09-01",
+      location: "USA",
     },
     {
       key: "22",
       no: "22",
-      userName: "Steve Thomas",
-      email: "stevet@example.com",
-      phoneNumber: "202-303-4040",
+      name: "Farhan Sadiq",
+      email: "farhansadiq@example.com",
+      joinedDate: "2023-10-13",
+      location: "Pakistan",
     },
     {
       key: "23",
       no: "23",
-      userName: "Tina Underwood",
-      email: "tinau@example.com",
-      phoneNumber: "303-404-5050",
+      name: "Alina Noor",
+      email: "alinanoor@example.com",
+      joinedDate: "2023-11-05",
+      location: "Canada",
     },
     {
       key: "24",
       no: "24",
-      userName: "Uma Vincent",
-      email: "umav@example.com",
-      phoneNumber: "404-505-6060",
+      name: "Nazia Iqbal",
+      email: "naziaiqbal@example.com",
+      joinedDate: "2023-12-08",
+      location: "UK",
     },
     {
       key: "25",
       no: "25",
-      userName: "Victor White",
-      email: "victorw@example.com",
-      phoneNumber: "505-606-7070",
+      name: "Owais Malik",
+      email: "owaismalik@example.com",
+      joinedDate: "2024-01-12",
+      location: "Pakistan",
     },
     {
       key: "26",
       no: "26",
-      userName: "Wendy Xu",
-      email: "wendyx@example.com",
-      phoneNumber: "606-707-8080",
+      name: "Sana Younis",
+      email: "sanayounis@example.com",
+      joinedDate: "2024-02-04",
+      location: "UAE",
     },
     {
       key: "27",
       no: "27",
-      userName: "Xander Young",
-      email: "xandery@example.com",
-      phoneNumber: "707-808-9090",
+      name: "Bilal Imran",
+      email: "bilalimran@example.com",
+      joinedDate: "2024-03-19",
+      location: "Saudi Arabia",
     },
     {
       key: "28",
       no: "28",
-      userName: "Yara Zane",
-      email: "yaraz@example.com",
-      phoneNumber: "808-909-1010",
+      name: "Areeba Jamil",
+      email: "areebajamil@example.com",
+      joinedDate: "2024-04-10",
+      location: "Pakistan",
     },
     {
       key: "29",
       no: "29",
-      userName: "Zach Allen",
-      email: "zacha@example.com",
-      phoneNumber: "909-101-2121",
+      name: "Kiran Bukhari",
+      email: "kiranbukhari@example.com",
+      joinedDate: "2024-05-15",
+      location: "India",
     },
     {
       key: "30",
       no: "30",
-      userName: "Abby Baker",
-      email: "abbyb@example.com",
-      phoneNumber: "101-212-3232",
+      name: "Usman Saeed",
+      email: "usmansaeed@example.com",
+      joinedDate: "2024-06-05",
+      location: "Bangladesh",
     },
   ];
 
   const columns = [
     { title: "No", dataIndex: "no", key: "no" },
     {
-      title: "User Name",
-      key: "userName",
+      title: "Name",
+      key: "name",
       render: (_, record) => (
         <div className="flex items-center gap-3">
           <img
@@ -240,22 +271,31 @@ const Users = () => {
             className="w-10 h-10 object-cover rounded-full"
             alt="User Avatar"
           />
-          <span>{record.userName}</span>
+          <span>{record.name}</span>
         </div>
       ),
     },
-    { title: "Phone Number", dataIndex: "phoneNumber", key: "phoneNumber" },
+    { title: "Joined Date", dataIndex: "joinedDate", key: "joinedDate" },
+    { title: "Location", dataIndex: "location", key: "location" },
     { title: "Email", dataIndex: "email", key: "email" },
     {
       title: "Action",
       key: "action",
       render: () => (
-        <button
-          onClick={showModal}
-          className="border border-[#14803c] text-[#14803c] rounded-lg p-2 bg-[#d3e8e6] hover:bg-[#b4d9d4] transition duration-200"
-        >
-          <MdBlockFlipped className="w-6 h-6 text-[#14803c]" />
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={showModal}
+            className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
+          >
+            <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
+          </button>
+          <button
+            onClick={showModal}
+            className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
+          >
+            <FaRegEye className="w-6 h-6 text-[#0b7bb3]" />
+          </button>
+        </div>
       ),
     },
   ];
@@ -268,7 +308,7 @@ const Users = () => {
           <input
             type="text"
             placeholder="Search..."
-            className="border-2 border-orange-500 py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
+            className="border-2 border-[#0b7bb3] py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
           />
           <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
             <IoSearch className="text-[1.3rem]" />
@@ -283,22 +323,22 @@ const Users = () => {
             },
             Pagination: {
               colorPrimaryBorder: "rgb(19,194,194)",
-              colorBorder: "rgb(82,196,26)",
-              colorTextPlaceholder: "rgb(82,196,26)",
-              colorTextDisabled: "rgb(82,196,26)",
-              colorBgTextActive: "rgb(82,196,26)",
-              itemActiveBgDisabled: "rgb(82,196,26)",
+              colorBorder: "#0b7bb3",
+              colorTextPlaceholder: "#0b7bb3",
+              colorTextDisabled: "#0b7bb3",
+              colorBgTextActive: "#0b7bb3",
+              itemActiveBgDisabled: "#0b7bb3",
               itemActiveColorDisabled: "rgb(0,0,0)",
-              itemBg: "rgb(82,196,26)",
-              colorBgTextHover: "rgb(82,196,26)",
-              colorPrimary: "rgb(82,196,26)",
-              colorPrimaryHover: "rgb(82,196,26)",
+              itemBg: "#0b7bb3",
+              colorBgTextHover: "#0b7bb3",
+              colorPrimary: "#0b7bb3",
+              colorPrimaryHover: "#0b7bb3",
             },
             Table: {
-              headerBg: "#14803c",
+              headerBg: "#0b7bb3",
               headerColor: "rgb(255,255,255)",
               cellFontSize: 16,
-              headerSplitColor: "#14803c",
+              headerSplitColor: "#0b7bb3",
             },
           },
         }}
@@ -318,23 +358,23 @@ const Users = () => {
         >
           <div className="p-5">
             <h1 className="text-4xl text-center text-[#0D0D0D]">
-              Are you sure you want to block ?
+              Are you sure you want to delete ?
             </h1>
 
             <div className="text-center py-5">
               <button
                 onClick={handleOk}
-                className="bg-[#14803c] text-white font-semibold w-full py-2 rounded transition duration-200"
+                className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded"
               >
-                Yes,Block
+                Yes,delete.
               </button>
             </div>
             <div className="text-center pb-5">
               <button
                 onClick={handleOk}
-                className="text-[#14803c] border-2 border-green-600 bg-white font-semibold w-full py-2 rounded transition duration-200"
+                className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded"
               >
-                No,Don’t Block
+                No,Don’t delete
               </button>
             </div>
           </div>

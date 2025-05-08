@@ -200,10 +200,10 @@ const SideBar = () => {
       </div>
 
       {/* Logout Button */}
-      <div className="  w-full p-4 px-5">
+      <div className="w-full p-4 px-5">
         <button
           onClick={handleLogout}
-          className="w-full flex justify-start items-center text-start border-2 border-[#0b7bb3] text-[#0b7bb3]  rounded-md p-3 mt-20"
+          className="w-full flex justify-start items-center text-start border-2 border-[#0b7bb3] text-[#0b7bb3]  rounded-md p-2 mt-20"
         >
           <span className="text-2xl">
             <IoIosLogIn />
