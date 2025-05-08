@@ -24,7 +24,7 @@ function ProfilePage() {
                 {/* Upload Icon */}
                 <div className="absolute bottom-2 right-2 bg-white p-2 rounded-full shadow-md cursor-pointer">
                   <label htmlFor="profilePicUpload" className="cursor-pointer">
-                    <FaCamera className="text-[#FF914C]" />
+                    <FaCamera className="text-[#0b7bb3]" />
                   </label>
                   <input type="file" id="profilePicUpload" className="hidden" />
                 </div>
@@ -41,7 +41,7 @@ function ProfilePage() {
               onClick={() => setActiveTab("editProfile")}
               className={`cursor-pointer pb-1 ${
                 activeTab === "editProfile"
-                  ? "text-[#0B704E] border-b-2 border-[#0B704E]"
+                  ? "text-[#0b7bb3] border-b-2 border-[#0b7bb3]"
                   : "text-[#6A6D76]"
               }`}
             >
@@ -51,7 +51,7 @@ function ProfilePage() {
               onClick={() => setActiveTab("changePassword")}
               className={`cursor-pointer pb-1 ${
                 activeTab === "changePassword"
-                  ? "text-[#0B704E] border-b-2 border-[#0B704E]"
+                  ? "text-[#0b7bb3] border-b-2 border-[#0b7bb3]"
                   : "text-[#6A6D76]"
               }`}
             >

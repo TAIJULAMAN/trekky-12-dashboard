@@ -19,6 +19,7 @@ import ResetPassword from "../auth/ResetPassword";
 import ForgetPassword from "../auth/ForgetPassword";
 import Users from "../page/UserManagement/Users";
 import SignIn from "../auth/SignIn";
+import ExpenseAndCostTracking from "../page/ExpenseAndCostTracking/ExpenseAndCostTracking";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,11 @@ export const router = createBrowserRouter([
         path: "/premium-subscribers",
         element: <PremiumSubscribers />,
       },
+      {
+        path: "/expense",
+        element: <ExpenseAndCostTracking />,
+      },
+
       {
         path: "/ads-promotion",
         element: <AdPromotion />,

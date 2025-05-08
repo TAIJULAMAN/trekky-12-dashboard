@@ -28,7 +28,7 @@ const AdminItems = [
     key: "categorymanagement",
     label: "Expense & Cost Tracking",
     icon: MdManageAccounts,
-    link: "/category-management",
+    link: "/expense",
   },
   {
     key: "settings",

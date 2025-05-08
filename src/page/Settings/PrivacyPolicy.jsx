@@ -22,7 +22,7 @@ function PrivacyPolicy() {
       <div className="text-center py-5">
         <button
           onClick={() => console.log(content)}
-          className="bg-[#0B704E] text-white font-semibold w-full py-2 rounded transition duration-200"
+          className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded transition duration-200"
         >
           Save changes
         </button>
