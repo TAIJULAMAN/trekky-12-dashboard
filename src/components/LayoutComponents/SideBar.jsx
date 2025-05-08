@@ -1,10 +1,5 @@
 import { MdManageAccounts } from "react-icons/md";
-import {
-  FaUsers,
-  FaChevronRight,
-  FaCog,
-  FaHome,
-} from "react-icons/fa";
+import { FaUsers, FaChevronRight, FaCog, FaHome } from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -25,39 +20,15 @@ const AdminItems = [
   },
   {
     key: "sellermanagement",
-    label: "Seller Management",
+    label: "Vendor Management",
     icon: MdManageAccounts,
     link: "/dashboard/seller-management",
   },
   {
     key: "categorymanagement",
-    label: "Category Management",
+    label: "Expense & Cost Tracking",
     icon: MdManageAccounts,
     link: "/category-management",
-  },
-  {
-    key: "premiumSubscribers",
-    label: "Premium Subscribers",
-    icon: MdManageAccounts,
-    link: "/premium-subscribers",
-  },
-  {
-    key: "adPromotion",
-    label: "Ads Promotion",
-    icon: MdManageAccounts,
-    link: "/ads-promotion",
-  },
-  {
-    key: "support",
-    label: "Support",
-    icon: MdManageAccounts,
-    link: "/support",
-  },
-  {
-    key: "chat",
-    label: "Chat",
-    icon: MdManageAccounts,
-    link: "/chat",
   },
   {
     key: "settings",
@@ -165,8 +136,8 @@ const SideBar = () => {
                     isSettingsActive ||
                     isCreatorActive ||
                     isCategoriesActive
-                      ? "bg-[#0E9ADF] text-white rounded-md"
-                      : "bg-white rounded-md hover:bg-[#B3D3C8]"
+                      ? "bg-[#0b7bb3] text-white rounded-md"
+                      : "bg-white rounded-md hover:bg-[#b4e2ed]"
                   }`}
                   onClick={(e) => {
                     if (item.children) {

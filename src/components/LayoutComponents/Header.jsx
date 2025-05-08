@@ -103,7 +103,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-[#FF914C] text-white px-5 py-4">
+    <div className="bg-white text-white px-5 py-4">
       <div className="flex justify-between items-center">
         <div className="lg:hidden">
           <button onClick={showDrawer} className="p-2">
