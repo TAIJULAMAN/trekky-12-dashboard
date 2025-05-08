@@ -20,6 +20,7 @@ import ForgetPassword from "../auth/ForgetPassword";
 import Users from "../page/UserManagement/Users";
 import SignIn from "../auth/SignIn";
 import ExpenseAndCostTracking from "../page/ExpenseAndCostTracking/ExpenseAndCostTracking";
+import ExpenseTracker from "../page/ExpenseAndCostTracking/ExpenseTracker";
 
 export const router = createBrowserRouter([
   {
@@ -55,7 +56,10 @@ export const router = createBrowserRouter([
         path: "/expense",
         element: <ExpenseAndCostTracking />,
       },
-
+      {
+        path: "/details",
+        element: <ExpenseTracker />,
+      },
       {
         path: "/ads-promotion",
         element: <AdPromotion />,

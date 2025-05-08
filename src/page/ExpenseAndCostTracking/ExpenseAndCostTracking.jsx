@@ -1,5 +1,6 @@
 import { FaEye } from "react-icons/fa";
 import PageHeading from "../../shared/PageHeading";
+import { Link } from "react-router-dom";
 
 export default function ExpenseAndCostTracking() {
   const expenses = [
@@ -39,9 +40,9 @@ export default function ExpenseAndCostTracking() {
   ];
 
   return (
-    <div className="bg-[#f5f6fa] h-full w-full h-screen">
+    <div className="bg-[#f5f6fa] w-full h-screen">
       <header className="my-6">
-        <PageHeading title=" Expense & Cost Tracking" />
+        <PageHeading title="Expense & Cost Tracking" />
       </header>
       <div className="max-w-7xl mx-auto p-4">
         <div className="space-y-4">
@@ -56,9 +57,8 @@ export default function ExpenseAndCostTracking() {
 
 function ExpenseCard({ expense }) {
   return (
-    <div className="bg-white rounded-md border border-gray-200 p-4 shadow-sm flex justify-around items-center gap-4 whitespace-nowrap">
+    <div className="bg-white rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 whitespace-nowrap">
       <div className="flex justify-start items-center gap-3 whitespace-nowrap">
-        {/* Avatar using img tag */}
         <div className="h-14 w-14 rounded-full overflow-hidden">
           <img
             src={expense.user.avatar}
@@ -66,12 +66,12 @@ function ExpenseCard({ expense }) {
             className="object-cover w-full h-full"
           />
         </div>
-        <div className=" whitespace-nowrap">
+        <div>
           <p className="font-medium">{expense.user.name}</p>
           <p className="text-sm text-muted-foreground">{expense.user.email}</p>
         </div>
       </div>
-      <div className="mt-3 ml-[52px]">
+      <div className="mt-3 md:mt-0 md:ml-[52px] text-center md:text-left">
         <p className="text-sm">
           Your total maintenance cost for this RV in {expense.date} was $
           {expense.totalCost.toFixed(2)}.
@@ -81,11 +81,11 @@ function ExpenseCard({ expense }) {
           {expense.topExpenses.toFixed(2)}.
         </p>
       </div>
-      <div>
-        <button className="bg-[#0891b2] hover:bg-[#0891b2]/90 text-white py-2 px-4 rounded-md flex items-center gap-2">
-          <FaEye /> View
-        </button>
-      </div>
+      <Link to="/details">
+        <div className="bg-[#0891b2] hover:bg-[#0891b2]/90 text-white py-2 px-4 rounded-md flex items-center gap-2">
+          <FaEye />
+        </div>
+      </Link>
     </div>
   );
 }
