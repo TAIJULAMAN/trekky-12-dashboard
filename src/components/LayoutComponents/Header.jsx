@@ -107,7 +107,7 @@ const Header = () => {
       <div className="flex justify-between items-center">
         <div className="lg:hidden">
           <button onClick={showDrawer} className="p-2">
-            <FaBars size={24} />
+            <FaBars size={24} className="text-[#0b7bb3]" />
           </button>
           <Drawer
             title={
@@ -128,8 +128,8 @@ const Header = () => {
                     to={item.link}
                     className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${
                       selectedKey === item.key
-                        ? "bg-[#0B704E] text-white rounded-md"
-                        : "bg-white rounded-md hover:bg-[#B3D3C8]"
+                        ? "bg-[#0b7bb3] text-white rounded-md"
+                        : "bg-white rounded-md hover:bg-[#b4e2ed]"
                     }`}
                     onClick={(e) => {
                       if (item.children) {
@@ -172,8 +172,8 @@ const Header = () => {
                           to={child.link}
                           className={`menu-item p-4 flex items-center cursor-pointer ${
                             selectedKey === child.key
-                              ? "bg-[#0B704E] text-white"
-                              : "hover:bg-[#B3D3C8]"
+                              ? "bg-[#0b7bb3] text-white"
+                              : "hover:bg-[#b4e2ed]"
                           }`}
                           onClick={() => {
                             setSelectedKey(child.key);
@@ -193,7 +193,7 @@ const Header = () => {
             <div className="custom-sidebar-footer absolute bottom-0 w-full p-4">
               <button
                 onClick={handleLogout}
-                className="w-full flex bg-[#0B704E] text-white text-start rounded-md p-3 mt-10"
+                className="w-full flex bg-[#0b7bb3] text-white text-start rounded-md p-3 mt-10"
               >
                 <span className="text-2xl">
                   <IoIosLogIn />
@@ -207,9 +207,9 @@ const Header = () => {
         <div className="ml-auto flex items-center justify-center gap-5">
           <div className="relative">
             <Link to={"/dashboard/Settings/notification"}>
-              <LuBell className="text-2xl text-[#0B704E] w-[40px] h-[40px]" />
+              <LuBell className="text-2xl text-[#0b7bb3] w-[40px] h-[40px]" />
             </Link>
-            <span className="absolute -top-2 -right-2 bg-[#0B704E] text-xs rounded-full w-6 h-6 flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 bg-[#0b7bb3] text-xs rounded-full w-6 h-6 flex items-center justify-center">
               10
             </span>
           </div>
@@ -218,12 +218,12 @@ const Header = () => {
               <div className="flex items-center gap-3">
                 <img
                   src="https://avatar.iran.liara.run/public/44"
-                  className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#0B704E]"
+                  className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#0b7bb3]"
                   alt="User Avatar"
                 />
                 <div className="hidden md:flex flex-col items-start">
                   <h3 className="text-gray-800 text-sm">Shah Aman</h3>
-                  <p className="text-xs px-2 py-1 bg-[#ebfcf4] text-[#15803D] rounded">
+                  <p className="text-xs px-2 py-1 bg-[#b4e2ed] text-[#0b7bb3] rounded">
                     Admin
                   </p>
                 </div>

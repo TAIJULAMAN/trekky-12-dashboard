@@ -1,15 +1,17 @@
+
+
 import { Outlet } from "react-router-dom";
 import Header from "../components/LayoutComponents/Header";
 import SideBar from "../components/LayoutComponents/SideBar";
 
 const DashboardLayout = () => {
   return (
-    <div className="lg:flex ">
+    <div className="lg:flex">
       <div className="lg:w-80 bg-[#FFFFFF] overflow-auto lg:fixed lg:top-0 lg:left-0 lg:bottom-0 hidden lg:block no-scrollbar">
         <SideBar />
       </div>
 
-      <div className="lg:flex-1 lg:ml-80">
+      <div className="lg:flex-1 lg:ml-80 overflow-hidden">
         <Header />
         <div className="p-5 bg-[#f5f6fa] h-full w-full">
           <Outlet />

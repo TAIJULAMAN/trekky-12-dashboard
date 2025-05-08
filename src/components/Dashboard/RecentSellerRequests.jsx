@@ -369,7 +369,7 @@ const RecentSellerRequests = ({ showModal }) => {
         dataSource={dataSource}
         columns={columns}
         pagination={{ pageSize: 5 }}
-        scroll={{ x: "max-content" }}
+        scroll={false}
       />
     </ConfigProvider>
   );

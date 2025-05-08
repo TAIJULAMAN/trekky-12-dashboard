@@ -180,12 +180,12 @@ const SideBar = () => {
                         to={child.link}
                         className={`menu-item p-4 flex items-center cursor-pointer ${
                           selectedKey === child.key
-                            ? "bg-[#0B704E] text-white"
-                            : "hover:bg-[#B3D3C8]"
+                            ? "bg-[#0b7bb3] text-white"
+                            : "hover:bg-[#b4e2ed]"
                         }`}
                         onClick={() => {
-                          setSelectedKey(child.key); // Set the selected key for children
-                          setExpandedKeys([]); // Close all expanded items
+                          setSelectedKey(child.key);
+                          setExpandedKeys([]);
                         }}
                       >
                         <span className="block w-full ">{child.label}</span>
@@ -203,7 +203,7 @@ const SideBar = () => {
       <div className="  w-full p-4 px-5">
         <button
           onClick={handleLogout}
-          className="w-full flex bg-[#0B704E] text-white text-start rounded-md p-3 mt-10"
+          className="w-full flex bg-[#0b7bb3] text-white text-start rounded-md p-3 mt-20"
         >
           <span className="text-2xl">
             <IoIosLogIn />
