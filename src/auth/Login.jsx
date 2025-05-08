@@ -41,7 +41,7 @@ function Login() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#FF914C] rounded-lg outline-none mt-5 placeholder:text-gray-600"
+              className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#0b7bb3] rounded-lg outline-none mt-5 placeholder:text-gray-600"
               required
             />
           </div>
@@ -56,7 +56,7 @@ function Login() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="**********"
-                className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#FF914C] rounded-lg outline-none mt-5 placeholder:text-gray-600"
+                className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#0b7bb3] rounded-lg outline-none mt-5 placeholder:text-gray-600"
                 required
               />
               <button
@@ -65,9 +65,9 @@ function Login() {
                 className="absolute right-3 bottom-4 flex items-center text-gray-400"
               >
                 {showPassword ? (
-                  <IoEyeOffOutline className="w-5 h-5 text-[#FF914C]" />
+                  <IoEyeOffOutline className="w-5 h-5 text-[#0b7bb3]" />
                 ) : (
-                  <IoEyeOutline className="w-5 h-5 text-[#FF914C]" />
+                  <IoEyeOutline className="w-5 h-5 text-[#0b7bb3]" />
                 )}
               </button>
             </div>
@@ -97,8 +97,8 @@ function Login() {
                       width="21"
                       height="21"
                       rx="4"
-                      className="fill-[#FF914C]"
-                      stroke="#FF914C"
+                      className="fill-[#0b7bb3]"
+                      stroke="#0b7bb3"
                     ></rect>
                     <path
                       id="Vector"
@@ -124,7 +124,7 @@ function Login() {
                       height="21"
                       rx="4"
                       className="fill-transparent"
-                      stroke="#FF914C"
+                      stroke="#0b7bb3"
                     ></rect>
                   </g>
                 </svg>
@@ -134,7 +134,7 @@ function Login() {
             </label>
             <Link
               to="/forget-password"
-              className="text-[#FF914C] text-xl hover:text-[#FF914C]/80"
+              className="text-[#0b7bb3] text-xl hover:text-[#0b7bb3]/80"
             >
               Forgot Password?
             </Link>
@@ -144,7 +144,7 @@ function Login() {
             <div className="flex justify-center items-center text-white">
               <button
                 type="submit"
-                className="w-full bg-[#FF914C] font-semibold py-3 px-6 rounded-lg shadow-lg cursor-pointer mt-5"
+                className="w-full bg-[#0b7bb3] font-semibold py-3 px-6 rounded-lg shadow-lg cursor-pointer mt-5"
               >
                 Sign In
               </button>

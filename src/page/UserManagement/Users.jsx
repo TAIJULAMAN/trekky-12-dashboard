@@ -7,14 +7,25 @@ import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen2, setIsModalOpen2] = useState(false);
+
   const handleOk = () => {
     setIsModalOpen(false);
+  };
+  const handleOk2 = () => {
+    setIsModalOpen2(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  const handleCancel2 = () => {
+    setIsModalOpen2(false);
+  };
   const showModal = () => {
     setIsModalOpen(true);
+  };
+  const showModal2 = () => {
+    setIsModalOpen2(true);
   };
   const dataSource = [
     {
@@ -290,7 +301,7 @@ const Users = () => {
             <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
           </button>
           <button
-            onClick={showModal}
+            onClick={showModal2}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
             <FaRegEye className="w-6 h-6 text-[#0b7bb3]" />
@@ -302,17 +313,24 @@ const Users = () => {
 
   return (
     <>
-      <div className="my-5 md:my-10 flex flex-col md:flex-row gap-5 justify-between items-center">
+      <div className="my-5 md:my-10 flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
         <PageHeading title="User Management" />
-        <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="border-2 border-[#0b7bb3] py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
-          />
-          <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
-            <IoSearch className="text-[1.3rem]" />
-          </span>
+        <div className="flex flex-col md:flex-row justify-end items-center text-center  gap-5  w-full">
+          <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="border-2 border-[#0b7bb3] py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
+            />
+            <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
+              <IoSearch className="text-[1.3rem]" />
+            </span>
+          </div>
+          <div className="flex items-center justify-center text-white mt-5">
+            <button className="bg-[#0b7bb3]  rounded-lg px-5 py-3 text-white mb-5">
+              Aprove All
+            </button>
+          </div>
         </div>
       </div>
       <ConfigProvider
@@ -376,6 +394,51 @@ const Users = () => {
               >
                 No,Don’t delete
               </button>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          open={isModalOpen2}
+          centered
+          onCancel={handleCancel2}
+          footer={null}
+        >
+          <div className="p-5">
+            <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-sm">
+              <div className="flex flex-col items-center pt-6 pb-4">
+                <div className="relative w-20 h-20 mb-3">
+                  <img
+                    src="https://avatar.iran.liara.run/public/1"
+                    alt="Profile picture"
+                    width={80}
+                    height={80}
+                    className="rounded-full bg-sky-200"
+                  />
+                </div>
+                <h2 className="text-xl font-medium text-gray-800">Jon Smith</h2>
+                <p className="text-gray-600 text-sm">jon@gmail.com</p>
+              </div>
+
+              <div className="px-6 pb-6">
+                <h3 className="text-gray-600 font-medium mb-4">User Details</h3>
+
+                <div className="grid grid-cols-2 gap-y-3">
+                  <div className="text-gray-500">User name</div>
+                  <div className="text-gray-700">Guitar Ross biyate</div>
+
+                  <div className="text-gray-500">E-mail</div>
+                  <div className="text-gray-700">rvi.54@gmail.com</div>
+
+                  <div className="text-gray-500">Phone Number</div>
+                  <div className="text-gray-700">345453211</div>
+
+                  <div className="text-gray-500">Location</div>
+                  <div className="text-gray-700">France</div>
+
+                  <div className="text-gray-500">Joined</div>
+                  <div className="text-gray-700">20-25-2025</div>
+                </div>
+              </div>
             </div>
           </div>
         </Modal>

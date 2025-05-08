@@ -20,7 +20,7 @@ function ForgetPassword() {
               type="email"
               name="email"
               placeholder="admin@gmail.com"
-              className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#FF914C] rounded-md outline-none mt-5 placeholder:text-gray-600"
+              className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#0b7bb3] rounded-md outline-none mt-5 placeholder:text-gray-600"
               required
             />
           </div>
@@ -29,7 +29,7 @@ function ForgetPassword() {
             <button
               onClick={() => navigate("/verify-mail")}
               type="button"
-              className="whitespace-nowrap w-full bg-[#FF914C] text-white font-semibold py-3 rounded-lg shadow-lg cursor-pointer mt-5"
+              className="whitespace-nowrap w-full bg-[#0b7bb3] text-white font-semibold py-3 rounded-lg shadow-lg cursor-pointer mt-5"
             >
               Continue
             </button>

@@ -38,7 +38,7 @@ function VerificationCode() {
                 maxLength="1"
                 value={digit}
                 onChange={(e) => handleChange(e.target.value, index)}
-                className="shadow-xs w-12 h-12 text-2xl text-center border border-[#FF914C] text-[#FF914C] rounded-lg focus:outline-none"
+                className="shadow-xs w-12 h-12 text-2xl text-center border border-[#0b7bb3] text-[#0b7bb3] rounded-lg focus:outline-none"
               />
             ))}
           </div>
@@ -47,13 +47,13 @@ function VerificationCode() {
             <button
               onClick={handleVerifyCode}
               type="button"
-              className="whitespace-nowrap w-full bg-[#FF914C] text-white font-semibold py-3 rounded-lg shadow-lg cursor-pointer my-5"
+              className="whitespace-nowrap w-full bg-[#0b7bb3] text-white font-semibold py-3 rounded-lg shadow-lg cursor-pointer my-5"
             >
               Continue
             </button>
             <p className="text-gray-600 text-center mt-10">
               You have not received the email?{" "}
-              <span className="text-[#FF914C]"> Resend</span>
+              <span className="text-[#0b7bb3]"> Resend</span>
             </p>
           </div>
         </form>

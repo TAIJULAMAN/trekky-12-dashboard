@@ -36,18 +36,18 @@ const ResetPassword = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="**********"
-                className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#FF914C] rounded-md outline-none mt-5 placeholder:text-gray-600"
+                className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#0b7bb3] rounded-md outline-none mt-5 placeholder:text-gray-600"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 bottom-4 flex items-center text-[#FF914C]"
+                className="absolute right-3 bottom-4 flex items-center text-[#0b7bb3]"
               >
                 {showPassword ? (
-                  <IoEyeOffOutline className="w-5 h-5 [text-[#FF914C]" />
+                  <IoEyeOffOutline className="w-5 h-5 [text-[#0b7bb3]" />
                 ) : (
-                  <IoEyeOutline className="w-5 h-5 text-[#FF914C]" />
+                  <IoEyeOutline className="w-5 h-5 text-[#0b7bb3]" />
                 )}
               </button>
             </div>
@@ -63,7 +63,7 @@ const ResetPassword = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="**********"
-                className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#FF914C] rounded-md outline-none mt-5 placeholder:text-gray-600"
+                className="w-full px-5 py-3 bg-white text-gray-600 border-2 border-[#0b7bb3] rounded-md outline-none mt-5 placeholder:text-gray-600"
                 required
               />
               <button
@@ -72,9 +72,9 @@ const ResetPassword = () => {
                 className="absolute right-3 bottom-4 flex items-center text-gray-400"
               >
                 {showPassword ? (
-                  <IoEyeOffOutline className="w-5 h-5 text-[#FF914C]" />
+                  <IoEyeOffOutline className="w-5 h-5 text-[#0b7bb3]" />
                 ) : (
-                  <IoEyeOutline className="w-5 h-5 text-[#FF914C]" />
+                  <IoEyeOutline className="w-5 h-5 text-[#0b7bb3]" />
                 )}
               </button>
             </div>
@@ -84,7 +84,7 @@ const ResetPassword = () => {
             <div className="flex justify-center items-center text-white">
               <button
                 type="submit"
-                className="w-full bg-[#FF914C] font-semibold py-3 px-6 rounded-lg shadow-lg cursor-pointer mt-5"
+                className="w-full bg-[#0b7bb3] font-semibold py-3 px-6 rounded-lg shadow-lg cursor-pointer mt-5"
               >
                 Sign In
               </button>
