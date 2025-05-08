@@ -6,9 +6,6 @@ import medal from "../../assets/medal.png";
 import profit from "../../assets/RV.png";
 import seller from "../../assets/state.png";
 import SubscriptionGrowth from "./SubscriptionGrowth";
-import SellerGrowth from "./SellerGrowth";
-import RecentSellerRequests from "./RecentSellerRequests";
-import { Modal } from "antd";
 
 function DashboardPage() {
   const currentYear = dayjs().year();
@@ -16,16 +13,6 @@ function DashboardPage() {
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
 
   const years = Array.from(
     { length: currentYear - startYear + 1 },
@@ -156,15 +143,15 @@ function DashboardPage() {
         <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
-              <h1 className="text-xl font-semibold">Users Growth</h1>
+              <h1 className="text-xl font-semibold">Vendor Growth</h1>
             </div>
             <div className="relative w-full md:w-32">
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition"
               >
-                <span className="text-[#0B704E]">{selectedYear}</span>
-                <FaChevronDown className="text-[#0B704E] w-5 h-5 ml-5" />
+                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <FaChevronDown className="text-[#0b7bb3] w-5 h-5 ml-5" />
               </button>
 
               {/* Dropdown List */}
@@ -185,37 +172,47 @@ function DashboardPage() {
               )}
             </div>
           </div>
-          <SellerGrowth />
+          <SubscriptionGrowth />
         </div>
       </div>
       <div className="mt-5">
-        <h1 className="text-2xl font-bold mb-5">Recent Seller Requests</h1>
-        <RecentSellerRequests showModal={showModal} />
-      </div>
-      <Modal open={isModalOpen} centered onCancel={handleCancel} footer={null}>
-        <div className="p-5">
-          <h1 className="text-4xl text-center text-[#0D0D0D]">
-            Are you sure you want to block ?
-          </h1>
+        <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
+          <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
+            <div>
+              <h1 className="text-xl font-semibold">Total RV View</h1>
+            </div>
 
-          <div className="text-center py-5">
-            <button
-              onClick={handleOk}
-              className="bg-[#14803c] text-white font-semibold w-full py-2 rounded transition duration-200"
-            >
-              Yes,Block
-            </button>
+            <div className="relative w-full md:w-32">
+              {/* Selected Year Display */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition"
+              >
+                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <FaChevronDown className="text-[#0b7bb3] w-5 h-5 ml-5" />
+              </button>
+
+              {/* Dropdown List */}
+              {isOpen && (
+                <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg">
+                  {years.map((year) => (
+                    <div
+                      key={year}
+                      onClick={() => handleSelect(year)}
+                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
+                        year === selectedYear ? "bg-gray-200" : ""
+                      }`}
+                    >
+                      {year}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-          <div className="text-center pb-5">
-            <button
-              onClick={handleOk}
-              className="text-[#14803c] border-2 border-green-600 bg-white font-semibold w-full py-2 rounded transition duration-200"
-            >
-              No,Don’t Block
-            </button>
-          </div>
+          <SubscriptionGrowth />
         </div>
-      </Modal>
+      </div>
     </div>
   );
 }
