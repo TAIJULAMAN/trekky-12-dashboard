@@ -6,6 +6,9 @@ import medal from "../../assets/medal.png";
 import profit from "../../assets/RV.png";
 import seller from "../../assets/state.png";
 import SubscriptionGrowth from "./SubscriptionGrowth";
+import UsersGrowth from "./UsersGrowth";
+import VendorGrowth from "./VendorGrowth";
+import TotalRVView from "./TotalRVView";
 
 function DashboardPage() {
   const currentYear = dayjs().year();
@@ -107,7 +110,7 @@ function DashboardPage() {
         <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
-              <h1 className="text-xl font-semibold">Subscription Growth</h1>
+              <h1 className="text-xl font-semibold">Users Growth</h1>
             </div>
 
             <div className="relative w-full md:w-32">
@@ -138,7 +141,7 @@ function DashboardPage() {
               )}
             </div>
           </div>
-          <SubscriptionGrowth />
+          <UsersGrowth />
         </div>
         <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
@@ -172,7 +175,7 @@ function DashboardPage() {
               )}
             </div>
           </div>
-          <SubscriptionGrowth />
+          <VendorGrowth />
         </div>
       </div>
       <div className="mt-5">
@@ -210,7 +213,7 @@ function DashboardPage() {
               )}
             </div>
           </div>
-          <SubscriptionGrowth />
+          <TotalRVView />
         </div>
       </div>
     </div>
