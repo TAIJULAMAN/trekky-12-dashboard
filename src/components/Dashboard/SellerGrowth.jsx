@@ -31,7 +31,7 @@ const SellerGrowth = () => {
       return (
         <div className="bg-white py-2 px-3 rounded shadow border">
           <p className="text-black font-semibold">{`Month: ${month}`}</p>
-          <p className="text-[#FF914C]">{`App Users: ${appUsers}`}</p>
+          <p className="text-[#0b7bb3]">{`App Users: ${appUsers}`}</p>
           <p className="text-[#083E24]">{`Active Users: ${activeUsers}`}</p>
         </div>
       );

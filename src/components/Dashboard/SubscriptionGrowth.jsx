@@ -27,8 +27,8 @@ const SubscriptionGrowth = () => {
   }, []);
 
   const data = [
-    { month: "Jan", vendors: 200 },
-    { month: "Feb", vendors: 185 },
+    { month: "Jan", vendors: 0 },
+    { month: "Feb", vendors: 85 },
     { month: "Mar", vendors: 165 },
     { month: "Apr", vendors: 175 },
     { month: "May", vendors: 185 },
@@ -44,9 +44,9 @@ const SubscriptionGrowth = () => {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-[#202020] text-white p-3 rounded-lg shadow-lg border border-[#FF914C]">
+        <div className="bg-[#202020] text-white p-3 rounded-lg shadow-lg border border-[#0b7bb3]">
           <p className="font-medium">{`Month: ${label}`}</p>
-          <p className="font-medium text-[#FF914C]">{`Vendors: ${payload[0].value}`}</p>
+          <p className="font-medium text-[#0b7bb3]">{`Vendors: ${payload[0].value}`}</p>
         </div>
       );
     }
@@ -62,8 +62,8 @@ const SubscriptionGrowth = () => {
         >
           <defs>
             <linearGradient id="vendorGrowth" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#FF914C" stopOpacity={1} />
-              <stop offset="95%" stopColor="#FFA17533" stopOpacity={1} />
+              <stop offset="5%" stopColor="#0b7bb3" stopOpacity={1} />
+              <stop offset="95%" stopColor="#b4e2ed" stopOpacity={1} />
             </linearGradient>
           </defs>
           <XAxis
@@ -76,7 +76,7 @@ const SubscriptionGrowth = () => {
           <Area
             type="monotone"
             dataKey="vendors"
-            stroke="#FF914C"
+            stroke="#0b7bb3"
             strokeWidth={3}
             fill="url(#vendorGrowth)"
           />

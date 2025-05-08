@@ -3,8 +3,8 @@ import { useState } from "react";
 import dayjs from "dayjs";
 import user from "../../assets/user.png";
 import medal from "../../assets/medal.png";
-import profit from "../../assets/profit.png";
-import seller from "../../assets/seller.png";
+import profit from "../../assets/RV.png";
+import seller from "../../assets/state.png";
 import SubscriptionGrowth from "./SubscriptionGrowth";
 import SellerGrowth from "./SellerGrowth";
 import RecentSellerRequests from "./RecentSellerRequests";
@@ -14,6 +14,7 @@ function DashboardPage() {
   const currentYear = dayjs().year();
   const startYear = 1900;
   const [selectedYear, setSelectedYear] = useState(currentYear);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleOk = () => {
@@ -41,12 +42,16 @@ function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 mmd:grid-cols-3 lg:grid-cols-4 gap-2">
         <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md">
           <h2 className="text-gray-700 text-lg font-medium mb-2">
-            Total Users
+            Total users
           </h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
-              <img src={user} alt="User Stats Icon" className="w-16 h-12" />
+              <img
+                src={user}
+                alt="User Stats Icon"
+                className="w-[52px] h-[52px]"
+              />
             </div>
           </div>
 
@@ -56,12 +61,16 @@ function DashboardPage() {
         </div>
         <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md">
           <h2 className="text-gray-700 text-lg font-medium mb-2">
-            Total Subscriptions
+            Total Vendor
           </h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
-              <img src={medal} alt="User Stats Icon" className="w-16 h-12" />
+              <img
+                src={medal}
+                alt="User Stats Icon"
+                className="w-[52px] h-[52px]"
+              />
             </div>
           </div>
 
@@ -70,13 +79,15 @@ function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md">
-          <h2 className="text-gray-700 text-lg font-medium mb-2">
-            Total Income
-          </h2>
+          <h2 className="text-gray-700 text-lg font-medium mb-2">Total RV</h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
-              <img src={profit} alt="User Stats Icon" className="w-16 h-12" />
+              <img
+                src={profit}
+                alt="User Stats Icon"
+                className="w-[52px] h-[52px]"
+              />
             </div>
           </div>
 
@@ -86,12 +97,16 @@ function DashboardPage() {
         </div>
         <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md">
           <h2 className="text-gray-700 text-lg font-medium mb-2">
-            Total Seller
+            Total State
           </h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
-              <img src={seller} alt="User Stats Icon" className="w-16 h-12" />
+              <img
+                src={seller}
+                alt="User Stats Icon"
+                className="w-[52px] h-[52px]"
+              />
             </div>
           </div>
 
@@ -114,8 +129,8 @@ function DashboardPage() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition"
               >
-                <span className="text-[#0B704E]">{selectedYear}</span>
-                <FaChevronDown className="text-[#0B704E] w-5 h-5 ml-5" />
+                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <FaChevronDown className="text-[#0b7bb3] w-5 h-5 ml-5" />
               </button>
 
               {/* Dropdown List */}
@@ -141,7 +156,7 @@ function DashboardPage() {
         <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
-              <h1 className="text-xl font-semibold">Seller Growth</h1>
+              <h1 className="text-xl font-semibold">Users Growth</h1>
             </div>
             <div className="relative w-full md:w-32">
               <button
