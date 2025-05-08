@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.children-menu {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+select option {
+  background-color: #FF914C;
+  color: #fff;
+  padding: 10px;
+}
+
+
+
+/* Hover effect for buttons */
+
+/* In your CSS file or inside a styled-components if you're using them */
+.no-border-radius-modal .ant-modal {
+  border-radius: 0 !important;
+}
+
+:where(.css-dev-only-do-not-override-49qm).ant-checkbox-checked
+  .ant-checkbox-inner {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+:where(.css-dev-only-do-not-override-49qm).ant-tabs
+  .ant-tabs-tab.ant-tabs-tab-active
+  .ant-tabs-tab-btn {
+  color: #ff3916;
+}
+
+.custom-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: red !important;
+  /* Active ট্যাবের টেক্সট লাল হবে */
+}
+
+.custom-tabs .ant-tabs-ink-bar {
+  background-color: red !important;
+  /* Active ট্যাবের নিচের বর্ডার লাল হবে */
+}
+
+.custom-tabs .ant-tabs-tab:hover {
+  color: inherit !important;
+}
+
+.custom-tabs .ant-tabs-tab-btn:hover {
+  color: inherit !important;
+  /* ট্যাবের বাটনের hover রঙ রিমুভ */
+}
+
+.custom-tabs .ant-tabs-tab {
+  border-bottom: none !important;
+  /* প্রতিটি ট্যাবের নিচে থাকা বর্ডার রিমুভ */
+}
+
+.custom-tabs .ant-tabs-tab-active {
+  border-bottom: 2px solid red !important;
+  /* শুধুমাত্র অ্যাক্টিভ ট্যাবের জন্য বর্ডার */
+}
