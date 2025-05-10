@@ -38,10 +38,198 @@ export default function ExpenseAndCostTracking() {
       topExpenses: 420.5,
       date: "April 2025",
     },
+    {
+      id: 4,
+      user: {
+        name: "Alice Johnson",
+        email: "alice@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/44",
+      },
+      totalCost: 320.7,
+      topExpenses: 300.2,
+      date: "April 2025",
+    },
+    {
+      id: 5,
+      user: {
+        name: "Bob Lee",
+        email: "bob@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/45",
+      },
+      totalCost: 510.3,
+      topExpenses: 490.0,
+      date: "April 2025",
+    },
+    {
+      id: 6,
+      user: {
+        name: "Sara Connor",
+        email: "sara@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/46",
+      },
+      totalCost: 280.9,
+      topExpenses: 270.0,
+      date: "April 2025",
+    },
+    {
+      id: 7,
+      user: {
+        name: "Mike Ross",
+        email: "mike@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/47",
+      },
+      totalCost: 600.0,
+      topExpenses: 580.5,
+      date: "April 2025",
+    },
+    {
+      id: 8,
+      user: {
+        name: "Rachel Green",
+        email: "rachel@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/48",
+      },
+      totalCost: 390.4,
+      topExpenses: 370.3,
+      date: "April 2025",
+    },
+    {
+      id: 9,
+      user: {
+        name: "Joey Tribbiani",
+        email: "joey@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/49",
+      },
+      totalCost: 450.6,
+      topExpenses: 445.0,
+      date: "April 2025",
+    },
+    {
+      id: 10,
+      user: {
+        name: "Chandler Bing",
+        email: "chandler@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/50",
+      },
+      totalCost: 700.8,
+      topExpenses: 680.1,
+      date: "April 2025",
+    },
+    {
+      id: 11,
+      user: {
+        name: "Monica Geller",
+        email: "monica@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/51",
+      },
+      totalCost: 315.6,
+      topExpenses: 310.0,
+      date: "April 2025",
+    },
+    {
+      id: 12,
+      user: {
+        name: "Ross Geller",
+        email: "ross@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/52",
+      },
+      totalCost: 490.2,
+      topExpenses: 470.0,
+      date: "April 2025",
+    },
+    {
+      id: 13,
+      user: {
+        name: "Phoebe Buffay",
+        email: "phoebe@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/53",
+      },
+      totalCost: 260.5,
+      topExpenses: 250.3,
+      date: "April 2025",
+    },
+    {
+      id: 14,
+      user: {
+        name: "Jon Smith",
+        email: "jon@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/54",
+      },
+      totalCost: 330.0,
+      topExpenses: 310.0,
+      date: "April 2025",
+    },
+    {
+      id: 15,
+      user: {
+        name: "Jon Smith",
+        email: "jon@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/55",
+      },
+      totalCost: 275.4,
+      topExpenses: 265.1,
+      date: "April 2025",
+    },
+    {
+      id: 16,
+      user: {
+        name: "Alice Johnson",
+        email: "alice@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/56",
+      },
+      totalCost: 410.5,
+      topExpenses: 400.0,
+      date: "April 2025",
+    },
+    {
+      id: 17,
+      user: {
+        name: "Bob Lee",
+        email: "bob@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/57",
+      },
+      totalCost: 305.3,
+      topExpenses: 295.0,
+      date: "April 2025",
+    },
+    {
+      id: 18,
+      user: {
+        name: "Mike Ross",
+        email: "mike@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/58",
+      },
+      totalCost: 690.0,
+      topExpenses: 680.0,
+      date: "April 2025",
+    },
+    {
+      id: 19,
+      user: {
+        name: "Sara Connor",
+        email: "sara@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/59",
+      },
+      totalCost: 260.9,
+      topExpenses: 250.8,
+      date: "April 2025",
+    },
+    {
+      id: 20,
+      user: {
+        name: "Jon Smith",
+        email: "jon@gmail.com",
+        avatar: "https://avatar.iran.liara.run/public/60",
+      },
+      totalCost: 340.7,
+      topExpenses: 330.6,
+      date: "April 2025",
+    },
   ];
+  
 
   return (
-    <div className="bg-[#f5f6fa] w-full h-screen">
+    <div className="bg-[#f5f6fa] w-full overflow-y-auto">
       <header className="my-6">
         <PageHeading title="Expense & Cost Tracking" />
       </header>
@@ -58,7 +246,7 @@ export default function ExpenseAndCostTracking() {
 
 function ExpenseCard({ expense }) {
   return (
-    <div className="h-screen bg-white rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 whitespace-nowrap">
+    <div className="bg-white rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 whitespace-nowrap">
       <div className="flex justify-start items-center gap-3 whitespace-nowrap">
         <div className="h-14 w-14 rounded-full overflow-hidden">
           <img

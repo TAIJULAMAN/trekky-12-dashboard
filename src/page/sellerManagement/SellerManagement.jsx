@@ -1,10 +1,10 @@
 import { ConfigProvider, Modal, Table } from "antd";
-import { MdBlockFlipped } from "react-icons/md";
-import { IoChatbubbleEllipsesOutline, IoSearch } from "react-icons/io5";
-import { BsPatchCheckFill } from "react-icons/bs";
+import { IoSearch } from "react-icons/io5";
 import PageHeading from "../../shared/PageHeading";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
+import { AiTwotoneEdit } from "react-icons/ai";
 
 const SellerManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -298,7 +298,7 @@ const SellerManagement = () => {
   const columns = [
     { title: "No", dataIndex: "no", key: "no" },
     {
-      title: "Seller Name",
+      title: "Vendor Name",
       key: "sellerName",
       render: (_, record) => (
         <div className="flex items-center gap-3">
@@ -313,7 +313,6 @@ const SellerManagement = () => {
     },
     { title: "Shop Name", dataIndex: "shopName", key: "shopName" },
     { title: "Phone Number", dataIndex: "phoneNumber", key: "phoneNumber" },
-    { title: "Email", dataIndex: "email", key: "email" },
     {
       title: "Product Category",
       dataIndex: "productCategory",
@@ -328,18 +327,18 @@ const SellerManagement = () => {
         return (
           <div className="flex gap-2">
             <button className="border border-[#14803c] rounded-lg p-2 bg-[#d3e8e6] text-[#14803c] hover:bg-[#b4d9d4] transition duration-200">
-              <BsPatchCheckFill className="w-6 h-6 text-[#14803c]" />
+              <FaCheck className="w-6 h-6 text-[#14803c]" />
             </button>
             <Link to="/chat">
               <button className="border border-[#14803c] rounded-lg p-2 bg-[#d3e8e6] text-[#14803c] hover:bg-[#b4d9d4] transition duration-200">
-                <IoChatbubbleEllipsesOutline className="w-6 h-6 text-[#14803c]" />
+                <FaRegTrashAlt className="w-6 h-6 text-[#14803c]" />
               </button>
             </Link>
             <button
               onClick={showModal}
               className="border border-[#14803c] text-[#14803c] rounded-lg p-2 bg-[#d3e8e6] hover:bg-[#b4d9d4] transition duration-200"
             >
-              <MdBlockFlipped className="w-6 h-6 text-[#14803c]" />
+              <AiTwotoneEdit className="w-6 h-6 text-[#14803c]" />
             </button>
           </div>
         );
@@ -349,43 +348,50 @@ const SellerManagement = () => {
 
   return (
     <>
-      <div className="my-5 md:my-10 flex flex-col md:flex-row gap-5 justify-between items-center">
-        <PageHeading title="Seller Management" />
-        <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="border-2 border-orange-500 py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
-          />
-          <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
-            <IoSearch className="text-[1.3rem]" />
-          </span>
+      <div className="flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
+        <PageHeading title="Vendor Management" />
+        <div className="flex flex-col md:flex-row justify-end items-center text-center  gap-5  w-full whitespace-nowrap">
+          <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="border-2 border-[#0b7bb3] py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
+            />
+            <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
+              <IoSearch className="text-[1.3rem]" />
+            </span>
+          </div>
+          <div className="flex items-center justify-center text-white mt-5">
+            <button className="bg-[#0b7bb3]  rounded-lg px-5 py-3 text-white mb-5">
+              + Add Vendor
+            </button>
+          </div>
         </div>
       </div>
       <ConfigProvider
         theme={{
           components: {
             InputNumber: {
-              activeBorderColor: "#14803c",
+              activeBorderColor: "#0b7bb3",
             },
             Pagination: {
               colorPrimaryBorder: "rgb(19,194,194)",
-              colorBorder: "rgb(82,196,26)",
-              colorTextPlaceholder: "rgb(82,196,26)",
-              colorTextDisabled: "rgb(82,196,26)",
-              colorBgTextActive: "rgb(82,196,26)",
-              itemActiveBgDisabled: "rgb(82,196,26)",
+              colorBorder: "#0b7bb3",
+              colorTextPlaceholder: "#0b7bb3",
+              colorTextDisabled: "#0b7bb3",
+              colorBgTextActive: "#0b7bb3",
+              itemActiveBgDisabled: "#0b7bb3",
               itemActiveColorDisabled: "rgb(0,0,0)",
-              itemBg: "rgb(82,196,26)",
-              colorBgTextHover: "rgb(82,196,26)",
-              colorPrimary: "rgb(82,196,26)",
-              colorPrimaryHover: "rgb(82,196,26)",
+              itemBg: "#0b7bb3",
+              colorBgTextHover: "#0b7bb3",
+              colorPrimary: "#0b7bb3",
+              colorPrimaryHover: "#0b7bb3",
             },
             Table: {
-              headerBg: "#14803c",
+              headerBg: "#0b7bb3",
               headerColor: "rgb(255,255,255)",
               cellFontSize: 16,
-              headerSplitColor: "#14803c",
+              headerSplitColor: "#0b7bb3",
             },
           },
         }}
@@ -394,7 +400,7 @@ const SellerManagement = () => {
           dataSource={dataSource}
           columns={columns}
           pagination={{ pageSize: 10 }}
-          scroll={{ x: "max-content" }}
+          scroll={false}
         />
         <Modal
           open={isModalOpen}
