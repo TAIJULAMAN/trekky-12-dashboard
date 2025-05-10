@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { FaEye } from "react-icons/fa";
 import PageHeading from "../../shared/PageHeading";
 import { Link } from "react-router-dom";
