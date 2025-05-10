@@ -2,20 +2,39 @@ import { ConfigProvider, Modal, Table } from "antd";
 import { IoSearch } from "react-icons/io5";
 import PageHeading from "../../shared/PageHeading";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
 import { AiTwotoneEdit } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 
 const SellerManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleOk = () => {
-    setIsModalOpen(false);
+  const [addModalOpen, setAddModalOpen] = useState(false);
+  const [addModalOpen2, setAddModalOpen2] = useState(false);
+
+  const [isChecked, setIsChecked] = useState(false);
+  const [categoryName, setCategoryName] = useState("");
+
+  const handleCheckClick = () => {
+    setIsChecked((prevState) => !prevState);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  const handleCancel2 = () => {
+    setAddModalOpen(false);
+  };
+  const handleCancel3 = () => {
+    setAddModalOpen2(false);
+  };
   const showModal = () => {
     setIsModalOpen(true);
+  };
+  const showModal2 = () => {
+    setAddModalOpen2(true);
+  };
+  const showModal3 = () => {
+    setAddModalOpen2(true);
   };
   const dataSource = [
     {
@@ -326,19 +345,29 @@ const SellerManagement = () => {
       render: () => {
         return (
           <div className="flex gap-2">
-            <button className="border border-[#14803c] rounded-lg p-2 bg-[#d3e8e6] text-[#14803c] hover:bg-[#b4d9d4] transition duration-200">
-              <FaCheck className="w-6 h-6 text-[#14803c]" />
+            <button
+              onClick={handleCheckClick}
+              className="border border-[#0b7bb3] rounded-lg p-2 bg-[#d3e8e6] text-[#0b7bb3] hover:bg-[#b4d9d4] transition duration-200"
+            >
+              {isChecked ? (
+                <RxCross2 className="w-6 h-6 text-[#0b7bb3]" />
+              ) : (
+                <FaCheck className="w-6 h-6 text-[#0b7bb3]" />
+              )}
             </button>
-            <Link to="/chat">
-              <button className="border border-[#14803c] rounded-lg p-2 bg-[#d3e8e6] text-[#14803c] hover:bg-[#b4d9d4] transition duration-200">
-                <FaRegTrashAlt className="w-6 h-6 text-[#14803c]" />
-              </button>
-            </Link>
+
             <button
               onClick={showModal}
-              className="border border-[#14803c] text-[#14803c] rounded-lg p-2 bg-[#d3e8e6] hover:bg-[#b4d9d4] transition duration-200"
+              className="border border-[#0b7bb3] rounded-lg p-2 bg-[#d3e8e6] text-[#0b7bb3] hover:bg-[#b4d9d4] transition duration-200"
             >
-              <AiTwotoneEdit className="w-6 h-6 text-[#14803c]" />
+              <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
+            </button>
+
+            <button
+              onClick={showModal2}
+              className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#d3e8e6] hover:bg-[#b4d9d4] transition duration-200"
+            >
+              <AiTwotoneEdit className="w-6 h-6 text-[#0b7bb3]" />
             </button>
           </div>
         );
@@ -362,7 +391,10 @@ const SellerManagement = () => {
             </span>
           </div>
           <div className="flex items-center justify-center text-white mt-5">
-            <button className="bg-[#0b7bb3]  rounded-lg px-5 py-3 text-white mb-5">
+            <button
+              onClick={showModal3}
+              className="bg-[#0b7bb3]  rounded-lg px-5 py-3 text-white mb-5"
+            >
               + Add Vendor
             </button>
           </div>
@@ -410,23 +442,193 @@ const SellerManagement = () => {
         >
           <div className="p-5">
             <h1 className="text-4xl text-center text-[#0D0D0D]">
-              Are you sure you want to block ?
+              Are you sure you want to delete ?
             </h1>
 
             <div className="text-center py-5">
               <button
-                onClick={handleOk}
-                className="bg-[#14803c] text-white font-semibold w-full py-2 rounded transition duration-200"
+                onClick={handleCancel}
+                className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded transition duration-200"
               >
-                Yes,Block
+                Yes,delete
               </button>
             </div>
             <div className="text-center pb-5">
               <button
-                onClick={handleOk}
-                className="text-[#14803c] border-2 border-green-600 bg-white font-semibold w-full py-2 rounded transition duration-200"
+                onClick={handleCancel}
+                className="text-[#0b7bb3] border-2 border-green-600 bg-white font-semibold w-full py-2 rounded transition duration-200"
               >
-                No,Don’t Block
+                No,Don’t delete
+              </button>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          open={addModalOpen}
+          centered
+          onCancel={handleCancel2}
+          footer={null}
+        >
+          <div className="p-5">
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold mb-2">Edit Vendor</h2>
+              <p className="text-gray-600">Edit the Vendor details below.</p>
+            </div>
+
+            {/* Category Name Input */}
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Vendor Name</label>
+              <input
+                type="text"
+                placeholder="Enter Vendor Name here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Shop Name</label>
+              <input
+                type="text"
+                placeholder="Enter Shop Name here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Phone Number</label>
+              <input
+                type="number"
+                placeholder="Enter Phone Number here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none "
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">
+                Product Category
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Product Category here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Distribution</label>
+              <input
+                type="text"
+                placeholder="Enter Distribution here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+
+            {/* buttons */}
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <button
+                onClick={handleCancel2}
+                className="py-2 px-4 rounded-lg border border-[#EF4444] bg-red-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleCancel2}
+                className="py-2 px-4 rounded-lg bg-[#0b7bb3] text-white"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          open={addModalOpen2}
+          centered
+          onCancel={handleCancel3}
+          footer={null}
+        >
+          <div className="p-5">
+            {/* Header */}
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold mb-2">Add Vendor</h2>
+              <p className="text-gray-600">Add the Vendor details below.</p>
+            </div>
+
+            {/* Category Name Input */}
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Vendor Name</label>
+              <input
+                type="text"
+                placeholder="Enter Vendor Name here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Shop Name</label>
+              <input
+                type="text"
+                placeholder="Enter Shop Name here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Phone Number</label>
+              <input
+                type="number"
+                placeholder="Enter Phone Number here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none "
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">
+                Product Category
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Product Category here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+            <div className="mb-6">
+              <label className="block text-gray-800 mb-2">Distribution</label>
+              <input
+                type="text"
+                placeholder="Enter Distribution here"
+                className="w-full border border-gray-300 rounded p-3 focus:outline-none"
+                value={categoryName}
+                onChange={(e) => setCategoryName(e.target.value)}
+              />
+            </div>
+
+            {/* buttons */}
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <button
+                onClick={handleCancel3}
+                className="py-2 px-4 rounded-lg border border-[#EF4444] bg-red-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                onClick={handleCancel3}
+                className="py-2 px-4 rounded-lg bg-[#0b7bb3] text-white"
+              >
+                Save
               </button>
             </div>
           </div>
