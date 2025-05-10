@@ -8,12 +8,13 @@ import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
 
   const handleOk = () => {
     setIsModalOpen(false);
   };
   const handleOk2 = () => {
-    setIsModalOpen2(false);
+    setIsModalOpen3(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -21,12 +22,19 @@ const Users = () => {
   const handleCancel2 = () => {
     setIsModalOpen2(false);
   };
+  const handleCancel3 = () => {
+    setIsModalOpen3(false);
+  };
   const showModal = () => {
     setIsModalOpen(true);
   };
   const showModal2 = () => {
     setIsModalOpen2(true);
   };
+  const showModal3 = () => {
+    setIsModalOpen3(true);
+  };
+
   const dataSource = [
     {
       key: "1",
@@ -295,16 +303,22 @@ const Users = () => {
       render: () => (
         <div className="flex items-center gap-3">
           <button
+            onClick={showModal2}
+            className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
+          >
+            <FaRegEye className="w-6 h-6 text-[#0b7bb3]" />
+          </button>
+          <button
             onClick={showModal}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
             <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
           </button>
           <button
-            onClick={showModal2}
+            onClick={showModal3}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
-            <FaRegEye className="w-6 h-6 text-[#0b7bb3]" />
+            <MdBlockFlipped className="w-6 h-6 text-[#0b7bb3]" />
           </button>
         </div>
       ),
@@ -313,7 +327,7 @@ const Users = () => {
 
   return (
     <>
-      <div className="my-5 md:my-10 flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
+      <div className="flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
         <PageHeading title="User Management" />
         <div className="flex flex-col md:flex-row justify-end items-center text-center  gap-5  w-full">
           <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
@@ -393,6 +407,35 @@ const Users = () => {
                 className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded"
               >
                 No,Don’t delete
+              </button>
+            </div>
+          </div>
+        </Modal>
+        <Modal
+          open={isModalOpen3}
+          centered
+          onCancel={handleCancel3}
+          footer={null}
+        >
+          <div className="p-5">
+            <h1 className="text-4xl text-center text-[#0D0D0D]">
+              Are you sure you want to block ?
+            </h1>
+
+            <div className="text-center py-5">
+              <button
+                onClick={handleOk2}
+                className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded"
+              >
+                Yes,block
+              </button>
+            </div>
+            <div className="text-center pb-5">
+              <button
+                onClick={handleOk2}
+                className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded"
+              >
+                No,Don’t block
               </button>
             </div>
           </div>
