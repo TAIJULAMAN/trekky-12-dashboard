@@ -1,5 +1,6 @@
 import PageHeading from "../../shared/PageHeading";
 import ExpenseDetails from "./ExpenseDetails";
+import memo from "../../assets/memo.png";
 
 export default function ExpenseTracker() {
   const expenseData = {
@@ -19,17 +20,10 @@ export default function ExpenseTracker() {
           {/* Budget Planner Image */}
           <div className="relative h-[500px] w-full">
             <img
-              src="/placeholder.svg"
+              src={memo}
               alt="Budget Planner"
               className="h-full w-full object-contain border border-gray-200 p-2 bg-gray-50"
             />
-            {/* Yellow header bar overlay */}
-            <div className="absolute left-2 right-2 top-2 flex items-center justify-between bg-yellow-100 p-2">
-              <span className="font-bold">Budget Planner</span>
-              <span className="rounded-full border border-black px-2 py-0.5 text-xs">
-                Monthly
-              </span>
-            </div>
           </div>
         </div>
         <div className="rounded-lg bg-white p-4 shadow-md">

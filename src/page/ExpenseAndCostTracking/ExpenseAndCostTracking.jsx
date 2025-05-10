@@ -58,7 +58,7 @@ export default function ExpenseAndCostTracking() {
 
 function ExpenseCard({ expense }) {
   return (
-    <div className="bg-white rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 whitespace-nowrap">
+    <div className="h-screen bg-white rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 whitespace-nowrap">
       <div className="flex justify-start items-center gap-3 whitespace-nowrap">
         <div className="h-14 w-14 rounded-full overflow-hidden">
           <img
