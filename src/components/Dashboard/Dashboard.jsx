@@ -30,7 +30,7 @@ function DashboardPage() {
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 mmd:grid-cols-3 lg:grid-cols-4 gap-2">
-        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#F9B038]">
+        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#faaf37]">
           <h2 className="text-gray-700 text-lg font-medium mb-2">
             Total users
           </h2>
@@ -49,7 +49,7 @@ function DashboardPage() {
             {new Intl.NumberFormat().format(6500)}
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#F9B038]">
+        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#faaf37]">
           <h2 className="text-gray-700 text-lg font-medium mb-2">
             Total Vendor
           </h2>
@@ -68,7 +68,7 @@ function DashboardPage() {
             {new Intl.NumberFormat().format(2650)}
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#F9B038]">
+        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#faaf37]">
           <h2 className="text-gray-700 text-lg font-medium mb-2">Total RV</h2>
 
           <div className="rounded-full">
@@ -85,7 +85,7 @@ function DashboardPage() {
             {new Intl.NumberFormat().format(26500)}
           </p>
         </div>
-        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#F9B038]">
+        <div className="flex flex-col items-center justify-center p-5 bg-white rounded-lg shadow-sm max-w-md bg-[#faaf37]">
           <h2 className="text-gray-700 text-lg font-medium mb-2">
             Total State
           </h2>
