@@ -4,8 +4,10 @@ import { IoIosLogIn } from "react-icons/io";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { AiOutlineFileProtect } from "react-icons/ai";
 
-const AdminItems = [
+
+export const AdminItems = [
   {
     key: "dashboard",
     label: "Dashboard",
@@ -27,7 +29,7 @@ const AdminItems = [
   {
     key: "expense",
     label: "Expense & Cost Tracking",
-    icon: MdManageAccounts,
+    icon: AiOutlineFileProtect,
     link: "/expense",
   },
   {
@@ -87,7 +89,7 @@ const SideBar = () => {
       setSelectedKey(
         activeParent.children
           ? activeParent.children.find((child) => child.link === currentPath)
-              ?.key || activeParent.key
+            ?.key || activeParent.key
           : activeParent.key
       );
 
@@ -131,14 +133,13 @@ const SideBar = () => {
               <div key={item.key}>
                 <Link
                   to={item.link}
-                  className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${
-                    selectedKey === item.key ||
-                    isSettingsActive ||
-                    isCreatorActive ||
-                    isCategoriesActive
-                      ? "bg-[#0b7bb3] text-white rounded-md"
+                  className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${selectedKey === item.key ||
+                      isSettingsActive ||
+                      isCreatorActive ||
+                      isCategoriesActive
+                      ? "bg-[#27E2F5] text-white rounded-md"
                       : "bg-white rounded-md hover:bg-[#b4e2ed]"
-                  }`}
+                    }`}
                   onClick={(e) => {
                     if (item.children) {
                       e.preventDefault();
@@ -154,9 +155,8 @@ const SideBar = () => {
                   {/* Show dropdown arrow if children exist */}
                   {item.children && (
                     <FaChevronRight
-                      className={`ml-auto transform transition-all duration-300 ${
-                        expandedKeys.includes(item.key) ? "rotate-90" : ""
-                      }`}
+                      className={`ml-auto transform transition-all duration-300 ${expandedKeys.includes(item.key) ? "rotate-90" : ""
+                        }`}
                     />
                   )}
                 </Link>
@@ -164,9 +164,8 @@ const SideBar = () => {
                 {/* Show children menu if expanded */}
                 {item.children && (
                   <div
-                    className={`children-menu bg-white -my-2 mx-5 transition-all duration-300 ${
-                      expandedKeys.includes(item.key) ? "expanded" : ""
-                    }`}
+                    className={`children-menu bg-white -my-2 mx-5 transition-all duration-300 ${expandedKeys.includes(item.key) ? "expanded" : ""
+                      }`}
                     style={{
                       maxHeight: expandedKeys.includes(item.key)
                         ? `${contentRef.current[item.key]?.scrollHeight}px`
@@ -178,11 +177,10 @@ const SideBar = () => {
                       <Link
                         key={child.key}
                         to={child.link}
-                        className={`menu-item p-4 flex items-center cursor-pointer ${
-                          selectedKey === child.key
-                            ? "bg-[#0b7bb3] text-white"
+                        className={`menu-item p-4 flex items-center cursor-pointer ${selectedKey === child.key
+                            ? "bg-[#27E2F5] text-white"
                             : "hover:bg-[#b4e2ed]"
-                        }`}
+                          }`}
                         onClick={() => {
                           setSelectedKey(child.key);
                           setExpandedKeys([]);
@@ -203,7 +201,7 @@ const SideBar = () => {
       <div className="w-full p-4 px-5">
         <button
           onClick={handleLogout}
-          className="w-full flex justify-start items-center text-start border-2 border-[#0b7bb3] text-[#0b7bb3]  rounded-md p-2 mt-20"
+          className="w-full flex justify-start items-center text-start border-2 border-[#27E2F5] text-[#27E2F5]  rounded-md p-2 mt-20"
         >
           <span className="text-2xl">
             <IoIosLogIn />

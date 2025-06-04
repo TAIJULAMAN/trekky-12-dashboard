@@ -1,19 +1,19 @@
 import { LuBell } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
-import { FaBars, FaFileAlt, FaUsers } from "react-icons/fa";
+import { FaBars, FaCog, FaHome, FaUsers } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { Drawer } from "antd";
-import settings from "../../assets/routerImg/settings.png";
 import logo from "../../assets/header/logo.png";
 import { FaChevronRight } from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
-import { MdDashboard, MdManageAccounts } from "react-icons/md";
+import { MdManageAccounts } from "react-icons/md";
+import { AiOutlineFileProtect } from "react-icons/ai";
 
-const items = [
+const AdminItems = [
   {
     key: "dashboard",
     label: "Dashboard",
-    icon: MdDashboard,
+    icon: FaHome,
     link: "/",
   },
   {
@@ -24,38 +24,20 @@ const items = [
   },
   {
     key: "sellermanagement",
-    label: "Seller Management",
+    label: "Vendor Management",
     icon: MdManageAccounts,
     link: "/dashboard/seller-management",
   },
   {
-    key: "subscription",
-    label: "Subscription",
-    icon: FaFileAlt,
-    link: "/dashboard/report",
-  },
-  {
-    key: "categorymanagement",
-    label: "Category Management",
-    icon: MdManageAccounts,
-    link: "",
-  },
-  {
-    key: "premiumSubscribers",
-    label: "Premium Subscribers",
-    icon: MdManageAccounts,
-    link: "",
-  },
-  {
-    key: "support",
-    label: "Support",
-    icon: MdManageAccounts,
-    link: "",
+    key: "expense",
+    label: "Expense & Cost Tracking",
+    icon: AiOutlineFileProtect,
+    link: "/expense",
   },
   {
     key: "settings",
     label: "Settings",
-    icon: settings,
+    icon: FaCog,
     link: "/dashboard/Settings/profile",
     children: [
       {
@@ -72,6 +54,11 @@ const items = [
         key: "privacy",
         label: "Privacy Policy",
         link: "/dashboard/Settings/PrivacyPolicy",
+      },
+      {
+        key: "faq",
+        label: "Faq",
+        link: "/faq",
       },
     ],
   },
@@ -122,15 +109,14 @@ const Header = () => {
             className="custom-drawer"
           >
             <div className="menu-items">
-              {items.map((item) => (
+              {AdminItems.map((item) => (
                 <div key={item.key}>
                   <Link
                     to={item.link}
-                    className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${
-                      selectedKey === item.key
-                        ? "bg-[#0b7bb3] text-white rounded-md"
-                        : "bg-white rounded-md hover:bg-[#b4e2ed]"
-                    }`}
+                    className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${selectedKey === item.key
+                      ? "bg-[#27E2F5] text-black rounded-md"
+                      : "bg-white rounded-md hover:bg-[#b4e2ed]"
+                      }`}
                     onClick={(e) => {
                       if (item.children) {
                         e.preventDefault();
@@ -141,24 +127,24 @@ const Header = () => {
                       }
                     }}
                   >
-                    <img src={item.icon} alt={item.label} className="w-6 h-6" />
+                    <div>
+                      {item?.icon && <item.icon />}
+                    </div>
                     <span className="ml-3 text-base font-medium">
                       {item.label}
                     </span>
                     {item.children && (
                       <FaChevronRight
-                        className={`ml-auto transform transition-all duration-300 ${
-                          expandedKeys.includes(item.key) ? "rotate-90" : ""
-                        }`}
+                        className={`ml-auto transform transition-all duration-300 ${expandedKeys.includes(item?.key) ? "rotate-90" : ""
+                          }`}
                       />
                     )}
                   </Link>
 
                   {item.children && (
                     <div
-                      className={`children-menu bg-white -my-2 mx-5 text-black transition-all duration-300 ${
-                        expandedKeys.includes(item.key) ? "expanded" : ""
-                      }`}
+                      className={`children-menu bg-white -my-2 mx-5 text-black transition-all duration-300 ${expandedKeys.includes(item.key) ? "expanded" : ""
+                        }`}
                       style={{
                         maxHeight: expandedKeys.includes(item.key)
                           ? `${contentRef.current[item.key]?.scrollHeight}px`
@@ -170,11 +156,10 @@ const Header = () => {
                         <Link
                           key={child.key}
                           to={child.link}
-                          className={`menu-item p-4 flex items-center cursor-pointer ${
-                            selectedKey === child.key
-                              ? "bg-[#0b7bb3] text-white"
-                              : "hover:bg-[#b4e2ed]"
-                          }`}
+                          className={`menu-item p-4 flex items-center cursor-pointer ${selectedKey === child.key
+                            ? "bg-[#27E2F5] text-white"
+                            : "hover:bg-[#27E2F5]"
+                            }`}
                           onClick={() => {
                             setSelectedKey(child.key);
                             setExpandedKeys([]);
@@ -190,10 +175,10 @@ const Header = () => {
               ))}
             </div>
 
-            <div className="custom-sidebar-footer absolute bottom-0 w-full p-4">
+            <div className="custom-sidebar-footer absolute bottom-0 w-[250px] p-4">
               <button
                 onClick={handleLogout}
-                className="w-full flex bg-[#0b7bb3] text-white text-start rounded-md p-3 mt-10"
+                className="w-full flex border-2 border-[#27E2F5] text-[#27E2F5] text-start rounded-md p-3 mt-10"
               >
                 <span className="text-2xl">
                   <IoIosLogIn />
@@ -207,9 +192,9 @@ const Header = () => {
         <div className="ml-auto flex items-center justify-center gap-5">
           <div className="relative">
             <Link to={"/dashboard/Settings/notification"}>
-              <LuBell className="text-2xl text-[#0b7bb3] w-[40px] h-[40px]" />
+              <LuBell className="text-2xl text-[#27E2F5] w-[40px] h-[40px]" />
             </Link>
-            <span className="absolute -top-2 -right-2 bg-[#0b7bb3] text-xs rounded-full w-6 h-6 flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 bg-[#27E2F5] text-xs rounded-full w-6 h-6 flex items-center justify-center">
               10
             </span>
           </div>
@@ -218,12 +203,12 @@ const Header = () => {
               <div className="flex items-center gap-3">
                 <img
                   src="https://avatar.iran.liara.run/public/44"
-                  className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#0b7bb3]"
+                  className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#27E2F5]"
                   alt="User Avatar"
                 />
                 <div className="hidden md:flex flex-col items-start">
                   <h3 className="text-gray-800 text-sm">Shah Aman</h3>
-                  <p className="text-xs px-2 py-1 bg-[#b4e2ed] text-[#0b7bb3] rounded">
+                  <p className="text-xs px-2 py-1 bg-[#27E2F5] text-white rounded">
                     Admin
                   </p>
                 </div>
