@@ -13,7 +13,7 @@ const DashboardLayout = () => {
 
       <div className="lg:flex-1 lg:ml-80 overflow-hidden">
         <Header />
-        <div className="p-5 bg-[#f5f6fa] h-full w-full">
+        <div className="p-5 bg-[#27E2F5] h-full w-full">
           <Outlet />
         </div>
       </div>

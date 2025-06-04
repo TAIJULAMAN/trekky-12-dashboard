@@ -230,7 +230,7 @@ export default function ExpenseAndCostTracking() {
 
   return (
     <div className="bg-[#f5f6fa] w-full overflow-y-auto">
-      <header className="my-6">
+      <header className="my-5 mx-5">
         <PageHeading title="Expense & Cost Tracking" />
       </header>
       <div className="max-w-7xl mx-auto p-4">

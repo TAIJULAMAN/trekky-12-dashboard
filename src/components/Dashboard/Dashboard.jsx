@@ -107,7 +107,7 @@ function DashboardPage() {
       </div>
       {/* .............. */}
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
-        <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
+        <div className="w-full p-5 bg-[#F9B038] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
               <h1 className="text-xl font-semibold">Users Growth</h1>
@@ -143,7 +143,7 @@ function DashboardPage() {
           </div>
           <UsersGrowth />
         </div>
-        <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
+        <div className="w-full p-5 bg-[#F9B038] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
               <h1 className="text-xl font-semibold">Vendor Growth</h1>
@@ -179,7 +179,7 @@ function DashboardPage() {
         </div>
       </div>
       <div className="mt-5">
-        <div className="w-full p-5 bg-[#F2F2F2] rounded-lg shadow-md">
+        <div className="w-full p-5 bg-[#F9B038] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
               <h1 className="text-xl font-semibold">Total RV View</h1>
