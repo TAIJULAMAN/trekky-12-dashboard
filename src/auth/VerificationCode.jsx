@@ -104,12 +104,11 @@ const VerificationCode = () => {
           <div
             className="w-full bg-cover bg-center bg-no-repeat"
           >
-            <img src='/verify.png' alt='log in image' />
+            <img src='/verify.png' alt='verification  image' />
           </div>
         </div>
       </div>
     </div>
   );
 };
-
 export default VerificationCode;

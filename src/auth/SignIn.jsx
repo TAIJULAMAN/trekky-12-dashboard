@@ -136,9 +136,6 @@ const LoginForm = () => {
         <div className="hidden lg:flex flex-1 relative">
           <div
             className="w-full bg-cover bg-center bg-no-repeat"
-          // style={{
-          //   backgroundImage: `url('https://images.pexels.com/photos/1666021/pexels-photo-1666021.jpeg?auto=compress&cs=tinysrgb&w=1200')`
-          // }}
           >
             <img src='/log.png' alt='log in image' />
           </div>

@@ -92,7 +92,7 @@ const ForgetPassword = () => {
           <div
             className="w-full bg-cover bg-center bg-no-repeat"
           >
-            <img src='/forget.png' alt='log in image' />
+            <img src='/forget.png' alt='forget pass image' />
           </div>
         </div>
       </div>
