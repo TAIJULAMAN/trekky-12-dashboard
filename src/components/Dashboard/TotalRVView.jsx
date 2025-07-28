@@ -77,7 +77,7 @@ const TotalRVView = () => {
             type="monotone"
             dataKey="vendors"
             stroke="#3a3a3a"
-            strokeWidth={3}
+            // strokeWidth={3}
             fill="url(#vendorGrowth)"
           />
         </AreaChart>

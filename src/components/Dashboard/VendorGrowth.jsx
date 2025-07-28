@@ -77,7 +77,7 @@ const VendorGrowth = () => {
             type="monotone"
             dataKey="vendors"
             stroke="#3A3A3A"
-            strokeWidth={3}
+            // strokeWidth={3}
             fill="url(#vendorGrowth)"
           />
         </AreaChart>
