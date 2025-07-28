@@ -71,13 +71,13 @@ const Faq = () => {
   const [answer, setAnswer] = useState("");
 
   return (
-    <div className="relative p-5 z-0">
+    <div className="relative p-5 z-0 space-y-10 min-h-screen">
       <div className="flex justify-between items-center">
         <PageHeading title="FAQ" />
         <div className="text-white">
           <button
             onClick={showModal2}
-            className="bg-[#0b7bb3] text-white font-semibold px-5 py-2 rounded transition duration-200"
+            className="bg-[#F9B038] text-white font-bold px-5 py-2 rounded transition duration-200"
           >
             + Add FAQ
           </button>

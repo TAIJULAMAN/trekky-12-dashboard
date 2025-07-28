@@ -103,7 +103,7 @@ const Notification = () => {
   };
 
   return (
-    <div className="py-4 max-h-[70vh] overflow-y-auto">
+    <div className="py-4 min-h-screen overflow-y-auto">
       {notifications.length > 0 ? (
         notifications.map((notification) => (
           <div

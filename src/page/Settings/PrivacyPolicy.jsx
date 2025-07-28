@@ -9,9 +9,9 @@ function PrivacyPolicy() {
   );
 
   return (
-    <div className="p-5 min-h-screen">
+    <div className="p-5 space-y-10 min-h-screen">
       <PageHeading title="Privacy Policy" />
-      <div className=" bg-white rounded shadow p-5 h-full">
+      <div className="bg-white rounded shadow p-5 h-full">
         <ReactQuill
           style={{ padding: "10px" }}
           theme="snow"
@@ -22,7 +22,7 @@ function PrivacyPolicy() {
       <div className="text-center py-5">
         <button
           onClick={() => console.log(content)}
-          className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded transition duration-200"
+          className="bg-[#F9B038] text-white font-bold w-full py-2 rounded transition duration-200"
         >
           Save changes
         </button>
