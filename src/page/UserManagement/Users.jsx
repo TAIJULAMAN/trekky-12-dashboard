@@ -314,12 +314,12 @@ const Users = () => {
           >
             <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
           </button>
-          <button
+          {/* <button
             onClick={showModal3}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
             <MdBlockFlipped className="w-6 h-6 text-[#0b7bb3]" />
-          </button>
+          </button> */}
         </div>
       ),
     },
@@ -334,14 +334,14 @@ const Users = () => {
             <input
               type="text"
               placeholder="Search..."
-              className="border-2 border-[#0b7bb3] py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
+              className="border-2 border-[#F59B07] bg-[#F59B07] py-3 pl-12 pr-[65px] outline-none w-full rounded-md text-white placeholder:text-white"
             />
-            <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
+            <span className="text-white absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
               <IoSearch className="text-[1.3rem]" />
             </span>
           </div>
           <div className="flex items-center justify-center text-white mt-5">
-            <button className="bg-[#0b7bb3]  rounded-lg px-5 py-3 text-white mb-5">
+            <button className="bg-[#F59B07]  rounded-md px-5 py-3 text-white mb-5">
               Aprove All
             </button>
           </div>

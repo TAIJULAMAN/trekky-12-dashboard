@@ -345,7 +345,7 @@ const SellerManagement = () => {
       render: () => {
         return (
           <div className="flex gap-2">
-            <button
+            {/* <button
               onClick={handleCheckClick}
               className="border border-[#0b7bb3] rounded-lg p-2 bg-[#d3e8e6] text-[#0b7bb3] hover:bg-[#b4d9d4] transition duration-200"
             >
@@ -354,7 +354,7 @@ const SellerManagement = () => {
               ) : (
                 <FaCheck className="w-6 h-6 text-[#0b7bb3]" />
               )}
-            </button>
+            </button> */}
 
             <button
               onClick={showModal}
@@ -379,24 +379,23 @@ const SellerManagement = () => {
     <>
       <div className="flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
         <PageHeading title="Vendor Management" />
-        <div className="flex flex-col md:flex-row justify-end items-center text-center  gap-5  w-full whitespace-nowrap">
-          <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="border-2 border-[#0b7bb3] py-3 pl-12 pr-[65px] outline-none w-full rounded-md"
-            />
-            <span className=" text-gray-600 absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
-              <IoSearch className="text-[1.3rem]" />
-            </span>
-          </div>
-          <div className="flex items-center justify-center text-white mt-5">
-            <button
-              onClick={showModal3}
-              className="bg-[#0b7bb3]  rounded-lg px-5 py-3 text-white mb-5"
-            >
-              + Add Vendor
-            </button>
+        <div className="flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
+          <div className="flex flex-col md:flex-row justify-end items-center text-center  gap-5  w-full">
+            <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="border-2 border-[#F59B07] bg-[#F59B07] py-3 pl-12 pr-[65px] outline-none w-full rounded-md text-white placeholder:text-white"
+              />
+              <span className="text-white absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
+                <IoSearch className="text-[1.3rem]" />
+              </span>
+            </div>
+            <div className="flex items-center justify-center text-white mt-5">
+              <button className="bg-[#F59B07]  rounded-md px-5 py-3 text-white mb-5">
+                + Add Vendor
+              </button>
+            </div>
           </div>
         </div>
       </div>

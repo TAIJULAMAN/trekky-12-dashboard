@@ -13,9 +13,9 @@ export default function ExpenseTracker() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 min-h-screen">
       <PageHeading title=" Expense & Cost Tracking" />
-      <div className="mx-auto max-w-7xl grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="mx-auto max-w-7xl grid grid-cols-1 gap-5 md:grid-cols-2 mt-10">
         <div className="rounded-lg bg-white p-4 shadow-md">
           {/* Budget Planner Image */}
           <div className="relative h-[500px] w-full">

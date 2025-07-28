@@ -226,15 +226,15 @@ export default function ExpenseAndCostTracking() {
       date: "April 2025",
     },
   ];
-  
+
 
   return (
-    <div className="bg-[#f5f6fa] w-full overflow-y-auto">
-      <header className="my-5 mx-5">
+    <div className="min-h-screen w-full space-y-5">
+      <div className="">
         <PageHeading title="Expense & Cost Tracking" />
-      </header>
-      <div className="max-w-7xl mx-auto p-4">
-        <div className="space-y-4">
+      </div>
+      <div className="max-w-7xl mx-auto p-5 mt-5">
+        <div className="">
           {expenses.map((expense) => (
             <ExpenseCard key={expense.id} expense={expense} />
           ))}
@@ -246,7 +246,7 @@ export default function ExpenseAndCostTracking() {
 
 function ExpenseCard({ expense }) {
   return (
-    <div className="bg-white rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-4 whitespace-nowrap">
+    <div className="bg-[#F9B038] rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-5 mt-5 whitespace-nowrap">
       <div className="flex justify-start items-center gap-3 whitespace-nowrap">
         <div className="h-14 w-14 rounded-full overflow-hidden">
           <img
@@ -271,7 +271,7 @@ function ExpenseCard({ expense }) {
         </p>
       </div>
       <Link to="/details">
-        <div className="bg-[#0891b2] hover:bg-[#0891b2]/90 text-white py-2 px-4 rounded-md flex items-center gap-2">
+        <div className="bg-[#484848] hover:bg-[#484848]/90 text-white py-2 px-4 rounded-md flex items-center gap-2">
           <FaEye />
         </div>
       </Link>
