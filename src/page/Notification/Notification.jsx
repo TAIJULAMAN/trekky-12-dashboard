@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { FaEye } from "react-icons/fa";
 
 const Notification = () => {
+  const [viewedNotifications, setViewedNotifications] = useState(new Set());
   const [notifications, setNotifications] = useState([
     {
       id: "1",
@@ -102,37 +104,57 @@ const Notification = () => {
     setNotifications((prev) => prev.filter((n) => n.id !== id));
   };
 
+  const handleView = (id) => {
+    setViewedNotifications((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(id);
+      return newSet;
+    });
+  };
+
   return (
-    <div className="py-4 min-h-screen overflow-y-auto">
+    <div className="p-5 min-h-screen overflow-y-auto">
       {notifications.length > 0 ? (
         notifications.map((notification) => (
           <div
             key={notification.id}
-            className="relative p-3 bg-white border rounded-lg mb-3"
+            className={`relative p-5 border rounded-lg mb-3 ${viewedNotifications.has(notification.id) ? 'bg-white' : 'bg-[#F9B038]'
+              }`}
           >
             <button
               onClick={() => handleDismiss(notification.id)}
-              className="absolute top-2 right-2 p-1 rounded-full hover:bg-gray-100"
+              className="absolute top-2 right-2 p-1 rounded-full bg-gray-100"
               aria-label="Dismiss notification"
             >
-              <RxCross2 className="w-4 h-4 text-gray-400" />
+              <RxCross2 className="w-4 h-4 text-black" />
             </button>
-            <div className="flex gap-3">
-              <img
-                src={notification.avatar}
-                alt="Avatar"
-                className="w-10 h-10 rounded-full object-cover"
-              />
-              <div className="flex-1">
-                <h3 className="font-semibold text-gray-900">
-                  {notification.title}
-                </h3>
-                <p className="text-sm text-gray-700">
-                  {notification.description}
-                </p>
-                <p className="text-xs text-gray-500 mt-1">
-                  {notification.date} • {notification.time}
-                </p>
+            <div className="flex justify-between items-start w-full">
+              <div className="flex gap-3 flex-1">
+                <img
+                  src={notification.avatar}
+                  alt="Avatar"
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+                <div className="flex-1">
+                  <h3 className="font-semibold text-gray-900">
+                    {notification.title}
+                  </h3>
+                  <p className="text-sm text-gray-700">
+                    {notification.description}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {notification.date} • {notification.time}
+                  </p>
+                </div>
+              </div>
+              <div className="mr-10">
+                <button
+                  onClick={() => handleView(notification.id)}
+                  className="bg-[#484848] hover:bg-[#484848]/90 text-white py-2 px-4 rounded-md flex items-center gap-2 text-sm"
+                >
+                  <FaEye />
+                  View
+                </button>
               </div>
             </div>
           </div>
