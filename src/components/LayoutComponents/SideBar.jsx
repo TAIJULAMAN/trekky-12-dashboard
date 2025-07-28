@@ -138,7 +138,7 @@ const SideBar = () => {
                       isCreatorActive ||
                       isCategoriesActive
                       ? "bg-[#27E2F5] text-white rounded-md"
-                      : "bg-white rounded-md hover:bg-[#b4e2ed]"
+                      : "bg-[#EEEEEE] rounded-md hover:bg-[#b4e2ed]"
                     }`}
                   onClick={(e) => {
                     if (item.children) {

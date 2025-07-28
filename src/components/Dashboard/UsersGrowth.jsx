@@ -61,7 +61,7 @@ const UsersGrowth = () => {
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >
           <defs>
-            <linearGradient id="vendorGrowth" x1="0" y1="0" x2="0" y2="1">
+            <linearGradient id="UsersGrowth" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#3A3A3A" />
               <stop offset="95%" stopColor="#3A3A3A" />
             </linearGradient>
@@ -78,7 +78,7 @@ const UsersGrowth = () => {
             dataKey="vendors"
             stroke="#3A3A3A"
             strokeWidth={3}
-            fill="url(#vendorGrowth)"
+            fill="url(#UsersGrowth)"
           />
         </AreaChart>
       </ResponsiveContainer>

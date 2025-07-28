@@ -31,14 +31,14 @@ function DashboardPage() {
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 mmd:grid-cols-3 lg:grid-cols-4 gap-2">
         <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-sm max-w-md bg-[#faaf37]">
-          <h2 className="text-gray-700 text-lg font-medium mb-2">
-            Total users
+          <h2 className="text-[#07163D] text-lg font-bold mb-2">
+            Total Users
           </h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
               <img
-                src={user}
+                src='/user.png'
                 alt="User Stats Icon"
                 className="w-[52px] h-[52px]"
               />
@@ -50,14 +50,14 @@ function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-sm max-w-md bg-[#faaf37]">
-          <h2 className="text-gray-700 text-lg font-medium mb-2">
+          <h2 className="text-[#07163D] text-lg font-bold mb-2">
             Total Vendor
           </h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
               <img
-                src={medal}
+                src="/vendor.png"
                 alt="User Stats Icon"
                 className="w-[52px] h-[52px]"
               />
@@ -69,12 +69,12 @@ function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-sm max-w-md bg-[#faaf37]">
-          <h2 className="text-gray-700 text-lg font-medium mb-2">Total RV</h2>
+          <h2 className="text-[#07163D] text-lg font-bold mb-2">Total RV</h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
               <img
-                src={profit}
+                src="/RV.png"
                 alt="User Stats Icon"
                 className="w-[52px] h-[52px]"
               />
@@ -86,14 +86,14 @@ function DashboardPage() {
           </p>
         </div>
         <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-sm max-w-md bg-[#faaf37]">
-          <h2 className="text-gray-700 text-lg font-medium mb-2">
+          <h2 className="text-[#07163D] text-lg font-bold mb-2">
             Total State
           </h2>
 
           <div className="rounded-full">
             <div className="flex items-center justify-center mb-2">
               <img
-                src={seller}
+                src="/state.png"
                 alt="User Stats Icon"
                 className="w-[52px] h-[52px]"
               />
@@ -110,7 +110,7 @@ function DashboardPage() {
         <div className="w-full p-5 bg-[#F9B038] rounded-lg shadow-md">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
-              <h1 className="text-xl font-semibold">Users Growth</h1>
+              <h1 className="text-[#07163D] text-lg font-bold">Users Growth</h1>
             </div>
 
             <div className="relative w-full md:w-32">
@@ -119,8 +119,8 @@ function DashboardPage() {
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition"
               >
-                <span className="text-[#0b7bb3]">{selectedYear}</span>
-                <FaChevronDown className="text-[#0b7bb3] w-5 h-5 ml-5" />
+                <span className="text-[#27E2F5]">{selectedYear}</span>
+                <FaChevronDown className="text-[#27E2F5] w-5 h-5 ml-5" />
               </button>
 
               {/* Dropdown List */}
@@ -130,9 +130,8 @@ function DashboardPage() {
                     <div
                       key={year}
                       onClick={() => handleSelect(year)}
-                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
-                        year === selectedYear ? "bg-gray-200" : ""
-                      }`}
+                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${year === selectedYear ? "bg-gray-200" : ""
+                        }`}
                     >
                       {year}
                     </div>
@@ -164,9 +163,8 @@ function DashboardPage() {
                     <div
                       key={year}
                       onClick={() => handleSelect(year)}
-                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
-                        year === selectedYear ? "bg-gray-200" : ""
-                      }`}
+                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${year === selectedYear ? "bg-gray-200" : ""
+                        }`}
                     >
                       {year}
                     </div>
@@ -202,9 +200,8 @@ function DashboardPage() {
                     <div
                       key={year}
                       onClick={() => handleSelect(year)}
-                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
-                        year === selectedYear ? "bg-gray-200" : ""
-                      }`}
+                      className={`p-2 cursor-pointer hover:bg-gray-100 transition ${year === selectedYear ? "bg-gray-200" : ""
+                        }`}
                     >
                       {year}
                     </div>
