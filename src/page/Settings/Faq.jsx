@@ -281,7 +281,7 @@ const Faq = () => {
 
             <button
               onClick={handleCancel3}
-              className="py-2 px-4 rounded-lg bg-[#0b7bb3] text-white"
+              className="py-2 px-4 rounded-lg bg-[#F9B038] text-white"
             >
               Save
             </button>
