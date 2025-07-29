@@ -113,55 +113,86 @@ const Notification = () => {
   };
 
   return (
-    <div className="p-5 min-h-screen overflow-y-auto">
-      {notifications.length > 0 ? (
-        notifications.map((notification) => (
-          <div
-            key={notification.id}
-            className={`relative p-5 border rounded-lg mb-3 ${viewedNotifications.has(notification.id) ? 'bg-white' : 'bg-[#F9B038]'
-              }`}
-          >
-            <button
-              onClick={() => handleDismiss(notification.id)}
-              className="absolute top-2 right-2 p-1 rounded-full bg-gray-100"
-              aria-label="Dismiss notification"
-            >
-              <RxCross2 className="w-4 h-4 text-black" />
-            </button>
-            <div className="flex justify-between items-start w-full">
-              <div className="flex gap-3 flex-1">
-                <img
-                  src={notification.avatar}
-                  alt="Avatar"
-                  className="w-10 h-10 rounded-full object-cover"
-                />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900">
-                    {notification.title}
-                  </h3>
-                  <p className="text-sm text-gray-700">
-                    {notification.description}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-1">
-                    {notification.date} • {notification.time}
-                  </p>
+    <div className="p-3 sm:p-4 md:p-5 min-h-screen overflow-y-auto">
+      <div className="container mx-auto">
+        <div className="mb-5">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+            Notifications
+          </h1>
+        </div>
+
+        {notifications.length > 0 ? (
+          <div className="space-y-3 md:space-y-4">
+            {notifications.map((notification) => (
+              <div
+                key={notification.id}
+                className={`relative p-4 md:p-5 bg-[#F9B038] border rounded-xl shadow-sm transition-all duration-200 hover:shadow-md ${viewedNotifications.has(notification.id)
+                  ? 'bg-white border-gray-200'
+                  : 'bg-gradient-to-r from-[#F9B038]/10 to-[#F9B038]/5 border-[#F9B038]/30 shadow-md'
+                  }`}
+              >
+                <button
+                  onClick={() => handleDismiss(notification.id)}
+                  className="absolute top-3 right-3 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors duration-200 z-10"
+                  aria-label="Dismiss notification"
+                >
+                  <RxCross2 className="w-4 h-4 text-gray-600" />
+                </button>
+
+                <div className="flex flex-col sm:flex-row sm:items-start gap-4 pr-8">
+                  <div className="flex gap-3 flex-1">
+                    <div className="relative">
+                      <img
+                        src={notification.avatar}
+                        alt="Avatar"
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                      />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+                        <h3 className="font-semibold text-gray-900 text-base md:text-lg">
+                          {notification.title}
+                        </h3>
+                      </div>
+
+                      <p className="text-sm md:text-base text-gray-700 mb-3 leading-relaxed">
+                        {notification.description}
+                      </p>
+
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                        <p className="text-xs md:text-sm text-gray-500 flex items-center gap-2">
+                          <span className="w-2 h-2 bg-gray-400 rounded-full"></span>
+                          {notification.date} • {notification.time}
+                        </p>
+
+                        <button
+                          onClick={() => handleView(notification.id)}
+                          className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${viewedNotifications.has(notification.id)
+                            ? 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                            : 'bg-[#484848] text-white hover:bg-[#484848]/90 shadow-sm hover:shadow-md'
+                            }`}
+                        >
+                          <FaEye className="w-4 h-4" />
+                          {viewedNotifications.has(notification.id) ? 'Viewed' : 'View'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="mr-10">
-                <button
-                  onClick={() => handleView(notification.id)}
-                  className="bg-[#484848] hover:bg-[#484848]/90 text-white py-2 px-4 rounded-md flex items-center gap-2 text-sm"
-                >
-                  <FaEye />
-                  View
-                </button>
-              </div>
-            </div>
+            ))}
           </div>
-        ))
-      ) : (
-        <p className="text-center text-gray-500 py-10">No notifications.</p>
-      )}
+        ) : (
+          <div className="text-center py-16">
+            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+              <RxCross2 className="w-8 h-8 text-gray-400" />
+            </div>
+            <p className="text-gray-500 text-lg mb-2">No notifications</p>
+            <p className="text-gray-400 text-sm">You're all caught up!</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

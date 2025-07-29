@@ -179,7 +179,7 @@ const SideBar = () => {
                         to={child.link}
                         className={`menu-item p-4 flex items-center cursor-pointer ${selectedKey === child.key
                             ? "bg-[#27E2F5] text-white"
-                            : "hover:bg-[#b4e2ed]"
+                            : "bg-[#EEEEEE] hover:bg-[#b4e2ed]"
                           }`}
                         onClick={() => {
                           setSelectedKey(child.key);

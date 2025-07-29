@@ -2,104 +2,124 @@ import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 function ChangePass() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
-    <div className="bg-white px-20 w-[715px] pt-10 py-5 rounded-md">
-      <p className="text-primary text-center font-bold text-xl mb-5">
-        Change Password
-      </p>
-      <form className="space-y-4">
-        <div className="w-full">
-          <label
-            htmlFor="password"
-            className="text-xl text-[#0D0D0D] mb-2 font-bold"
-          >
-            Current Password
-          </label>
-          <div className="w-full relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="**********"
-              className="w-full border-2 border-[#6A6D76] rounded-md outline-none px-5 py-3 mt-5 placeholder:text-xl"
-              required
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 bottom-4 flex items-center text-[#6A6D76]"
+    <div className="w-full max-w-2xl mx-auto">
+      <div className="bg-white px-4 sm:px-6 lg:px-8 py-6 rounded-lg shadow-sm">
+        <h2 className="text-lg sm:text-xl lg:text-2xl text-[#0D0D0D] text-center font-bold mb-6">
+          Change Password
+        </h2>
+        
+        <form className="space-y-6">
+          {/* Current Password */}
+          <div className="space-y-2">
+            <label
+              htmlFor="currentPassword"
+              className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold"
             >
-              {showPassword ? (
-                <IoEyeOffOutline className="w-5 h-5" />
-              ) : (
-                <IoEyeOutline className="w-5 h-5" />
-              )}
+              Current Password
+            </label>
+            <div className="relative">
+              <input
+                type={showCurrentPassword ? "text" : "password"}
+                id="currentPassword"
+                name="currentPassword"
+                placeholder="Enter current password"
+                className="w-full border-2 border-[#6A6D76] rounded-lg outline-none px-3 sm:px-4 py-3 pr-12 focus:border-[#0b7bb3] focus:ring-2 focus:ring-[#0b7bb3]/20 transition-all duration-200 text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center text-[#6A6D76] hover:text-[#0b7bb3] transition-colors duration-200"
+              >
+                {showCurrentPassword ? (
+                  <IoEyeOffOutline className="w-5 h-5" />
+                ) : (
+                  <IoEyeOutline className="w-5 h-5" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* New Password */}
+          <div className="space-y-2">
+            <label
+              htmlFor="newPassword"
+              className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold"
+            >
+              New Password
+            </label>
+            <div className="relative">
+              <input
+                type={showNewPassword ? "text" : "password"}
+                id="newPassword"
+                name="newPassword"
+                placeholder="Enter new password"
+                className="w-full border-2 border-[#6A6D76] rounded-lg outline-none px-3 sm:px-4 py-3 pr-12 focus:border-[#0b7bb3] focus:ring-2 focus:ring-[#0b7bb3]/20 transition-all duration-200 text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowNewPassword(!showNewPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center text-[#6A6D76] hover:text-[#0b7bb3] transition-colors duration-200"
+              >
+                {showNewPassword ? (
+                  <IoEyeOffOutline className="w-5 h-5" />
+                ) : (
+                  <IoEyeOutline className="w-5 h-5" />
+                )}
+              </button>
+            </div>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+              Password must be at least 8 characters long
+            </p>
+          </div>
+
+          {/* Confirm New Password */}
+          <div className="space-y-2">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold"
+            >
+              Confirm New Password
+            </label>
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm new password"
+                className="w-full border-2 border-[#6A6D76] rounded-lg outline-none px-3 sm:px-4 py-3 pr-12 focus:border-[#0b7bb3] focus:ring-2 focus:ring-[#0b7bb3]/20 transition-all duration-200 text-sm sm:text-base placeholder:text-sm sm:placeholder:text-base"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center text-[#6A6D76] hover:text-[#0b7bb3] transition-colors duration-200"
+              >
+                {showConfirmPassword ? (
+                  <IoEyeOffOutline className="w-5 h-5" />
+                ) : (
+                  <IoEyeOutline className="w-5 h-5" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="pt-4">
+            <button 
+              type="submit"
+              className="w-full bg-[#F9B038] hover:bg-[#E8A532] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 text-sm sm:text-base shadow-sm hover:shadow-md"
+            >
+              Update Password
             </button>
           </div>
-        </div>
-        <div className="w-full">
-          <label
-            htmlFor="password"
-            className="text-xl text-[#0D0D0D] mb-2 font-bold"
-          >
-            New Password
-          </label>
-          <div className="w-full relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="**********"
-              className="w-full border-2 border-[#6A6D76] rounded-md outline-none px-5 py-3 mt-5 placeholder:text-xl"
-              required
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 bottom-4 flex items-center text-[#6A6D76]"
-            >
-              {showPassword ? (
-                <IoEyeOffOutline className="w-5 h-5" />
-              ) : (
-                <IoEyeOutline className="w-5 h-5" />
-              )}
-            </button>
-          </div>
-        </div>
-        <div className="w-full">
-          <label
-            htmlFor="password"
-            className="text-xl text-[#0D0D0D] mb-2 font-bold"
-          >
-            Confirm New Password
-          </label>
-          <div className="w-full relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="**********"
-              className="w-full border-2 border-[#6A6D76] rounded-md outline-none px-5 py-3 mt-5 placeholder:text-xl"
-              required
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 bottom-4 flex items-center text-[#6A6D76]"
-            >
-              {showPassword ? (
-                <IoEyeOffOutline className="w-5 h-5" />
-              ) : (
-                <IoEyeOutline className="w-5 h-5" />
-              )}
-            </button>
-          </div>
-        </div>
-        <div className="text-center py-5">
-          <button className="bg-[#F9B038] text-white font-bold w-full py-3 rounded-md">
-            Save & Change
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

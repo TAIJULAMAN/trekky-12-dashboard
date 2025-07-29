@@ -8,6 +8,8 @@ import { FaChevronRight } from "react-icons/fa";
 import { IoIosLogIn } from "react-icons/io";
 import { MdManageAccounts } from "react-icons/md";
 import { AiOutlineFileProtect } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
+
 
 const AdminItems = [
   {
@@ -90,7 +92,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-white text-white px-5 py-4">
+    <div className="bg-white text-white px-5 py-5">
       <div className="flex justify-between items-center">
         <div className="lg:hidden">
           <button onClick={showDrawer} className="p-2">
@@ -108,14 +110,22 @@ const Header = () => {
             open={open}
             className="custom-drawer"
           >
-            <div className="menu-items">
+            {/* <div className="flex justify-between ">
+              <img src={logo} alt="Logo" className="w-[160px]" />
+              <div>
+                <button onClick={onClose} className="p-2 bg-[#0b7bb3] rounded-full">
+                  <FaTimes size={20} className="text-white" />
+                </button>
+              </div>
+            </div> */}
+            <div className="">
               {AdminItems.map((item) => (
                 <div key={item.key}>
                   <Link
                     to={item.link}
-                    className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${selectedKey === item.key
-                      ? "bg-[#27E2F5] text-black rounded-md"
-                      : "bg-white rounded-md hover:bg-[#b4e2ed]"
+                    className={`my-4 py-3 px-3 flex items-center whitespace-nowrap cursor-pointer ${selectedKey === item.key
+                      ? "bg-[#27E2F5] text-white rounded-md"
+                      : "bg-[#EEEEEE] rounded-md"
                       }`}
                     onClick={(e) => {
                       if (item.children) {
@@ -130,12 +140,12 @@ const Header = () => {
                     <div>
                       {item?.icon && <item.icon />}
                     </div>
-                    <span className="ml-3 text-base font-medium">
+                    <span className="ml-3 text-base  font-medium">
                       {item.label}
                     </span>
                     {item.children && (
                       <FaChevronRight
-                        className={`ml-auto transform transition-all duration-300 ${expandedKeys.includes(item?.key) ? "rotate-90" : ""
+                        className={`ml-auto text-[#27E2F5] transform transition-all duration-300 ${expandedKeys.includes(item?.key) ? "rotate-90" : ""
                           }`}
                       />
                     )}
@@ -156,9 +166,9 @@ const Header = () => {
                         <Link
                           key={child.key}
                           to={child.link}
-                          className={`menu-item p-4 flex items-center cursor-pointer ${selectedKey === child.key
-                            ? "bg-[#27E2F5] text-white"
-                            : "hover:bg-[#27E2F5]"
+                          className={`menu-item pl-5 py-3 my-2 flex items-center whitespace-nowrap  cursor-pointer ${selectedKey === child.key
+                            ? "bg-[#27E2F5] text-white rounded-md"
+                            : ""
                             }`}
                           onClick={() => {
                             setSelectedKey(child.key);
@@ -166,7 +176,7 @@ const Header = () => {
                             onClose();
                           }}
                         >
-                          <span className="ml-8">{child.label}</span>
+                          <span className="ml-5">{child.label}</span>
                         </Link>
                       ))}
                     </div>

@@ -227,14 +227,16 @@ export default function ExpenseAndCostTracking() {
     },
   ];
 
-
   return (
-    <div className="min-h-screen w-full space-y-5">
-      <div className="">
+    <div className="px-5">
+      {/* Header Section */}
+      <div className="mb-6">
         <PageHeading title="Expense & Cost Tracking" />
       </div>
-      <div className="max-w-7xl mx-auto p-5 mt-5">
-        <div className="">
+
+      {/* Content Section */}
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
           {expenses.map((expense) => (
             <ExpenseCard key={expense.id} expense={expense} />
           ))}
@@ -246,35 +248,58 @@ export default function ExpenseAndCostTracking() {
 
 function ExpenseCard({ expense }) {
   return (
-    <div className="bg-[#F9B038] rounded-md border border-gray-200 p-4 shadow-sm flex flex-col md:flex-row justify-between items-center gap-5 mt-5 whitespace-nowrap">
-      <div className="flex justify-start items-center gap-3 whitespace-nowrap">
-        <div className="h-14 w-14 rounded-full overflow-hidden">
+    <div className="bg-gradient-to-br from-[#F9B038] to-[#F9B038]/90 rounded-xl border border-orange-200 p-4 sm:p-5 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col gap-4">
+      {/* User Info Section */}
+      <div className="flex items-center gap-3">
+        <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-full overflow-hidden ring-2 ring-white/20">
           <img
             src={expense.user.avatar}
             alt={expense.user.name}
             className="object-cover w-full h-full"
           />
         </div>
-        <div>
-          <p className="font-medium">{expense.user.name}</p>
-          <p className="text-sm text-muted-foreground">{expense.user.email}</p>
+        <div className="flex-1 min-w-0">
+          <p className="font-semibold text-gray-900 text-sm sm:text-base truncate">
+            {expense.user.name}
+          </p>
+          <p className="text-xs sm:text-sm text-gray-700 truncate">
+            {expense.user.email}
+          </p>
         </div>
       </div>
-      <div className="mt-3 md:mt-0 md:ml-[52px] text-center md:text-left">
-        <p className="text-sm">
-          Your total maintenance cost for this RV in {expense.date} was $
-          {expense.totalCost.toFixed(2)}.
-        </p>
-        <p className="text-sm">
-          Top expenses for this RV in {expense.date} were $
-          {expense.topExpenses.toFixed(2)}.
-        </p>
-      </div>
-      <Link to="/details">
-        <div className="bg-[#484848] hover:bg-[#484848]/90 text-white py-2 px-4 rounded-md flex items-center gap-2">
-          <FaEye />
+
+      {/* Expense Details Section */}
+      <div className="space-y-2">
+        <div className="bg-white/20 rounded-lg p-3">
+          <p className="text-xs sm:text-sm text-gray-800 leading-relaxed">
+            <span className="font-medium">Total maintenance cost</span> for this RV in{" "}
+            <span className="font-semibold">{expense.date}</span> was{" "}
+            <span className="font-bold text-gray-900">
+              ${expense.totalCost.toFixed(2)}
+            </span>
+          </p>
         </div>
-      </Link>
+        
+        <div className="bg-white/20 rounded-lg p-3">
+          <p className="text-xs sm:text-sm text-gray-800 leading-relaxed">
+            <span className="font-medium">Top expenses</span> for this RV in{" "}
+            <span className="font-semibold">{expense.date}</span> were{" "}
+            <span className="font-bold text-gray-900">
+              ${expense.topExpenses.toFixed(2)}
+            </span>
+          </p>
+        </div>
+      </div>
+
+      {/* Action Button */}
+      <div className="flex justify-end mt-2">
+        <Link to="/details">
+          <button className="bg-[#484848] hover:bg-[#484848]/90 text-white py-2 px-4 rounded-lg flex items-center gap-2 text-sm font-medium transition-colors duration-200 shadow-sm">
+            <FaEye className="w-4 h-4" />
+            <span className="hidden sm:inline">View Details</span>
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

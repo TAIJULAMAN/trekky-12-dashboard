@@ -314,35 +314,35 @@ const Users = () => {
           >
             <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
           </button>
-          {/* <button
-            onClick={showModal3}
-            className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
-          >
-            <MdBlockFlipped className="w-6 h-6 text-[#0b7bb3]" />
-          </button> */}
         </div>
       ),
     },
   ];
 
   return (
-    <>
-      <div className="flex flex-col md:flex-row gap-5 justify-between items-center whitespace-nowrap">
-        <PageHeading title="User Management" />
-        <div className="flex flex-col md:flex-row justify-end items-center text-center  gap-5  w-full">
-          <div className="relative w-full sm:w-[300px] mt-5 md:mt-0 lg:mt-0">
+    <div className="px-5">
+      <div className="flex flex-col lg:flex-row gap-4 lg:gap-5 justify-between items-start lg:items-center  mb-5">
+        <div className="flex-shrink-0 w-full lg:w-auto">
+          <PageHeading title="User Management" />
+        </div>
+        
+        <div className="flex flex-col sm:flex-row justify-end items-stretch sm:items-center gap-3 sm:gap-4 w-full lg:w-auto">
+          {/* Search Input */}
+          <div className="relative w-full sm:w-[280px] lg:w-[320px]">
             <input
               type="text"
-              placeholder="Search..."
-              className="border-2 border-[#F59B07] bg-[#F59B07] py-3 pl-12 pr-[65px] outline-none w-full rounded-md text-white placeholder:text-white"
+              placeholder="Search users..."
+              className="border-2 border-[#F59B07] bg-[#F59B07] py-3 pl-12 pr-4 outline-none w-full rounded-lg text-white placeholder:text-white/80 text-sm focus:ring-2 focus:ring-[#F59B07]/50 transition-all"
             />
-            <span className="text-white absolute top-0 left-0 h-full px-5 flex items-center justify-center rounded-r-md cursor-pointer">
-              <IoSearch className="text-[1.3rem]" />
+            <span className="text-white absolute top-0 left-0 h-full px-4 flex items-center justify-center cursor-pointer">
+              <IoSearch className="text-lg" />
             </span>
           </div>
-          <div className="flex items-center justify-center text-white mt-5">
-            <button className="bg-[#F59B07]  rounded-md px-5 py-3 text-white mb-5">
-              Aprove All
+          
+          {/* Approve All Button */}
+          <div className="flex-shrink-0">
+            <button className="bg-[#F59B07] hover:bg-[#E8890A] rounded-lg px-6 py-3 text-white text-sm font-medium transition-colors duration-200 w-full sm:w-auto whitespace-nowrap shadow-sm">
+              Approve All
             </button>
           </div>
         </div>
@@ -486,7 +486,7 @@ const Users = () => {
           </div>
         </Modal>
       </ConfigProvider>
-    </>
+    </div>
   );
 };
 
