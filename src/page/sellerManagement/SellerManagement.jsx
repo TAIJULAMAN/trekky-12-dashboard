@@ -345,17 +345,6 @@ const SellerManagement = () => {
       render: () => {
         return (
           <div className="flex gap-2">
-            {/* <button
-              onClick={handleCheckClick}
-              className="border border-[#0b7bb3] rounded-lg p-2 bg-[#d3e8e6] text-[#0b7bb3] hover:bg-[#b4d9d4] transition duration-200"
-            >
-              {isChecked ? (
-                <RxCross2 className="w-6 h-6 text-[#0b7bb3]" />
-              ) : (
-                <FaCheck className="w-6 h-6 text-[#0b7bb3]" />
-              )}
-            </button> */}
-
             <button
               onClick={showModal}
               className="border border-[#0b7bb3] rounded-lg p-2 bg-[#d3e8e6] text-[#0b7bb3] hover:bg-[#b4d9d4] transition duration-200"
@@ -467,7 +456,7 @@ const SellerManagement = () => {
                 <div className="text-center pb-5">
                   <button
                     onClick={handleCancel}
-                    className="text-[#0b7bb3] border-2 border-green-600 bg-white font-semibold w-full py-2 rounded transition duration-200"
+                    className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded transition duration-200"
                   >
                     No,Don’t delete
                   </button>
