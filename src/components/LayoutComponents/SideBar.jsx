@@ -1,11 +1,8 @@
-import { MdManageAccounts } from "react-icons/md";
-import { FaUsers, FaChevronRight, FaCog, FaHome } from "react-icons/fa";
-import { IoIosLogIn } from "react-icons/io";
+import { FaUsers, FaChevronRight, FaCog, FaHome, FaUserCircle, FaFileContract, FaShieldAlt, FaQuestionCircle } from "react-icons/fa";
+import { IoIosLogOut } from "react-icons/io";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { AiOutlineFileProtect } from "react-icons/ai";
-
 
 export const AdminItems = [
   {
@@ -21,44 +18,28 @@ export const AdminItems = [
     link: "/dashboard/user-management",
   },
   {
-    key: "sellermanagement",
-    label: "Vendor Management",
-    icon: MdManageAccounts,
-    link: "/dashboard/seller-management",
-  },
-  {
-    key: "expense",
-    label: "Expense & Cost Tracking",
-    icon: AiOutlineFileProtect,
-    link: "/expense",
-  },
-  {
-    key: "settings",
-    label: "Settings",
-    icon: FaCog,
+    key: "profile",
+    label: "Profile",
+    icon: FaUserCircle,
     link: "/dashboard/Settings/profile",
-    children: [
-      {
-        key: "profile",
-        label: "Profile",
-        link: "/dashboard/Settings/profile",
-      },
-      {
-        key: "terms",
-        label: "Terms & Condition",
-        link: "/dashboard/Settings/Terms&Condition",
-      },
-      {
-        key: "privacy",
-        label: "Privacy Policy",
-        link: "/dashboard/Settings/PrivacyPolicy",
-      },
-      {
-        key: "faq",
-        label: "Faq",
-        link: "/faq",
-      },
-    ],
+  },
+  {
+    key: "terms",
+    label: "Terms & Condition",
+    icon: FaFileContract,
+    link: "/dashboard/Settings/Terms&Condition",
+  },
+  {
+    key: "privacy",
+    label: "Privacy Policy",
+    icon: FaShieldAlt,
+    link: "/dashboard/Settings/PrivacyPolicy",
+  },
+  {
+    key: "faq",
+    label: "Faq",
+    icon: FaQuestionCircle,
+    link: "/faq",
   },
 ];
 
@@ -89,7 +70,7 @@ const SideBar = () => {
       setSelectedKey(
         activeParent.children
           ? activeParent.children.find((child) => child.link === currentPath)
-            ?.key || activeParent.key
+              ?.key || activeParent.key
           : activeParent.key
       );
 
@@ -110,7 +91,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className="custom-sidebar min-h-[100vh] bg-[#FFFFFF]">
+    <div className="custom-sidebar min-h-[100vh] bg-white" role="navigation" aria-label="Sidebar">
       <div className="custom-sidebar-logo flex justify-center">
         <img src={logo} alt="Logo" className="w-[150px] mt-5" />
       </div>
@@ -133,13 +114,12 @@ const SideBar = () => {
               <div key={item.key}>
                 <Link
                   to={item.link}
-                  className={`menu-item my-4 mx-5 py-3 px-3 flex items-center cursor-pointer ${selectedKey === item.key ||
-                      isSettingsActive ||
-                      isCreatorActive ||
-                      isCategoriesActive
-                      ? "bg-[#27E2F5] text-white rounded-md"
-                      : "bg-[#EEEEEE] rounded-md hover:bg-[#b4e2ed]"
-                    }`}
+                  className={`menu-item my-3 mx-4 py-3 px-3 flex items-center cursor-pointer rounded-md border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2 ${
+                    selectedKey === item.key || isSettingsActive || isCreatorActive || isCategoriesActive
+                      ? "bg-[#0b7bb3] text-white border-[#0b7bb3]"
+                      : "bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
+                  }`}
+                  aria-current={selectedKey === item.key ? "page" : undefined}
                   onClick={(e) => {
                     if (item.children) {
                       e.preventDefault();
@@ -149,14 +129,15 @@ const SideBar = () => {
                     }
                   }}
                 >
-                  <item.icon className="w-5 h-5 mr-3" />
-                  <span className="block w-full ">{item.label}</span>
+                  <item.icon className="w-5 h-5 mr-3" aria-hidden="true" />
+                  <span className="block w-full">{item.label}</span>
 
                   {/* Show dropdown arrow if children exist */}
                   {item.children && (
                     <FaChevronRight
-                      className={`ml-auto transform transition-all duration-300 ${expandedKeys.includes(item.key) ? "rotate-90" : ""
-                        }`}
+                      className={`ml-auto transform transition-all duration-300 ${
+                        expandedKeys.includes(item.key) ? "rotate-90" : ""
+                      }`}
                     />
                   )}
                 </Link>
@@ -164,8 +145,9 @@ const SideBar = () => {
                 {/* Show children menu if expanded */}
                 {item.children && (
                   <div
-                    className={`children-menu bg-white -my-2 mx-5 transition-all duration-300 ${expandedKeys.includes(item.key) ? "expanded" : ""
-                      }`}
+                    className={`children-menu bg-white -my-2 mx-5 transition-all duration-300 ${
+                      expandedKeys.includes(item.key) ? "expanded" : ""}
+                    }`}
                     style={{
                       maxHeight: expandedKeys.includes(item.key)
                         ? `${contentRef.current[item.key]?.scrollHeight}px`
@@ -177,16 +159,18 @@ const SideBar = () => {
                       <Link
                         key={child.key}
                         to={child.link}
-                        className={`menu-item p-4 flex items-center cursor-pointer ${selectedKey === child.key
-                            ? "bg-[#27E2F5] text-white"
-                            : "bg-[#EEEEEE] hover:bg-[#b4e2ed]"
-                          }`}
+                        className={`menu-item p-3 mx-1 my-2 flex items-center cursor-pointer rounded border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2 ${
+                          selectedKey === child.key
+                            ? "bg-[#0b7bb3] text-white border-[#0b7bb3]"
+                            : "bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
+                        }`}
+                        aria-current={selectedKey === child.key ? "page" : undefined}
                         onClick={() => {
                           setSelectedKey(child.key);
                           setExpandedKeys([]);
                         }}
                       >
-                        <span className="block w-full ">{child.label}</span>
+                        <span className="block w-full">{child.label}</span>
                       </Link>
                     ))}
                   </div>
@@ -200,11 +184,14 @@ const SideBar = () => {
       {/* Logout Button */}
       <div className="w-full p-4 px-5">
         <button
+          type="button"
           onClick={handleLogout}
-          className="w-full flex justify-start items-center text-start border-2 border-[#27E2F5] text-[#27E2F5]  rounded-md p-2 mt-20"
+          aria-label="Log out"
+          title="Log out"
+          className="w-full flex justify-start items-center text-start rounded-md p-3 mt-20 border-2 border-red-600 text-red-700 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
         >
-          <span className="text-2xl">
-            <IoIosLogIn />
+          <span className="text-2xl" aria-hidden="true">
+            <IoIosLogOut />
           </span>
           <span className="ml-3">Log Out</span>
         </button>

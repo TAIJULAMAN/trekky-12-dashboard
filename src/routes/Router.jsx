@@ -1,31 +1,26 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../components/Dashboard/Dashboard";
-import Profile from "../page/Settings/Profile";
-import TermsCondition from "../page/Settings/TermsCondition";
-import PrivacyPolicy from "../page/Settings/PrivacyPolicy";
-import Notification from "../page/Notification/Notification";
-import VerificationCode from "../auth/VerificationCode";
-import DashboardLayout from "../layout/DashboardLayout";
-import SellerManagement from "../page/sellerManagement/SellerManagement";
-import Subscription from "../page/subscription/Subscription";
-import UpdateSubscription from "../page/subscription/UpdateSubscription";
-import PremiumSubscribers from "../page/PremiumSubscribers/PremiumSubscribers";
-import AdPromotion from "../page/AdPromotion/AdPromotion";
-import Faq from "../page/Settings/Faq";
-import Support from "../page/Support/Support";
-import CategoryManagement from "../page/CategoryManagement/CategoryManagement";
-import Chat from "../page/Chat/Chat";
-import ResetPassword from "../auth/ResetPassword";
-import ForgetPassword from "../auth/ForgetPassword";
-import Users from "../page/UserManagement/Users";
-import SignIn from "../auth/SignIn";
-import ExpenseAndCostTracking from "../page/ExpenseAndCostTracking/ExpenseAndCostTracking";
-import ExpenseTracker from "../page/ExpenseAndCostTracking/ExpenseTracker";
+import { Suspense, lazy } from "react";
+
+const Dashboard = lazy(() => import("../components/Dashboard/Dashboard"));
+const Profile = lazy(() => import("../page/Settings/Profile"));
+const TermsCondition = lazy(() => import("../page/Settings/TermsCondition"));
+const PrivacyPolicy = lazy(() => import("../page/Settings/PrivacyPolicy"));
+const VerificationCode = lazy(() => import("../auth/VerificationCode"));
+const DashboardLayout = lazy(() => import("../layout/DashboardLayout"));
+const Faq = lazy(() => import("../page/Settings/Faq"));
+const ResetPassword = lazy(() => import("../auth/ResetPassword"));
+const ForgetPassword = lazy(() => import("../auth/ForgetPassword"));
+const Users = lazy(() => import("../page/UserManagement/Users"));
+const SignIn = lazy(() => import("../auth/SignIn"));
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <DashboardLayout />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <DashboardLayout />
+      </Suspense>
+    ),
     children: [
       {
         path: "/",
@@ -36,41 +31,8 @@ export const router = createBrowserRouter([
         element: <Users />,
       },
       {
-        path: "/dashboard/seller-management",
-        element: <SellerManagement />,
-      },
-
-      {
-        path: "/dashboard/subscription",
-        element: <Subscription />,
-      },
-      {
-        path: "/dashboard/update-subscription",
-        element: <UpdateSubscription />,
-      },
-      {
-        path: "/premium-subscribers",
-        element: <PremiumSubscribers />,
-      },
-      {
-        path: "/expense",
-        element: <ExpenseAndCostTracking />,
-      },
-      {
-        path: "/details",
-        element: <ExpenseTracker />,
-      },
-      {
-        path: "/ads-promotion",
-        element: <AdPromotion />,
-      },
-      {
         path: "/dashboard/Settings/profile",
         element: <Profile />,
-      },
-      {
-        path: "/dashboard/Settings/notification",
-        element: <Notification />,
       },
       {
         path: "/dashboard/Settings/Terms&Condition",
@@ -84,34 +46,38 @@ export const router = createBrowserRouter([
         path: "/faq",
         element: <Faq />,
       },
-      {
-        path: "/chat",
-        element: <Chat />,
-      },
-      {
-        path: "/support",
-        element: <Support />,
-      },
-      {
-        path: "/category-management",
-        element: <CategoryManagement />,
-      },
     ],
   },
   {
     path: "/login",
-    element: <SignIn />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <SignIn />
+      </Suspense>
+    ),
   },
   {
     path: "/forget-password",
-    element: <ForgetPassword />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ForgetPassword />
+      </Suspense>
+    ),
   },
   {
     path: "/verify-mail",
-    element: <VerificationCode />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <VerificationCode />
+      </Suspense>
+    ),
   },
   {
     path: "/reset-password",
-    element: <ResetPassword />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ResetPassword />
+      </Suspense>
+    ),
   },
 ]);

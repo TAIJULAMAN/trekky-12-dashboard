@@ -95,8 +95,8 @@ const Header = () => {
     <div className="bg-white text-white px-5 py-5">
       <div className="flex justify-between items-center">
         <div className="lg:hidden">
-          <button onClick={showDrawer} className="p-2">
-            <FaBars size={24} className="text-[#0b7bb3]" />
+          <button onClick={showDrawer} className="p-2" aria-label="Open menu" title="Open menu">
+            <FaBars size={24} className="text-[#0b7bb3]" aria-hidden="true" focusable="false" />
           </button>
           <Drawer
             title={
@@ -110,14 +110,6 @@ const Header = () => {
             open={open}
             className="custom-drawer"
           >
-            {/* <div className="flex justify-between ">
-              <img src={logo} alt="Logo" className="w-[160px]" />
-              <div>
-                <button onClick={onClose} className="p-2 bg-[#0b7bb3] rounded-full">
-                  <FaTimes size={20} className="text-white" />
-                </button>
-              </div>
-            </div> */}
             <div className="">
               {AdminItems.map((item) => (
                 <div key={item.key}>
@@ -200,14 +192,6 @@ const Header = () => {
         </div>
 
         <div className="ml-auto flex items-center justify-center gap-5">
-          <div className="relative">
-            <Link to={"/dashboard/Settings/notification"}>
-              <LuBell className="text-2xl text-[#27E2F5] w-[40px] h-[40px]" />
-            </Link>
-            <span className="absolute -top-2 -right-2 bg-[#27E2F5] text-xs rounded-full w-6 h-6 flex items-center justify-center">
-              10
-            </span>
-          </div>
           <div className="pl-5 border-gray-600">
             <Link to={"/dashboard/Settings/profile"}>
               <div className="flex items-center gap-3">
