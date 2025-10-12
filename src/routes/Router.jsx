@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import Loader from "../shared/Loader";
 
 const Dashboard = lazy(() => import("../components/Dashboard/Dashboard"));
 const Profile = lazy(() => import("../page/Settings/Profile"));
@@ -17,7 +18,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <DashboardLayout />
       </Suspense>
     ),
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <SignIn />
       </Suspense>
     ),
@@ -59,7 +60,7 @@ export const router = createBrowserRouter([
   {
     path: "/forget-password",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <ForgetPassword />
       </Suspense>
     ),
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
   {
     path: "/verify-mail",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <VerificationCode />
       </Suspense>
     ),
@@ -75,7 +76,7 @@ export const router = createBrowserRouter([
   {
     path: "/reset-password",
     element: (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <ResetPassword />
       </Suspense>
     ),
