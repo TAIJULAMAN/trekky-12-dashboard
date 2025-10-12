@@ -1,5 +1,4 @@
-import { FaUsers, FaChevronRight, FaHome, FaUserCircle, FaFileContract, FaShieldAlt, FaQuestionCircle } from "react-icons/fa";
-import { IoIosLogOut } from "react-icons/io";
+import { HomeOutlined, UserOutlined, FileTextOutlined, SafetyOutlined, QuestionCircleOutlined, RightOutlined, LogoutOutlined } from "@ant-design/icons";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
@@ -8,37 +7,37 @@ export const AdminItems = [
   {
     key: "dashboard",
     label: "Dashboard",
-    icon: FaHome,
+    icon: HomeOutlined,
     link: "/",
   },
   {
     key: "userManagement",
     label: "User Management",
-    icon: FaUsers,
+    icon: UserOutlined,
     link: "/dashboard/user-management",
   },
   {
     key: "profile",
     label: "Profile",
-    icon: FaUserCircle,
+    icon: UserOutlined,
     link: "/dashboard/Settings/profile",
   },
   {
     key: "terms",
     label: "Terms & Condition",
-    icon: FaFileContract,
+    icon: FileTextOutlined,
     link: "/dashboard/Settings/Terms&Condition",
   },
   {
     key: "privacy",
     label: "Privacy Policy",
-    icon: FaShieldAlt,
+    icon: SafetyOutlined,
     link: "/dashboard/Settings/PrivacyPolicy",
   },
   {
     key: "faq",
     label: "Faq",
-    icon: FaQuestionCircle,
+    icon: QuestionCircleOutlined,
     link: "/faq",
   },
 ];
@@ -135,7 +134,7 @@ const SideBar = () => {
 
                   {/* Show dropdown arrow if children exist */}
                   {item.children && (
-                    <FaChevronRight
+                    <RightOutlined
                       className={`ml-auto text-[#0b7bb3] transform transition-all duration-300 ${
                         expandedKeys.includes(item.key) ? "rotate-90" : ""
                       }`}
@@ -191,8 +190,8 @@ const SideBar = () => {
           title="Log out"
           className="w-full flex justify-start items-center text-start rounded-md p-3 mt-20 border-2 border-red-600 text-red-700 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
         >
-          <span className="text-2xl" aria-hidden="true">
-            <IoIosLogOut />
+          <span className="text-xl" aria-hidden="true">
+            <LogoutOutlined />
           </span>
           <span className="ml-3">Log Out</span>
         </button>

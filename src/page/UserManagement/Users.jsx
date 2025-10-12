@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { IoSearch } from "react-icons/io5";
-import { MdBlockFlipped } from "react-icons/md";
+import { SearchOutlined, EyeOutlined, DeleteOutlined } from "@ant-design/icons";
 import PageHeading from "../../shared/PageHeading";
 import { ConfigProvider, Modal, Table } from "antd";
-import { FaRegEye, FaRegTrashAlt } from "react-icons/fa";
 
 const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -306,13 +304,13 @@ const Users = () => {
             onClick={showModal2}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
-            <FaRegEye className="w-6 h-6 text-[#0b7bb3]" />
+            <EyeOutlined className="text-[24px] text-[#0b7bb3]" />
           </button>
           <button
             onClick={showModal}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
-            <FaRegTrashAlt className="w-6 h-6 text-[#0b7bb3]" />
+            <DeleteOutlined className="text-[24px] text-[#0b7bb3]" />
           </button>
         </div>
       ),
@@ -335,7 +333,7 @@ const Users = () => {
               className="border-2 border-[#F59B07] bg-[#F59B07] py-3 pl-12 pr-4 outline-none w-full rounded-lg text-white placeholder:text-white/80 text-sm focus:ring-2 focus:ring-[#F59B07]/50 transition-all"
             />
             <span className="text-white absolute top-0 left-0 h-full px-4 flex items-center justify-center cursor-pointer">
-              <IoSearch className="text-lg" />
+              <SearchOutlined className="text-lg" />
             </span>
           </div>
           

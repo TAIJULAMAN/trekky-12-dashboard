@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
 function ChangePass() {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -37,9 +37,9 @@ function ChangePass() {
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center text-[#6A6D76] hover:text-[#0b7bb3] transition-colors duration-200"
               >
                 {showCurrentPassword ? (
-                  <IoEyeOffOutline className="w-5 h-5" />
+                  <EyeInvisibleOutlined className="text-[20px]" />
                 ) : (
-                  <IoEyeOutline className="w-5 h-5" />
+                  <EyeOutlined className="text-[20px]" />
                 )}
               </button>
             </div>
@@ -68,9 +68,9 @@ function ChangePass() {
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center text-[#6A6D76] hover:text-[#0b7bb3] transition-colors duration-200"
               >
                 {showNewPassword ? (
-                  <IoEyeOffOutline className="w-5 h-5" />
+                  <EyeInvisibleOutlined className="text-[20px]" />
                 ) : (
-                  <IoEyeOutline className="w-5 h-5" />
+                  <EyeOutlined className="text-[20px]" />
                 )}
               </button>
             </div>
@@ -102,9 +102,9 @@ function ChangePass() {
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center text-[#6A6D76] hover:text-[#0b7bb3] transition-colors duration-200"
               >
                 {showConfirmPassword ? (
-                  <IoEyeOffOutline className="w-5 h-5" />
+                  <EyeInvisibleOutlined className="text-[20px]" />
                 ) : (
-                  <IoEyeOutline className="w-5 h-5" />
+                  <EyeOutlined className="text-[20px]" />
                 )}
               </button>
             </div>

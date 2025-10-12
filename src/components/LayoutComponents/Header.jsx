@@ -1,17 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { FaBars } from "react-icons/fa";
-import { useRef, useState } from "react";
+import { MenuOutlined, LogoutOutlined } from "@ant-design/icons";
+import { useState } from "react";
 import { Drawer } from "antd";
 import logo from "../../assets/header/logo.png";
-import { FaChevronRight } from "react-icons/fa";
-import { IoIosLogOut } from "react-icons/io";
 import { AdminItems } from "./SideBar";
 
 const Header = () => {
   const [selectedKey, setSelectedKey] = useState("dashboard");
   const [expandedKeys, setExpandedKeys] = useState([]);
   const navigate = useNavigate();
-  const contentRef = useRef({});
   const [open, setOpen] = useState(false);
   const [placement] = useState("left");
 
@@ -38,18 +35,13 @@ const Header = () => {
         <div className="lg:hidden">
           <button
             onClick={showDrawer}
-            className="p-2"
+            className="p-2 rounded-md bg-[#0b7bb3] text-white hover:bg-[#0a6a99]"
             aria-label="Open menu"
             title="Open menu"
             aria-expanded={open}
             aria-controls="mobile-drawer"
           >
-            <FaBars
-              size={24}
-              className="text-[#0b7bb3]"
-              aria-hidden="true"
-              focusable="false"
-            />
+            <MenuOutlined className="text-white text-xl" aria-hidden="true" />
           </button>
           <Drawer
             title={
@@ -94,13 +86,6 @@ const Header = () => {
                     <span className="ml-3 text-base  font-medium">
                       {item.label}
                     </span>
-                    {item.children && (
-                      <FaChevronRight
-                        className={`ml-auto text-[#0b7bb3] transform transition-all duration-300 ${
-                          expandedKeys.includes(item?.key) ? "rotate-90" : ""
-                        }`}
-                      />
-                    )}
                   </Link>
                 </div>
               ))}
@@ -114,8 +99,8 @@ const Header = () => {
                 title="Log out"
                 className="w-full flex border-2 border-red-600 text-red-700 text-start rounded-md p-3 mt-10 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
               >
-                <span className="text-2xl" aria-hidden="true">
-                  <IoIosLogOut />
+                <span className="text-xl" aria-hidden="true">
+                  <LogoutOutlined />
                 </span>
                 <span className="ml-3">Log Out</span>
               </button>
@@ -129,12 +114,12 @@ const Header = () => {
               <div className="flex items-center gap-3">
                 <img
                   src="https://avatar.iran.liara.run/public/44"
-                  className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#27E2F5]"
+                  className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#0b7bb3]"
                   alt="User Avatar"
                 />
                 <div className="hidden md:flex flex-col items-start">
                   <h3 className="text-gray-800 text-sm">Shah Aman</h3>
-                  <p className="text-xs px-2 py-1 bg-[#27E2F5] text-white rounded">
+                  <p className="text-xs px-2 py-1 bg-[#0b7bb3] text-white rounded">
                     Admin
                   </p>
                 </div>

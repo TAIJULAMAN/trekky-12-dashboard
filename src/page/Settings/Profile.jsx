@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { FaCamera } from "react-icons/fa";
+import { CameraOutlined } from "@ant-design/icons";
 import EditProfile from "./EditProfile";
 import ChangePass from "./ChangePass";
 import PageHeading from "../../shared/PageHeading";
@@ -30,7 +31,7 @@ function ProfilePage() {
                 {/* Upload Icon */}
                 <div className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 bg-white p-2 rounded-full shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-200">
                   <label htmlFor="profilePicUpload" className="cursor-pointer">
-                    <FaCamera className="text-[#0b7bb3] w-3 h-3 sm:w-4 sm:h-4" />
+                    <CameraOutlined className="text-[#0b7bb3] text-xs sm:text-sm" aria-hidden="true" />
                   </label>
                   <input type="file" id="profilePicUpload" className="hidden" />
                 </div>

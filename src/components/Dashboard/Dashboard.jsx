@@ -1,6 +1,5 @@
-import { FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
-import { FaUsers, FaCarSide } from "react-icons/fa";
+import { DownOutlined, TeamOutlined, CarOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import UsersGrowth from "./UsersGrowth";
 import TotalRVView from "./TotalRVView";
@@ -27,16 +26,13 @@ function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="flex justify-between items-center gap-5 p-6 rounded-lg border border-[#e19b31] bg-[#faaf37] text-[#07163D]">
           <div className="rounded-full bg-white p-3">
-            <FaUsers
-              className="w-[40px] h-[40px] text-[#07163D]"
-              aria-hidden="true"
-            />
+            <TeamOutlined className="text-[#07163D] text-[40px]" aria-hidden="true" />
           </div>
           <div>
             <h2 className="text-[#07163D] text-lg font-semibold">
               Total Users
             </h2>
-            <p className="text-[#07163D] text-3xl font-bold tracking-tight">
+            <p className="text-[#07163D] text-3xl font-semibold tracking-tight">
               6500
             </p>
           </div>
@@ -44,14 +40,11 @@ function DashboardPage() {
 
         <div className="flex justify-between items-center gap-5 p-6 rounded-lg border border-[#e19b31] bg-[#faaf37] text-[#07163D]">
           <div className="rounded-full bg-white p-3">
-            <FaCarSide
-              className="w-[40px] h-[40px] text-[#07163D]"
-              aria-hidden="true"
-            />
+            <CarOutlined className="text-[#07163D] text-[40px]" aria-hidden="true" />
           </div>
           <div>
             <h2 className="text-[#07163D] text-lg font-semibold">Total RV</h2>
-            <p className="text-[#07163D] text-3xl font-bold tracking-tight">
+            <p className="text-[#07163D] text-3xl font-semibold tracking-tight">
               26500
             </p>
           </div>
@@ -76,10 +69,7 @@ function DashboardPage() {
                 aria-label="Select year for Users Growth"
               >
                 <span className="text-[#0b7bb3]">{selectedYear}</span>
-                <FaChevronDown
-                  className="text-[#0b7bb3] w-5 h-5 ml-5"
-                  aria-hidden="true"
-                />
+                <DownOutlined className="text-[#0b7bb3] text-[20px] ml-5" aria-hidden="true" />
               </button>
 
               {/* Dropdown List */}
@@ -125,10 +115,7 @@ function DashboardPage() {
                 aria-label="Select year for Total RV View"
               >
                 <span className="text-[#0b7bb3]">{selectedYear}</span>
-                <FaChevronDown
-                  className="text-[#0b7bb3] w-5 h-5 ml-5"
-                  aria-hidden="true"
-                />
+                <DownOutlined className="text-[#0b7bb3] text-[20px] ml-5" aria-hidden="true" />
               </button>
 
               {/* Dropdown List */}

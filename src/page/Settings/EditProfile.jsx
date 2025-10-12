@@ -1,3 +1,5 @@
+import { UserOutlined, MailOutlined, PhoneOutlined, EnvironmentOutlined, SaveOutlined } from "@ant-design/icons";
+
 function EditProfile() {
   return (
     <div className="w-full max-w-2xl mx-auto">
@@ -8,8 +10,9 @@ function EditProfile() {
         
         <form className="space-y-6">
           <div className="space-y-2">
-            <label className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
-              User Name
+            <label className="flex items-center gap-2 text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
+              <UserOutlined aria-hidden="true" />
+              <span>User Name</span>
             </label>
             <input
               type="text"
@@ -21,8 +24,9 @@ function EditProfile() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
-              Email
+            <label className="flex items-center gap-2 text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
+              <MailOutlined aria-hidden="true" />
+              <span>Email</span>
             </label>
             <input
               type="email"
@@ -34,8 +38,9 @@ function EditProfile() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
-              Contact No
+            <label className="flex items-center gap-2 text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
+              <PhoneOutlined aria-hidden="true" />
+              <span>Contact No</span>
             </label>
             <input
               type="tel"
@@ -47,8 +52,9 @@ function EditProfile() {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
-              Address
+            <label className="flex items-center gap-2 text-sm sm:text-base lg:text-lg text-[#0D0D0D] font-semibold">
+              <EnvironmentOutlined aria-hidden="true" />
+              <span>Address</span>
             </label>
             <textarea
               name="address"
@@ -62,9 +68,10 @@ function EditProfile() {
           <div className="pt-4">
             <button 
               type="submit"
-              className="w-full bg-[#F9B038] hover:bg-[#E8A532] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 text-sm sm:text-base shadow-sm hover:shadow-md"
+              className="w-full bg-[#F9B038] hover:bg-[#E8A532] text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 text-sm sm:text-base shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2"
             >
-              Save Changes
+              <SaveOutlined aria-hidden="true" />
+              <span>Save Changes</span>
             </button>
           </div>
         </form>

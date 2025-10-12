@@ -1,9 +1,11 @@
 import { Modal } from "antd";
 import { useState } from "react";
-import { FaRegQuestionCircle } from "react-icons/fa";
-import { FaChevronDown } from "react-icons/fa6";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { CiEdit } from "react-icons/ci";
+import {
+  QuestionCircleOutlined,
+  DownOutlined,
+  DeleteOutlined,
+  EditOutlined,
+} from "@ant-design/icons";
 import PageHeading from "../../shared/PageHeading";
 
 const Faq = () => {
@@ -95,11 +97,11 @@ const Faq = () => {
               onClick={() => handleClick(index)}
             >
               <h2 className="text-base font-normal md:font-bold md:text-2xl flex gap-2 items-center">
-                <FaRegQuestionCircle className="w-5 h-5 hidden md:flex" />
+                <QuestionCircleOutlined className="w-5 h-5 hidden md:flex" />
                 {accordion.title}
               </h2>
               <div className="flex gap-2 md:gap-4 items-center">
-                <FaChevronDown
+                <DownOutlined
                   className={`w-5 h-5 text-[#0D0D0D] transition-all duration-300 ${
                     isAccordionOpen === index &&
                     "rotate-[180deg] !text-[#0b7bb3]"
@@ -107,12 +109,12 @@ const Faq = () => {
                 />
                 <div className="border-2 px-1.5 py-1 rounded border-[#0b7bb3] bg-[#f0fcf4]">
                   <button className="" onClick={showModal3}>
-                    <CiEdit className="text-2xl cursor-pointer text-[#0b7bb3] font-bold transition-all" />
+                    <EditOutlined className="text-2xl cursor-pointer text-[#0b7bb3] font-bold transition-all" />
                   </button>
                 </div>
                 <div className="border-2 px-1.5 py-1 rounded border-[#0b7bb3] bg-[#f0fcf4]">
                   <button className="" onClick={showModal}>
-                    <RiDeleteBin6Line className="text-2xl cursor-pointer text-red-500 transition-all" />
+                    <DeleteOutlined className="text-2xl cursor-pointer text-red-500 transition-all" />
                   </button>
                 </div>
               </div>
