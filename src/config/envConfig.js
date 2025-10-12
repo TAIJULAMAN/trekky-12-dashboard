@@ -1,4 +1,4 @@
-export const imgUrl = "http://10.10.20.22:5000/";
+export const imgUrl = "http://13.62.141.228:5002/";
 
 export const url = `${imgUrl}api/`;
 
@@ -15,7 +15,7 @@ export const getBaseUrl = () => url;
 // // Function to get the WebSocket base URL
 // export const getWsBaseUrl = () => wsUrl;
 
-// // asdf 
+// // asdf
 
 // export const getImageUrl = (imagePath) => {
 //   if (!imagePath) return "";
