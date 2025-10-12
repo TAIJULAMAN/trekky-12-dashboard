@@ -1,4 +1,4 @@
-import { FaUsers, FaChevronRight, FaCog, FaHome, FaUserCircle, FaFileContract, FaShieldAlt, FaQuestionCircle } from "react-icons/fa";
+import { FaUsers, FaChevronRight, FaHome, FaUserCircle, FaFileContract, FaShieldAlt, FaQuestionCircle } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -119,6 +119,7 @@ const SideBar = () => {
                       ? "bg-[#0b7bb3] text-white border-[#0b7bb3]"
                       : "bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
                   }`}
+                  aria-expanded={item.children ? expandedKeys.includes(item.key) : undefined}
                   aria-current={selectedKey === item.key ? "page" : undefined}
                   onClick={(e) => {
                     if (item.children) {
@@ -135,7 +136,7 @@ const SideBar = () => {
                   {/* Show dropdown arrow if children exist */}
                   {item.children && (
                     <FaChevronRight
-                      className={`ml-auto transform transition-all duration-300 ${
+                      className={`ml-auto text-[#0b7bb3] transform transition-all duration-300 ${
                         expandedKeys.includes(item.key) ? "rotate-90" : ""
                       }`}
                     />

@@ -1,13 +1,13 @@
 import { FaChevronDown } from "react-icons/fa";
 import { useState } from "react";
+import { FaUsers, FaCarSide } from "react-icons/fa";
 import dayjs from "dayjs";
 import UsersGrowth from "./UsersGrowth";
 import TotalRVView from "./TotalRVView";
-import Users from "../../page/UserManagement/Users";
 
 function DashboardPage() {
   const currentYear = dayjs().year();
-  const startYear = 1900;
+  const startYear = 2020;
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -25,44 +25,41 @@ function DashboardPage() {
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-sm bg-[#faaf37]">
-          <h2 className="text-[#07163D] text-lg font-bold mb-2">Total Users</h2>
-
-          <div className="rounded-full">
-            <div className="flex items-center justify-center mb-2">
-              <img
-                src="/user.png"
-                alt="User Stats Icon"
-                className="w-[52px] h-[52px]"
-              />
-            </div>
+        <div className="flex justify-between items-center gap-5 p-6 rounded-lg border border-[#e19b31] bg-[#faaf37] text-[#07163D]">
+          <div className="rounded-full bg-white p-3">
+            <FaUsers
+              className="w-[40px] h-[40px] text-[#07163D]"
+              aria-hidden="true"
+            />
           </div>
-
-          <p className="text-gray-900 text-4xl font-bold">
-            {new Intl.NumberFormat().format(6500)}
-          </p>
+          <div>
+            <h2 className="text-[#07163D] text-lg font-semibold">
+              Total Users
+            </h2>
+            <p className="text-[#07163D] text-3xl font-bold tracking-tight">
+              6500
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col items-center justify-center p-5 rounded-lg shadow-sm bg-[#faaf37]">
-          <h2 className="text-[#07163D] text-lg font-bold mb-2">Total RV</h2>
 
-          <div className="rounded-full">
-            <div className="flex items-center justify-center mb-2">
-              <img
-                src="/RV.png"
-                alt="User Stats Icon"
-                className="w-[52px] h-[52px]"
-              />
-            </div>
+        <div className="flex justify-between items-center gap-5 p-6 rounded-lg border border-[#e19b31] bg-[#faaf37] text-[#07163D]">
+          <div className="rounded-full bg-white p-3">
+            <FaCarSide
+              className="w-[40px] h-[40px] text-[#07163D]"
+              aria-hidden="true"
+            />
           </div>
-
-          <p className="text-gray-900 text-4xl font-bold">
-            {new Intl.NumberFormat().format(26500)}
-          </p>
+          <div>
+            <h2 className="text-[#07163D] text-lg font-semibold">Total RV</h2>
+            <p className="text-[#07163D] text-3xl font-bold tracking-tight">
+              26500
+            </p>
+          </div>
         </div>
       </div>
       {/* .............. */}
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
-        <div className="w-full p-5 bg-[#F9B038] rounded-lg shadow-md">
+        <div className="w-full p-5 bg-[#faaf37] border border-[#e19b31] text-[#07163D] rounded-lg shadow-sm">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
               <h1 className="text-[#07163D] text-lg font-bold">Users Growth</h1>
@@ -72,19 +69,32 @@ function DashboardPage() {
               {/* Selected Year Display */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2"
+                aria-haspopup="listbox"
+                aria-expanded={isOpen}
+                aria-controls="years-list-users"
+                aria-label="Select year for Users Growth"
               >
-                <span className="text-[#27E2F5]">{selectedYear}</span>
-                <FaChevronDown className="text-[#27E2F5] w-5 h-5 ml-5" />
+                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <FaChevronDown
+                  className="text-[#0b7bb3] w-5 h-5 ml-5"
+                  aria-hidden="true"
+                />
               </button>
 
               {/* Dropdown List */}
               {isOpen && (
-                <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg">
+                <div
+                  id="years-list-users"
+                  role="listbox"
+                  className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg"
+                >
                   {years.map((year) => (
                     <div
                       key={year}
                       onClick={() => handleSelect(year)}
+                      role="option"
+                      aria-selected={year === selectedYear}
                       className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
                         year === selectedYear ? "bg-gray-200" : ""
                       }`}
@@ -98,31 +108,42 @@ function DashboardPage() {
           </div>
           <UsersGrowth />
         </div>
-        <div className="w-full p-5 bg-[#F9B038] rounded-lg shadow-md">
+        <div className="w-full p-5 bg-[#faaf37] border border-[#e19b31] text-[#07163D] rounded-lg shadow-sm">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
             <div>
-              <h1 className="text-[#07163D] text-lg font-bold">
-                Total RV View
-              </h1>
+              <h1 className="text-[#07163D] text-lg font-bold">RV Growth</h1>
             </div>
 
             <div className="relative w-full md:w-32">
               {/* Selected Year Display */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2"
+                aria-haspopup="listbox"
+                aria-expanded={isOpen}
+                aria-controls="years-list-rv"
+                aria-label="Select year for Total RV View"
               >
-                <span className="text-[#27E2F5]">{selectedYear}</span>
-                <FaChevronDown className="text-[#27E2F5] w-5 h-5 ml-5" />
+                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <FaChevronDown
+                  className="text-[#0b7bb3] w-5 h-5 ml-5"
+                  aria-hidden="true"
+                />
               </button>
 
               {/* Dropdown List */}
               {isOpen && (
-                <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg">
+                <div
+                  id="years-list-rv"
+                  role="listbox"
+                  className="absolute z-10 w-full bg-white border border-gray-300 rounded-md mt-1 max-h-60 overflow-y-auto shadow-lg"
+                >
                   {years.map((year) => (
                     <div
                       key={year}
                       onClick={() => handleSelect(year)}
+                      role="option"
+                      aria-selected={year === selectedYear}
                       className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
                         year === selectedYear ? "bg-gray-200" : ""
                       }`}
@@ -136,9 +157,6 @@ function DashboardPage() {
           </div>
           <TotalRVView />
         </div>
-      </div>
-      <div>
-        <Users />
       </div>
     </div>
   );

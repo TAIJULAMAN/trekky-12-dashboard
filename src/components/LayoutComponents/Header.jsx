@@ -1,70 +1,11 @@
-import { LuBell } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
-import { FaBars, FaCog, FaHome, FaUsers } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { useRef, useState } from "react";
 import { Drawer } from "antd";
 import logo from "../../assets/header/logo.png";
 import { FaChevronRight } from "react-icons/fa";
-import { IoIosLogIn } from "react-icons/io";
-import { MdManageAccounts } from "react-icons/md";
-import { AiOutlineFileProtect } from "react-icons/ai";
-import { FaTimes } from "react-icons/fa";
-
-
-const AdminItems = [
-  {
-    key: "dashboard",
-    label: "Dashboard",
-    icon: FaHome,
-    link: "/",
-  },
-  {
-    key: "userManagement",
-    label: "User Management",
-    icon: FaUsers,
-    link: "/dashboard/user-management",
-  },
-  {
-    key: "sellermanagement",
-    label: "Vendor Management",
-    icon: MdManageAccounts,
-    link: "/dashboard/seller-management",
-  },
-  {
-    key: "expense",
-    label: "Expense & Cost Tracking",
-    icon: AiOutlineFileProtect,
-    link: "/expense",
-  },
-  {
-    key: "settings",
-    label: "Settings",
-    icon: FaCog,
-    link: "/dashboard/Settings/profile",
-    children: [
-      {
-        key: "profile",
-        label: "Profile",
-        link: "/dashboard/Settings/profile",
-      },
-      {
-        key: "terms",
-        label: "Terms & Condition",
-        link: "/dashboard/Settings/Terms&Condition",
-      },
-      {
-        key: "privacy",
-        label: "Privacy Policy",
-        link: "/dashboard/Settings/PrivacyPolicy",
-      },
-      {
-        key: "faq",
-        label: "Faq",
-        link: "/faq",
-      },
-    ],
-  },
-];
+import { IoIosLogOut } from "react-icons/io";
+import { AdminItems } from "./SideBar";
 
 const Header = () => {
   const [selectedKey, setSelectedKey] = useState("dashboard");
@@ -92,11 +33,23 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-white text-white px-5 py-5">
+    <div className="bg-white text-gray-900 px-5 py-5">
       <div className="flex justify-between items-center">
         <div className="lg:hidden">
-          <button onClick={showDrawer} className="p-2" aria-label="Open menu" title="Open menu">
-            <FaBars size={24} className="text-[#0b7bb3]" aria-hidden="true" focusable="false" />
+          <button
+            onClick={showDrawer}
+            className="p-2"
+            aria-label="Open menu"
+            title="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-drawer"
+          >
+            <FaBars
+              size={24}
+              className="text-[#0b7bb3]"
+              aria-hidden="true"
+              focusable="false"
+            />
           </button>
           <Drawer
             title={
@@ -110,15 +63,23 @@ const Header = () => {
             open={open}
             className="custom-drawer"
           >
-            <div className="">
+            <div id="mobile-drawer" className="">
               {AdminItems.map((item) => (
                 <div key={item.key}>
                   <Link
                     to={item.link}
-                    className={`my-4 py-3 px-3 flex items-center whitespace-nowrap cursor-pointer ${selectedKey === item.key
-                      ? "bg-[#27E2F5] text-white rounded-md"
-                      : "bg-[#EEEEEE] rounded-md"
-                      }`}
+                    className={`my-3 mx-1 py-3 px-3 flex items-center whitespace-nowrap cursor-pointer rounded-md border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2 ${
+                      selectedKey === item.key
+                        ? "bg-[#0b7bb3] text-white border-[#0b7bb3]"
+                        : "bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
+                    }`}
+                    aria-haspopup={item.children ? "menu" : undefined}
+                    aria-expanded={
+                      item.children
+                        ? expandedKeys.includes(item.key)
+                        : undefined
+                    }
+                    aria-current={selectedKey === item.key ? "page" : undefined}
                     onClick={(e) => {
                       if (item.children) {
                         e.preventDefault();
@@ -129,63 +90,34 @@ const Header = () => {
                       }
                     }}
                   >
-                    <div>
-                      {item?.icon && <item.icon />}
-                    </div>
+                    <div>{item?.icon && <item.icon aria-hidden="true" />}</div>
                     <span className="ml-3 text-base  font-medium">
                       {item.label}
                     </span>
                     {item.children && (
                       <FaChevronRight
-                        className={`ml-auto text-[#27E2F5] transform transition-all duration-300 ${expandedKeys.includes(item?.key) ? "rotate-90" : ""
-                          }`}
+                        className={`ml-auto text-[#0b7bb3] transform transition-all duration-300 ${
+                          expandedKeys.includes(item?.key) ? "rotate-90" : ""
+                        }`}
                       />
                     )}
                   </Link>
-
-                  {item.children && (
-                    <div
-                      className={`children-menu bg-white -my-2 mx-5 text-black transition-all duration-300 ${expandedKeys.includes(item.key) ? "expanded" : ""
-                        }`}
-                      style={{
-                        maxHeight: expandedKeys.includes(item.key)
-                          ? `${contentRef.current[item.key]?.scrollHeight}px`
-                          : "0",
-                      }}
-                      ref={(el) => (contentRef.current[item.key] = el)}
-                    >
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.key}
-                          to={child.link}
-                          className={`menu-item pl-5 py-3 my-2 flex items-center whitespace-nowrap  cursor-pointer ${selectedKey === child.key
-                            ? "bg-[#27E2F5] text-white rounded-md"
-                            : ""
-                            }`}
-                          onClick={() => {
-                            setSelectedKey(child.key);
-                            setExpandedKeys([]);
-                            onClose();
-                          }}
-                        >
-                          <span className="ml-5">{child.label}</span>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
 
             <div className="custom-sidebar-footer absolute bottom-0 w-[250px] p-4">
               <button
+                type="button"
                 onClick={handleLogout}
-                className="w-full flex border-2 border-[#27E2F5] text-[#27E2F5] text-start rounded-md p-3 mt-10"
+                aria-label="Log out"
+                title="Log out"
+                className="w-full flex border-2 border-red-600 text-red-700 text-start rounded-md p-3 mt-10 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
               >
-                <span className="text-2xl">
-                  <IoIosLogIn />
+                <span className="text-2xl" aria-hidden="true">
+                  <IoIosLogOut />
                 </span>
-                <span className="ml-3">Logout</span>
+                <span className="ml-3">Log Out</span>
               </button>
             </div>
           </Drawer>
