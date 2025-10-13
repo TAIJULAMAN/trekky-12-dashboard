@@ -2,11 +2,11 @@ import { baseApi } from "../baseApi";
 
 export const dashboardApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    // GET /dashboard/:year
     getAllDashboard: builder.query({
-      query: (params) => ({
-        url: "dashboard/user-seller-totals",
+      query: (year) => ({
+        url: `dashboard/${year ?? new Date().getFullYear()}`,
         method: "GET",
-        params, // e.g., { page: 1, limit: 10 }
       }),
       providesTags: ["dashboard"],
     }),

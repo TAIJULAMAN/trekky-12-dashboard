@@ -3,6 +3,7 @@ import { DownOutlined, TeamOutlined, CarOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import UsersGrowth from "./UsersGrowth";
 import TotalRVView from "./TotalRVView";
+import { useGetAllDashboardQuery } from "../../Redux/api/dashboard/dashboardApi";
 
 function DashboardPage() {
   const currentYear = dayjs().year();
@@ -21,6 +22,10 @@ function DashboardPage() {
     setIsOpen(false);
   };
 
+  const { data: dashboardData } = useGetAllDashboardQuery(selectedYear);
+
+  console.log("dashboardData", dashboardData);
+
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -36,7 +41,7 @@ function DashboardPage() {
               Total Users
             </h2>
             <p className="text-[#07163D] text-3xl font-semibold tracking-tight">
-              6500
+              {dashboardData?.data?.analytics?.totalUsers}
             </p>
           </div>
         </div>
@@ -51,7 +56,7 @@ function DashboardPage() {
           <div>
             <h2 className="text-[#07163D] text-lg font-semibold">Total RV</h2>
             <p className="text-[#07163D] text-3xl font-semibold tracking-tight">
-              26500
+              {dashboardData?.data?.analytics?.totalRvAddingGrowth}
             </p>
           </div>
         </div>

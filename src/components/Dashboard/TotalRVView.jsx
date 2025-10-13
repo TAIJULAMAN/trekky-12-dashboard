@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+ /* eslint-disable react/prop-types */
+import { useState, useEffect, useMemo } from "react";
 import {
   Area,
   AreaChart,
@@ -8,9 +8,26 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useGetAllDashboardQuery } from "../../Redux/api/dashboard/dashboardApi";
 
-const TotalRVView = () => {
+const monthLabels = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+const TotalRVView = ({ year }) => {
   const [chartHeight, setChartHeight] = useState(300);
+  const { data } = useGetAllDashboardQuery(year);
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,20 +43,27 @@ const TotalRVView = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const data = [
-    { month: "Jan", vendors: 100 },
-    { month: "Feb", vendors: 80 },
-    { month: "Mar", vendors: 65 },
-    { month: "Apr", vendors: 75 },
-    { month: "May", vendors: 105 },
-    { month: "Jun", vendors: 125 },
-    { month: "Jul", vendors: 135 },
-    { month: "Aug", vendors: 145 },
-    { month: "Sep", vendors: 175 },
-    { month: "Oct", vendors: 200 },
-    { month: "Nov", vendors: 200 },
-    { month: "Dec", vendors: 190 },
-  ];
+  const series = useMemo(() => {
+    const root = data?.data || data || {};
+    const analytics = root?.analytics || root;
+    const candidates = [
+      analytics?.rvGrowthByMonth,
+      analytics?.rvAddingGrowthByMonth,
+      analytics?.rvPerMonth,
+      analytics?.monthlyRv,
+      analytics?.rvAddedPerMonth,
+    ].find((arr) => Array.isArray(arr) && arr.length);
+
+    if (Array.isArray(candidates)) {
+      if (typeof candidates[0] === "number") {
+        return monthLabels.map((m, i) => ({ month: m, vendors: candidates[i] ?? 0 }));
+      }
+      if (typeof candidates[0] === "object") {
+        return monthLabels.map((m, i) => ({ month: m, vendors: candidates[i]?.value ?? candidates[i]?.count ?? 0 }));
+      }
+    }
+    return monthLabels.map((m) => ({ month: m, vendors: 0 }));
+  }, [data]);
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -56,10 +80,7 @@ const TotalRVView = () => {
   return (
     <div className="w-full h-[300px]">
       <ResponsiveContainer width="100%" height={chartHeight}>
-        <AreaChart
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
+        <AreaChart data={series} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="vendorGrowth" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#3a3a3a" stopOpacity={1} />
