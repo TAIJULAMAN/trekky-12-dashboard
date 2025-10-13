@@ -4,7 +4,7 @@ const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     logIn: builder.mutation({
       query: (data) => {
-        console.log("Data being sent to the API:", data);
+        // console.log("Data being sent to the API:", data);
         return {
           url: "auth/admin-login",
           method: "POST",
@@ -15,26 +15,23 @@ const authApi = baseApi.injectEndpoints({
     }),
     forgotPassword: builder.mutation({
       query: (data) => ({
-        url: "auth/forgot-password",
+        url: "auth/admin-forgot-password",
         method: "POST",
         body: data,
       }),
     }),
     verifyEmail: builder.mutation({
       query: (data) => ({
-        url: "auth/verify-code",
+        url: "auth/admin-verify-code",
         method: "POST",
         body: data,
       }),
     }),
     resetPassword: builder.mutation({
-      query: ({ resetToken, newPassword }) => ({
-        url: "auth/reset-password",
+      query: (body) => ({
+        url: "auth/admin-reset-password",
         method: "POST",
-        body: { resetToken, newPassword },
-        headers: {
-          Authorization: `Bearer ${resetToken}`,
-        },
+        body,
       }),
 
       invalidatesTags: ["auth"],
