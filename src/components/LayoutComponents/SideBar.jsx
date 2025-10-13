@@ -1,7 +1,16 @@
-import { HomeOutlined, UserOutlined, FileTextOutlined, SafetyOutlined, QuestionCircleOutlined, RightOutlined, LogoutOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  UserOutlined,
+  FileTextOutlined,
+  SafetyOutlined,
+  QuestionCircleOutlined,
+  RightOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
 import logo from "../../assets/header/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import LogoutButton from "./LogoutButton";
 
 export const AdminItems = [
   {
@@ -85,12 +94,12 @@ const SideBar = () => {
     );
   };
 
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
   return (
-    <div className="custom-sidebar min-h-[100vh] bg-white" role="navigation" aria-label="Sidebar">
+    <div
+      className="custom-sidebar min-h-[100vh] bg-white"
+      role="navigation"
+      aria-label="Sidebar"
+    >
       <div className="custom-sidebar-logo flex justify-center">
         <img src={logo} alt="Logo" className="w-[150px] mt-5" />
       </div>
@@ -114,11 +123,16 @@ const SideBar = () => {
                 <Link
                   to={item.link}
                   className={`menu-item my-3 mx-4 py-3 px-3 flex items-center cursor-pointer rounded-md border transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2 ${
-                    selectedKey === item.key || isSettingsActive || isCreatorActive || isCategoriesActive
+                    selectedKey === item.key ||
+                    isSettingsActive ||
+                    isCreatorActive ||
+                    isCategoriesActive
                       ? "bg-[#0b7bb3] text-white border-[#0b7bb3]"
                       : "bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
                   }`}
-                  aria-expanded={item.children ? expandedKeys.includes(item.key) : undefined}
+                  aria-expanded={
+                    item.children ? expandedKeys.includes(item.key) : undefined
+                  }
                   aria-current={selectedKey === item.key ? "page" : undefined}
                   onClick={(e) => {
                     if (item.children) {
@@ -146,7 +160,8 @@ const SideBar = () => {
                 {item.children && (
                   <div
                     className={`children-menu bg-white -my-2 mx-5 transition-all duration-300 ${
-                      expandedKeys.includes(item.key) ? "expanded" : ""}
+                      expandedKeys.includes(item.key) ? "expanded" : ""
+                    }
                     }`}
                     style={{
                       maxHeight: expandedKeys.includes(item.key)
@@ -164,7 +179,9 @@ const SideBar = () => {
                             ? "bg-[#0b7bb3] text-white border-[#0b7bb3]"
                             : "bg-white text-gray-800 border-gray-200 hover:bg-gray-100"
                         }`}
-                        aria-current={selectedKey === child.key ? "page" : undefined}
+                        aria-current={
+                          selectedKey === child.key ? "page" : undefined
+                        }
                         onClick={() => {
                           setSelectedKey(child.key);
                           setExpandedKeys([]);
@@ -182,20 +199,7 @@ const SideBar = () => {
       </div>
 
       {/* Logout Button */}
-      <div className="w-full p-4 px-5">
-        <button
-          type="button"
-          onClick={handleLogout}
-          aria-label="Log out"
-          title="Log out"
-          className="w-full flex justify-start items-center text-start rounded-md p-3 mt-20 border-2 border-red-600 text-red-700 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
-        >
-          <span className="text-xl" aria-hidden="true">
-            <LogoutOutlined />
-          </span>
-          <span className="ml-3">Log Out</span>
-        </button>
-      </div>
+      <LogoutButton />
     </div>
   );
 };

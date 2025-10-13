@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Loader from "../shared/Loader";
+import PrivateRoute from "./PrivateRoute";
 
 const Dashboard = lazy(() => import("../components/Dashboard/Dashboard"));
 const Profile = lazy(() => import("../page/Settings/Profile"));
@@ -19,7 +20,9 @@ export const router = createBrowserRouter([
     path: "/",
     element: (
       <Suspense fallback={<Loader />}>
-        <DashboardLayout />
+        <PrivateRoute>
+          <DashboardLayout />
+        </PrivateRoute>
       </Suspense>
     ),
     children: [

@@ -21,6 +21,7 @@
     "recharts": "^2.13.3",
     "redux-persist": "^6.0.0",
     "sweetalert2": "^11.14.5",
+    "jwt-decode": "^4.0.0",
     "tailwind-variants": "^0.3.0",
     "vercel": "^44.6.4"
   },

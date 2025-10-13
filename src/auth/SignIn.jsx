@@ -23,7 +23,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await logIn({ email, password }).unwrap();
-      console.log("res from log in", res?.accessToken);
+      // console.log("res from log in", res?.accessToken);
       await Swal.fire({
         icon: "success",
         title: "Welcome back!",

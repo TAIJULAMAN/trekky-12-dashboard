@@ -6,7 +6,7 @@ import TotalRVView from "./TotalRVView";
 
 function DashboardPage() {
   const currentYear = dayjs().year();
-  const startYear = 2020;
+  const startYear = 2024;
   const [selectedYear, setSelectedYear] = useState(currentYear);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +26,10 @@ function DashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div className="flex justify-between items-center gap-5 p-6 rounded-lg border border-[#e19b31] bg-[#faaf37] text-[#07163D]">
           <div className="rounded-full bg-white p-3">
-            <TeamOutlined className="text-[#07163D] text-[40px]" aria-hidden="true" />
+            <TeamOutlined
+              className="text-[#07163D] text-[40px]"
+              aria-hidden="true"
+            />
           </div>
           <div>
             <h2 className="text-[#07163D] text-lg font-semibold">
@@ -40,7 +43,10 @@ function DashboardPage() {
 
         <div className="flex justify-between items-center gap-5 p-6 rounded-lg border border-[#e19b31] bg-[#faaf37] text-[#07163D]">
           <div className="rounded-full bg-white p-3">
-            <CarOutlined className="text-[#07163D] text-[40px]" aria-hidden="true" />
+            <CarOutlined
+              className="text-[#07163D] text-[40px]"
+              aria-hidden="true"
+            />
           </div>
           <div>
             <h2 className="text-[#07163D] text-lg font-semibold">Total RV</h2>
@@ -69,7 +75,10 @@ function DashboardPage() {
                 aria-label="Select year for Users Growth"
               >
                 <span className="text-[#0b7bb3]">{selectedYear}</span>
-                <DownOutlined className="text-[#0b7bb3] text-[20px] ml-5" aria-hidden="true" />
+                <DownOutlined
+                  className="text-[#0b7bb3] text-[20px] ml-5"
+                  aria-hidden="true"
+                />
               </button>
 
               {/* Dropdown List */}
@@ -115,7 +124,10 @@ function DashboardPage() {
                 aria-label="Select year for Total RV View"
               >
                 <span className="text-[#0b7bb3]">{selectedYear}</span>
-                <DownOutlined className="text-[#0b7bb3] text-[20px] ml-5" aria-hidden="true" />
+                <DownOutlined
+                  className="text-[#0b7bb3] text-[20px] ml-5"
+                  aria-hidden="true"
+                />
               </button>
 
               {/* Dropdown List */}

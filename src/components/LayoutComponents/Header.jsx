@@ -6,6 +6,7 @@ import logo from "../../assets/header/logo.png";
 import { AdminItems } from "./SideBar";
 import { useGetAdminProfileQuery } from "../../Redux/api/profileApi";
 import Loader from "../../shared/Loader";
+import LogoutButton from "./LogoutButton";
 
 const Header = () => {
   const [selectedKey, setSelectedKey] = useState("dashboard");
@@ -14,14 +15,12 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [placement] = useState("left");
 
+  const { data: adminData, isLoading } = useGetAdminProfileQuery();
+  console.log("adminData", adminData);
 
-    const { data:adminData, isLoading } = useGetAdminProfileQuery();
-    console.log("adminData", adminData);
-
-
-    if (isLoading) {
-      return <Loader />;
-    }
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const onParentClick = (key) => {
     setExpandedKeys((prev) =>
@@ -34,10 +33,6 @@ const Header = () => {
 
   const onClose = () => {
     setOpen(false);
-  };
-
-  const handleLogout = () => {
-    navigate("/login");
   };
 
   return (
@@ -102,20 +97,7 @@ const Header = () => {
               ))}
             </div>
 
-            <div className="custom-sidebar-footer absolute bottom-0 w-[250px] p-4">
-              <button
-                type="button"
-                onClick={handleLogout}
-                aria-label="Log out"
-                title="Log out"
-                className="w-full flex border-2 border-red-600 text-red-700 text-start rounded-md p-3 mt-10 hover:bg-red-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
-              >
-                <span className="text-xl" aria-hidden="true">
-                  <LogoutOutlined />
-                </span>
-                <span className="ml-3">Log Out</span>
-              </button>
-            </div>
+            <LogoutButton />
           </Drawer>
         </div>
 
@@ -129,7 +111,9 @@ const Header = () => {
                   alt="User Avatar"
                 />
                 <div className="hidden md:flex flex-col items-start">
-                  <h3 className="text-gray-800 text-sm">{adminData?.admin?.name}</h3>
+                  <h3 className="text-gray-800 text-sm">
+                    {adminData?.admin?.name}
+                  </h3>
                   <p className="text-xs px-2 py-1 bg-[#0b7bb3] text-white rounded">
                     {adminData?.admin?.role}
                   </p>
