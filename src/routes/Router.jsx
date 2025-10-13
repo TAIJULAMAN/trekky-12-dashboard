@@ -8,7 +8,7 @@ const TermsCondition = lazy(() => import("../page/Settings/TermsCondition"));
 const PrivacyPolicy = lazy(() => import("../page/Settings/PrivacyPolicy"));
 const VerificationCode = lazy(() => import("../auth/VerificationCode"));
 const DashboardLayout = lazy(() => import("../layout/DashboardLayout"));
-const Faq = lazy(() => import("../page/Settings/Faq"));
+const Faq = lazy(() => import("../page/Settings/faq/Faq"));
 const ResetPassword = lazy(() => import("../auth/ResetPassword"));
 const ForgetPassword = lazy(() => import("../auth/ForgetPassword"));
 const Users = lazy(() => import("../page/UserManagement/Users"));

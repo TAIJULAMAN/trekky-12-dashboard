@@ -4,24 +4,24 @@ const profileApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAdminProfile: builder.query({
       query: () => ({
-        url: "user/me",
+        url: "admin",
         method: "GET",
       }),
       providesTags: ["profile"],
     }),
     updateProfile: builder.mutation({
       query: (formData) => ({
-        url: "user/me",
+        url: "admin/update",
         method: "PUT",
         body: formData,
       }),
       invalidatesTags: ["profile"],
     }),
     changeAdminPassword: builder.mutation({
-      query: ({ currentPassword, newPassword }) => ({
-        url: "auth/change-password",
-        method: "PUT",
-        body: { currentPassword, newPassword },
+      query: (body) => ({
+        url: "admin/update",
+        method: "POST",
+        body,
       }),
       invalidatesTags: ["profile"],
     }),

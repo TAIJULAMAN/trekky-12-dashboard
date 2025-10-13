@@ -2,50 +2,36 @@ import { baseApi } from "./baseApi";
 
 const faqApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // Get all FAQs
     getAllFaq: builder.query({
       query: (params) => ({
-        url: "faqs",
+        url: "manage/get-faq",
         method: "GET",
         params,
       }),
       providesTags: ["faq"],
     }),
-
-    // Get specific FAQ by ID
-    getFaqById: builder.query({
-      query: (_id) => ({
-        url: `faqs/${_id}`,
-        method: "GET",
-      }),
-      providesTags: ["faq"],
-    }),
-
-    // Create new FAQ
     createFaq: builder.mutation({
       query: (data) => ({
-        url: "faqs",
+        url: "manage/add-faq",
         method: "POST",
         body: data,
       }),
       invalidatesTags: ["faq"],
     }),
-
-    // Update existing FAQ
     updateFaq: builder.mutation({
-      query: ({ _id, data }) => ({
-        url: `faqs/${_id}`,
-        method: "PUT",
-        body: data,
+      query: (body) => ({
+        url: "manage/update-faq",
+        method: "PATCH",
+        body,
       }),
       invalidatesTags: ["faq"],
     }),
-
     // Delete FAQ
     deleteFaq: builder.mutation({
-      query: (_id) => ({
-        url: `faqs/${_id}`,
+      query: (faqId) => ({
+        url: "manage/delete-faq",
         method: "DELETE",
+        params: { faqId },
       }),
       invalidatesTags: ["faq"],
     }),
@@ -54,7 +40,6 @@ const faqApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllFaqQuery,
-  useGetFaqByIdQuery,
   useCreateFaqMutation,
   useUpdateFaqMutation,
   useDeleteFaqMutation,

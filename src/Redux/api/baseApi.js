@@ -22,5 +22,6 @@ export const baseApi = createApi({
     "termsAndConditions",
     "faq",
     "user",
+    "profile",
   ],
 });
