@@ -2,279 +2,79 @@ import { useState } from "react";
 import { SearchOutlined, EyeOutlined, DeleteOutlined } from "@ant-design/icons";
 import PageHeading from "../../shared/PageHeading";
 import { ConfigProvider, Modal, Table } from "antd";
+import {
+  useGetAllUsersQuery,
+  useBlockUserMutation,
+} from "../../Redux/api/user/userApi";
+import Swal from "sweetalert2";
 
 const Users = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [isModalOpen3, setIsModalOpen3] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const [search, setSearch] = useState("");
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleOk2 = () => {
-    setIsModalOpen3(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel2 = () => {
-    setIsModalOpen2(false);
-  };
-  const handleCancel3 = () => {
-    setIsModalOpen3(false);
-  };
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const showModal2 = () => {
-    setIsModalOpen2(true);
-  };
-  const showModal3 = () => {
-    setIsModalOpen3(true);
+  const { data, isFetching } = useGetAllUsersQuery();
+  // console.log("data from user page", data);
+  const [blockUser, { isLoading: isBlocking }] = useBlockUserMutation();
+
+  const handleOk2 = async () => {
+    if (!selectedUser) return;
+    try {
+      await blockUser({ id: selectedUser.id || selectedUser._id }).unwrap();
+      await Swal.fire({
+        icon: "success",
+        title: selectedUser.isBlocked ? "User unblocked" : "User blocked",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1200,
+        timerProgressBar: true,
+        background: "#111827",
+        color: "#ffffff",
+        iconColor: "#10B981",
+      });
+    } catch (err) {
+      const msg = err?.data?.message || err?.error || "Action failed";
+      await Swal.fire({
+        icon: "error",
+        title: msg,
+        confirmButtonColor: "#0b7bb3",
+      });
+    } finally {
+      setIsModalOpen3(false);
+      setSelectedUser(null);
+    }
   };
 
-  const dataSource = [
-    {
-      key: "1",
-      no: "1",
-      name: "Shah Aman",
-      email: "shahaman@example.com",
-      joinedDate: "2022-01-01",
-      location: "Pakistan",
-    },
-    {
-      key: "2",
-      no: "2",
-      name: "John Doe",
-      email: "johndoe@example.com",
-      joinedDate: "2022-02-12",
-      location: "USA",
-    },
-    {
-      key: "3",
-      no: "3",
-      name: "Jane Smith",
-      email: "janesmith@example.com",
-      joinedDate: "2022-03-15",
-      location: "Canada",
-    },
-    {
-      key: "4",
-      no: "4",
-      name: "Mohammed Ali",
-      email: "mohammedali@example.com",
-      joinedDate: "2022-04-20",
-      location: "UK",
-    },
-    {
-      key: "5",
-      no: "5",
-      name: "Laila Noor",
-      email: "lailanoor@example.com",
-      joinedDate: "2022-05-25",
-      location: "India",
-    },
-    {
-      key: "6",
-      no: "6",
-      name: "Ahmed Khan",
-      email: "ahmedkhan@example.com",
-      joinedDate: "2022-06-10",
-      location: "Pakistan",
-    },
-    {
-      key: "7",
-      no: "7",
-      name: "Sadia Shah",
-      email: "sadiashah@example.com",
-      joinedDate: "2022-07-01",
-      location: "Bangladesh",
-    },
-    {
-      key: "8",
-      no: "8",
-      name: "Aliya Rizvi",
-      email: "aliyarizvi@example.com",
-      joinedDate: "2022-08-15",
-      location: "Pakistan",
-    },
-    {
-      key: "9",
-      no: "9",
-      name: "Zain Baig",
-      email: "zainbaig@example.com",
-      joinedDate: "2022-09-22",
-      location: "Saudi Arabia",
-    },
-    {
-      key: "10",
-      no: "10",
-      name: "Fatima Ali",
-      email: "fatimaali@example.com",
-      joinedDate: "2022-10-30",
-      location: "UAE",
-    },
-    {
-      key: "11",
-      no: "11",
-      name: "Imran Akhtar",
-      email: "imranakhtar@example.com",
-      joinedDate: "2022-11-13",
-      location: "Pakistan",
-    },
-    {
-      key: "12",
-      no: "12",
-      name: "Sara Ahsan",
-      email: "saraahsan@example.com",
-      joinedDate: "2022-12-05",
-      location: "Canada",
-    },
-    {
-      key: "13",
-      no: "13",
-      name: "Ali Hassan",
-      email: "alihassan@example.com",
-      joinedDate: "2023-01-20",
-      location: "Pakistan",
-    },
-    {
-      key: "14",
-      no: "14",
-      name: "Maya Shahid",
-      email: "mayashahid@example.com",
-      joinedDate: "2023-02-11",
-      location: "USA",
-    },
-    {
-      key: "15",
-      no: "15",
-      name: "Omar Farooq",
-      email: "omarfarooq@example.com",
-      joinedDate: "2023-03-14",
-      location: "UK",
-    },
-    {
-      key: "16",
-      no: "16",
-      name: "Nida Khokhar",
-      email: "nidakhokhar@example.com",
-      joinedDate: "2023-04-05",
-      location: "Pakistan",
-    },
-    {
-      key: "17",
-      no: "17",
-      name: "Samar Ahmed",
-      email: "samarahmed@example.com",
-      joinedDate: "2023-05-17",
-      location: "UAE",
-    },
-    {
-      key: "18",
-      no: "18",
-      name: "Raheel Khan",
-      email: "raheelkhan@example.com",
-      joinedDate: "2023-06-29",
-      location: "Saudi Arabia",
-    },
-    {
-      key: "19",
-      no: "19",
-      name: "Hassan Raza",
-      email: "hassanraza@example.com",
-      joinedDate: "2023-07-22",
-      location: "Pakistan",
-    },
-    {
-      key: "20",
-      no: "20",
-      name: "Mariam Baig",
-      email: "mariambaig@example.com",
-      joinedDate: "2023-08-10",
-      location: "India",
-    },
-    {
-      key: "21",
-      no: "21",
-      name: "Nashit Khan",
-      email: "nashitkhan@example.com",
-      joinedDate: "2023-09-01",
-      location: "USA",
-    },
-    {
-      key: "22",
-      no: "22",
-      name: "Farhan Sadiq",
-      email: "farhansadiq@example.com",
-      joinedDate: "2023-10-13",
-      location: "Pakistan",
-    },
-    {
-      key: "23",
-      no: "23",
-      name: "Alina Noor",
-      email: "alinanoor@example.com",
-      joinedDate: "2023-11-05",
-      location: "Canada",
-    },
-    {
-      key: "24",
-      no: "24",
-      name: "Nazia Iqbal",
-      email: "naziaiqbal@example.com",
-      joinedDate: "2023-12-08",
-      location: "UK",
-    },
-    {
-      key: "25",
-      no: "25",
-      name: "Owais Malik",
-      email: "owaismalik@example.com",
-      joinedDate: "2024-01-12",
-      location: "Pakistan",
-    },
-    {
-      key: "26",
-      no: "26",
-      name: "Sana Younis",
-      email: "sanayounis@example.com",
-      joinedDate: "2024-02-04",
-      location: "UAE",
-    },
-    {
-      key: "27",
-      no: "27",
-      name: "Bilal Imran",
-      email: "bilalimran@example.com",
-      joinedDate: "2024-03-19",
-      location: "Saudi Arabia",
-    },
-    {
-      key: "28",
-      no: "28",
-      name: "Areeba Jamil",
-      email: "areebajamil@example.com",
-      joinedDate: "2024-04-10",
-      location: "Pakistan",
-    },
-    {
-      key: "29",
-      no: "29",
-      name: "Kiran Bukhari",
-      email: "kiranbukhari@example.com",
-      joinedDate: "2024-05-15",
-      location: "India",
-    },
-    {
-      key: "30",
-      no: "30",
-      name: "Usman Saeed",
-      email: "usmansaeed@example.com",
-      joinedDate: "2024-06-05",
-      location: "Bangladesh",
-    },
-  ];
+  const users = data?.users || [];
+  const normalizedSearch = search.trim().toLowerCase();
+  const filteredUsers = normalizedSearch
+    ? users.filter((u) => {
+        const name = (u?.name || "").toLowerCase();
+        const email = (u?.email || "").toLowerCase();
+        return (
+          name.includes(normalizedSearch) || email.includes(normalizedSearch)
+        );
+      })
+    : users;
+  const total = filteredUsers.length;
+  const start = (page - 1) * pageSize;
+  const pageSlice = filteredUsers.slice(start, start + pageSize);
+  const dataSource = pageSlice.map((u, idx) => ({
+    key: u?._id || start + idx,
+    id: u?._id || start + idx,
+    no: (start + idx + 1).toString(),
+    name: u?.name || "No Name",
+    email: u?.email || "No Email",
+    image: u?.profilePic || "No Image",
+    isBlocked: u?.isBlocked,
+    joinedDate: u?.createdAt
+      ? new Date(u.createdAt).toLocaleDateString()
+      : "No Date",
+  }));
 
   const columns = [
     { title: "No", dataIndex: "no", key: "no" },
@@ -284,7 +84,11 @@ const Users = () => {
       render: (_, record) => (
         <div className="flex items-center gap-3">
           <img
-            src={`https://avatar.iran.liara.run/public/${record.no}`}
+            src={
+              record.image && record.image !== "No Image"
+                ? record.image
+                : `https://avatar.iran.liara.run/public/${record.no}`
+            }
             className="w-10 h-10 object-cover rounded-full"
             alt="User Avatar"
           />
@@ -293,24 +97,29 @@ const Users = () => {
       ),
     },
     { title: "Joined Date", dataIndex: "joinedDate", key: "joinedDate" },
-    { title: "Location", dataIndex: "location", key: "location" },
     { title: "Email", dataIndex: "email", key: "email" },
     {
       title: "Action",
       key: "action",
-      render: () => (
+      render: (_, record) => (
         <div className="flex items-center gap-3">
           <button
-            onClick={showModal2}
+            onClick={() => {
+              setSelectedUser(record);
+              setIsModalOpen2(true);
+            }}
             className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
           >
             <EyeOutlined className="text-[24px] text-[#0b7bb3]" />
           </button>
           <button
-            onClick={showModal}
-            className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg p-2 bg-[#b4e2ed]"
+            onClick={() => {
+              setSelectedUser(record);
+              setIsModalOpen3(true);
+            }}
+            className="border border-[#0b7bb3] text-[#0b7bb3] rounded-lg px-3 py-1 bg-[#b4e2ed]"
           >
-            <DeleteOutlined className="text-[24px] text-[#0b7bb3]" />
+            {record.isBlocked ? "Unblock" : "Block"}
           </button>
         </div>
       ),
@@ -323,25 +132,23 @@ const Users = () => {
         <div className="flex-shrink-0 w-full lg:w-auto">
           <PageHeading title="User Management" />
         </div>
-        
+
         <div className="flex flex-col sm:flex-row justify-end items-stretch sm:items-center gap-3 sm:gap-4 w-full lg:w-auto">
           {/* Search Input */}
           <div className="relative w-full sm:w-[280px] lg:w-[320px]">
             <input
               type="text"
               placeholder="Search users..."
-              className="border-2 border-[#F59B07] bg-[#F59B07] py-3 pl-12 pr-4 outline-none w-full rounded-lg text-white placeholder:text-white/80 text-sm focus:ring-2 focus:ring-[#F59B07]/50 transition-all"
+              value={search}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setPage(1);
+              }}
+              className="border-2 border-[#0b7bb3] bg-[#0b7bb3] py-3 pl-12 pr-4 outline-none w-full rounded-lg text-white placeholder:text-white/80 text-sm"
             />
             <span className="text-white absolute top-0 left-0 h-full px-4 flex items-center justify-center cursor-pointer">
               <SearchOutlined className="text-lg" />
             </span>
-          </div>
-          
-          {/* Approve All Button */}
-          <div className="flex-shrink-0">
-            <button className="bg-[#F59B07] hover:bg-[#E8890A] rounded-lg px-6 py-3 text-white text-sm font-medium transition-colors duration-200 w-full sm:w-auto whitespace-nowrap shadow-sm">
-              Approve All
-            </button>
           </div>
         </div>
       </div>
@@ -376,61 +183,53 @@ const Users = () => {
         <Table
           dataSource={dataSource}
           columns={columns}
-          pagination={{ pageSize: 10 }}
+          loading={isFetching || isBlocking}
+          pagination={{
+            current: page,
+            pageSize,
+            total,
+            showSizeChanger: false,
+            onChange: (p, ps) => {
+              setPage(p);
+              setPageSize(ps);
+            },
+          }}
+          rowKey={(record) => record.id || record.key}
           scroll={{ x: "max-content" }}
         />
 
         <Modal
-          open={isModalOpen}
-          centered
-          onCancel={handleCancel}
-          footer={null}
-        >
-          <div className="p-5">
-            <h1 className="text-4xl text-center text-[#0D0D0D]">
-              Are you sure you want to delete ?
-            </h1>
-
-            <div className="text-center py-5">
-              <button
-                onClick={handleOk}
-                className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded"
-              >
-                Yes,delete.
-              </button>
-            </div>
-            <div className="text-center pb-5">
-              <button
-                onClick={handleOk}
-                className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded"
-              >
-                No,Don’t delete
-              </button>
-            </div>
-          </div>
-        </Modal>
-        <Modal
           open={isModalOpen3}
           centered
-          onCancel={handleCancel3}
+          onCancel={() => {
+            setIsModalOpen3(false);
+          }}
           footer={null}
         >
           <div className="p-5">
             <h1 className="text-4xl text-center text-[#0D0D0D]">
-              Are you sure you want to block ?
+              {selectedUser?.isBlocked
+                ? "Unblock this user?"
+                : "Block this user?"}
             </h1>
 
             <div className="text-center py-5">
               <button
                 onClick={handleOk2}
-                className="bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded"
+                disabled={isBlocking}
+                className={`bg-[#0b7bb3] text-white font-semibold w-full py-2 rounded ${
+                  isBlocking ? "opacity-70 cursor-not-allowed" : ""
+                }`}
               >
-                Yes,block
+                {selectedUser?.isBlocked ? "Yes, unblocking" : "Yes, blocking"}
               </button>
             </div>
             <div className="text-center pb-5">
               <button
-                onClick={handleOk2}
+                onClick={() => {
+                  setIsModalOpen3(false);
+                  setSelectedUser(null);
+                }}
                 className="text-[#0b7bb3] border-2 border-[#0b7bb3] bg-white font-semibold w-full py-2 rounded"
               >
                 No,Don’t block
@@ -441,43 +240,46 @@ const Users = () => {
         <Modal
           open={isModalOpen2}
           centered
-          onCancel={handleCancel2}
+          onCancel={() => {
+            setIsModalOpen2(false);
+          }}
           footer={null}
         >
           <div className="p-5">
-            <div className="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-sm">
-              <div className="flex flex-col items-center pt-6 pb-4">
-                <div className="relative w-20 h-20 mb-3">
+            <div className="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-sm border border-[#e6f4f8]">
+              <div className="bg-gradient-to-r from-[#b4e2ed] to-[#e6f4f8] p-6 flex flex-col items-center">
+                <div className="relative w-24 h-24 mb-3">
                   <img
-                    src="https://avatar.iran.liara.run/public/1"
+                    src={selectedUser?.image && selectedUser?.image !== "No Image"
+                      ? selectedUser?.image
+                      : `https://avatar.iran.liara.run/public/${selectedUser?.no || 1}`}
                     alt="Profile picture"
-                    width={80}
-                    height={80}
-                    className="rounded-full bg-sky-200"
+                    width={96}
+                    height={96}
+                    className="rounded-full object-cover border-2 border-white shadow"
                   />
                 </div>
-                <h2 className="text-xl font-medium text-gray-800">Jon Smith</h2>
-                <p className="text-gray-600 text-sm">jon@gmail.com</p>
+                <h2 className="text-2xl font-semibold text-[#0D0D0D]">{selectedUser?.name || "No Name"}</h2>
+                <p className="text-gray-600 text-sm">{selectedUser?.email || "No Email"}</p>
+                <span className={`mt-3 text-xs px-3 py-1 rounded-full ${selectedUser?.isBlocked ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700'}`}>
+                  {selectedUser?.isBlocked ? 'Blocked' : 'Active'}
+                </span>
               </div>
 
-              <div className="px-6 pb-6">
-                <h3 className="text-gray-600 font-medium mb-4">User Details</h3>
-
+              <div className="px-6 py-5">
+                <h3 className="text-[#0D0D0D] font-medium mb-4">User Details</h3>
                 <div className="grid grid-cols-2 gap-y-3">
-                  <div className="text-gray-500">User name</div>
-                  <div className="text-gray-700">Guitar Ross biyate</div>
+                  <div className="text-gray-500">Name</div>
+                  <div className="text-gray-800">{selectedUser?.name || "—"}</div>
 
-                  <div className="text-gray-500">E-mail</div>
-                  <div className="text-gray-700">rvi.54@gmail.com</div>
-
-                  <div className="text-gray-500">Phone Number</div>
-                  <div className="text-gray-700">345453211</div>
-
-                  <div className="text-gray-500">Location</div>
-                  <div className="text-gray-700">France</div>
+                  <div className="text-gray-500">Email</div>
+                  <div className="text-gray-800">{selectedUser?.email || "—"}</div>
 
                   <div className="text-gray-500">Joined</div>
-                  <div className="text-gray-700">20-25-2025</div>
+                  <div className="text-gray-800">{selectedUser?.joinedDate || "—"}</div>
+
+                  <div className="text-gray-500">Status</div>
+                  <div className="text-gray-800">{selectedUser?.isBlocked ? 'Blocked' : 'Active'}</div>
                 </div>
               </div>
             </div>

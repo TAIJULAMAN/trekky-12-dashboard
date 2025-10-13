@@ -4,18 +4,17 @@ export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllUsers: builder.query({
       query: (params) => ({
-        url: "user/admin/users",
+        url: "dashboard/users",
         method: "GET",
-        params, // e.g., { page: 1, limit: 10, search: "" }
+        params,
       }),
-      
+
       providesTags: ["user"],
     }),
     blockUser: builder.mutation({
-      query: ({ id, isBlocked }) => ({
-        url: `user/admin/users/${id}/block`,
-        method: "PATCH",
-        body: { isBlocked },
+      query: ({ id }) => ({
+        url: `dashboard/toggle-block/${id}`,
+        method: "PUT",
       }),
       invalidatesTags: ["user"],
     }),
