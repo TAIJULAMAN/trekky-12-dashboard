@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Drawer } from "antd";
 import logo from "../../assets/header/logo.png";
 import { AdminItems } from "./SideBar";
+import { useGetAdminProfileQuery } from "../../Redux/api/profileApi";
+import Loader from "../../shared/Loader";
 
 const Header = () => {
   const [selectedKey, setSelectedKey] = useState("dashboard");
@@ -11,6 +13,15 @@ const Header = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [placement] = useState("left");
+
+
+    const { data:adminData, isLoading } = useGetAdminProfileQuery();
+    console.log("adminData", adminData);
+
+
+    if (isLoading) {
+      return <Loader />;
+    }
 
   const onParentClick = (key) => {
     setExpandedKeys((prev) =>
@@ -113,14 +124,14 @@ const Header = () => {
             <Link to={"/dashboard/Settings/profile"}>
               <div className="flex items-center gap-3">
                 <img
-                  src="https://avatar.iran.liara.run/public/44"
+                  src={adminData?.admin?.profilePic}
                   className="w-[40px] h-[40px] object-cover rounded-full border-2 border-[#0b7bb3]"
                   alt="User Avatar"
                 />
                 <div className="hidden md:flex flex-col items-start">
-                  <h3 className="text-gray-800 text-sm">Shah Aman</h3>
+                  <h3 className="text-gray-800 text-sm">{adminData?.admin?.name}</h3>
                   <p className="text-xs px-2 py-1 bg-[#0b7bb3] text-white rounded">
-                    Admin
+                    {adminData?.admin?.role}
                   </p>
                 </div>
               </div>

@@ -1,12 +1,55 @@
-
 import { useState } from "react";
 import { CameraOutlined } from "@ant-design/icons";
 import EditProfile from "./EditProfile";
 import ChangePass from "./ChangePass";
 import PageHeading from "../../shared/PageHeading";
+import Loader from "../../shared/Loader";
+import {
+  useGetAdminProfileQuery,
+  useUpdateProfileMutation,
+} from "../../Redux/api/profileApi";
+import Swal from "sweetalert2";
 
-function ProfilePage() {
+export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState("editProfile");
+
+  const { data: adminProfile, isLoading } = useGetAdminProfileQuery();
+
+  const [updateProfile, { isLoading: isUpdating }] = useUpdateProfileMutation();
+
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const handlePhotoChange = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      const fd = new FormData();
+      fd.append("profilePic", file);
+      await updateProfile(fd).unwrap();
+      setPreviewUrl(URL.createObjectURL(file));
+      await Swal.fire({
+        icon: "success",
+        title: "Photo updated",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1200,
+        timerProgressBar: true,
+        background: "#111827",
+        color: "#ffffff",
+        iconColor: "#10B981",
+      });
+    } catch (err) {
+      const msg = err?.data?.message || err?.error || "Failed to update photo";
+      await Swal.fire({ icon: "error", title: msg, confirmButtonColor: "#0b7bb3" });
+    } finally {
+      e.target.value = "";
+    }
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-screen">
@@ -23,7 +66,7 @@ function ProfilePage() {
               <div className="relative inline-block mb-4">
                 <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 bg-gray-200 rounded-full border-4 border-white shadow-xl overflow-hidden">
                   <img
-                    src="https://avatar.iran.liara.run/public/44"
+                    src={previewUrl || adminProfile?.admin?.profilePic}
                     alt="profile"
                     className="w-full h-full object-cover"
                   />
@@ -31,18 +74,28 @@ function ProfilePage() {
                 {/* Upload Icon */}
                 <div className="absolute bottom-1 right-1 sm:bottom-2 sm:right-2 bg-white p-2 rounded-full shadow-lg cursor-pointer hover:shadow-xl transition-shadow duration-200">
                   <label htmlFor="profilePicUpload" className="cursor-pointer">
-                    <CameraOutlined className="text-[#0b7bb3] text-xs sm:text-sm" aria-hidden="true" />
+                    <CameraOutlined
+                      className="text-[#0b7bb3] text-xs sm:text-sm"
+                      aria-hidden="true"
+                    />
                   </label>
-                  <input type="file" id="profilePicUpload" className="hidden" />
+                  <input
+                    type="file"
+                    id="profilePicUpload"
+                    className="hidden"
+                    accept="image/*"
+                    onChange={handlePhotoChange}
+                    disabled={isUpdating}
+                  />
                 </div>
               </div>
-              
+
               <div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800">
-                  Shah Aman
+                  {adminProfile?.admin?.name}
                 </h2>
                 <p className="text-sm sm:text-base text-gray-600 mt-1">
-                  Administrator
+                  {adminProfile?.admin?.role}
                 </p>
               </div>
             </div>
@@ -86,5 +139,3 @@ function ProfilePage() {
     </div>
   );
 }
-
-export default ProfilePage;
