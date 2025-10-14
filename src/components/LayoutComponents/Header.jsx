@@ -16,7 +16,7 @@ const Header = () => {
   const [placement] = useState("left");
 
   const { data: adminData, isLoading } = useGetAdminProfileQuery();
-  console.log("adminData", adminData);
+  // console.log("adminData", adminData);
 
   if (isLoading) {
     return <Loader />;

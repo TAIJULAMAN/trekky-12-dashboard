@@ -9,23 +9,27 @@ function DashboardPage() {
   const currentYear = dayjs().year();
   const startYear = 2024;
   const [selectedYear, setSelectedYear] = useState(currentYear);
+  const [selectedYearUsers, setSelectedYearUsers] = useState(currentYear);
+  const [selectedYearRv, setSelectedYearRv] = useState(currentYear);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenUsers, setIsOpenUsers] = useState(false);
+  const [isOpenRv, setIsOpenRv] = useState(false);
 
   const years = Array.from(
     { length: currentYear - startYear + 1 },
     (_, index) => startYear + index
   );
 
-  const handleSelect = (year) => {
-    setSelectedYear(year);
-    setIsOpen(false);
+  const handleSelectUsers = (year) => {
+    setSelectedYearUsers(year);
+    setIsOpenUsers(false);
+  };
+  const handleSelectRv = (year) => {
+    setSelectedYearRv(year);
+    setIsOpenRv(false);
   };
 
   const { data: dashboardData } = useGetAllDashboardQuery(selectedYear);
-
-  console.log("dashboardData", dashboardData);
-
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -72,14 +76,14 @@ function DashboardPage() {
             <div className="relative w-full md:w-32">
               {/* Selected Year Display */}
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsOpenUsers(!isOpenUsers)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2"
                 aria-haspopup="listbox"
-                aria-expanded={isOpen}
+                aria-expanded={isOpenUsers}
                 aria-controls="years-list-users"
                 aria-label="Select year for Users Growth"
               >
-                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <span className="text-[#0b7bb3]">{selectedYearUsers}</span>
                 <DownOutlined
                   className="text-[#0b7bb3] text-[20px] ml-5"
                   aria-hidden="true"
@@ -87,7 +91,7 @@ function DashboardPage() {
               </button>
 
               {/* Dropdown List */}
-              {isOpen && (
+              {isOpenUsers && (
                 <div
                   id="years-list-users"
                   role="listbox"
@@ -96,11 +100,11 @@ function DashboardPage() {
                   {years.map((year) => (
                     <div
                       key={year}
-                      onClick={() => handleSelect(year)}
+                      onClick={() => handleSelectUsers(year)}
                       role="option"
-                      aria-selected={year === selectedYear}
+                      aria-selected={year === selectedYearUsers}
                       className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
-                        year === selectedYear ? "bg-gray-200" : ""
+                        year === selectedYearUsers ? "bg-gray-200" : ""
                       }`}
                     >
                       {year}
@@ -110,7 +114,7 @@ function DashboardPage() {
               )}
             </div>
           </div>
-          <UsersGrowth />
+          <UsersGrowth year={selectedYearUsers} />
         </div>
         <div className="w-full p-5 bg-[#faaf37] border border-[#e19b31] text-[#07163D] rounded-lg shadow-sm">
           <div className="flex flex-col md:flex-row md:justify-between lg:justify-between items-center gap-5 my-5">
@@ -121,14 +125,14 @@ function DashboardPage() {
             <div className="relative w-full md:w-32">
               {/* Selected Year Display */}
               <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={() => setIsOpenRv(!isOpenRv)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md flex justify-between items-center bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b7bb3] focus-visible:ring-offset-2"
                 aria-haspopup="listbox"
-                aria-expanded={isOpen}
+                aria-expanded={isOpenRv}
                 aria-controls="years-list-rv"
                 aria-label="Select year for Total RV View"
               >
-                <span className="text-[#0b7bb3]">{selectedYear}</span>
+                <span className="text-[#0b7bb3]">{selectedYearRv}</span>
                 <DownOutlined
                   className="text-[#0b7bb3] text-[20px] ml-5"
                   aria-hidden="true"
@@ -136,7 +140,7 @@ function DashboardPage() {
               </button>
 
               {/* Dropdown List */}
-              {isOpen && (
+              {isOpenRv && (
                 <div
                   id="years-list-rv"
                   role="listbox"
@@ -145,11 +149,11 @@ function DashboardPage() {
                   {years.map((year) => (
                     <div
                       key={year}
-                      onClick={() => handleSelect(year)}
+                      onClick={() => handleSelectRv(year)}
                       role="option"
-                      aria-selected={year === selectedYear}
+                      aria-selected={year === selectedYearRv}
                       className={`p-2 cursor-pointer hover:bg-gray-100 transition ${
-                        year === selectedYear ? "bg-gray-200" : ""
+                        year === selectedYearRv ? "bg-gray-200" : ""
                       }`}
                     >
                       {year}
@@ -159,7 +163,7 @@ function DashboardPage() {
               )}
             </div>
           </div>
-          <TotalRVView />
+          <TotalRVView year={selectedYearRv} />
         </div>
       </div>
     </div>

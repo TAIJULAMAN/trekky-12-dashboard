@@ -27,7 +27,8 @@ const monthLabels = [
 
 const UsersGrowth = ({ year }) => {
   const [chartHeight, setChartHeight] = useState(300);
-  const { data } = useGetAllDashboardQuery(year);
+  const { data } = useGetAllDashboardQuery(year, { refetchOnMountOrArgChange: true });
+  console.log("data", data);
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,29 +45,41 @@ const UsersGrowth = ({ year }) => {
   }, []);
 
   const series = useMemo(() => {
-    const root = data?.data || data || {};
-    const analytics = root?.analytics || root;
-    const candidates = [
-      analytics?.monthlyUserGrowth,
-      analytics?.userGrowthByMonth,
-      analytics?.usersPerMonth,
-      analytics?.monthlyUsers,
-    ].find((arr) => Array.isArray(arr) && arr.length);
+    const analytics = data?.data?.analytics;
+    const obj = analytics?.monthlyUserGrowth;
 
-    if (Array.isArray(candidates)) {
-      if (typeof candidates[0] === "number") {
-        return monthLabels.map((m, i) => ({
-          month: m,
-          vendors: candidates[i] ?? 0,
-        }));
-      }
-      if (typeof candidates[0] === "object") {
-        return monthLabels.map((m, i) => ({
-          month: m,
-          vendors: candidates[i]?.value ?? candidates[i]?.count ?? 0,
-        }));
-      }
+    if (obj && typeof obj === "object") {
+      const fullMonthOrder = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      return monthLabels.map((label, idx) => ({
+        month: label,
+        vendors: Number(obj[fullMonthOrder[idx]] ?? 0),
+      }));
     }
+
+    // Fallbacks for other shapes (arrays)
+    const arr = Array.isArray(analytics?.monthlyUserGrowth)
+      ? analytics?.monthlyUserGrowth
+      : undefined;
+    if (Array.isArray(arr)) {
+      return monthLabels.map((m, i) => ({
+        month: m,
+        vendors: Number(arr[i] ?? 0),
+      }));
+    }
+
     return monthLabels.map((m) => ({ month: m, vendors: 0 }));
   }, [data]);
 

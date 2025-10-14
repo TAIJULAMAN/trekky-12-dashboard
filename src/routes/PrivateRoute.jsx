@@ -9,11 +9,11 @@ const PrivateRoute = ({ children }) => {
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
-    console.log("token from private route", token);
+    // console.log("token from private route", token);
     if (token) {
       try {
         const decoded = jwtDecode(token);
-        console.log(decoded);
+        // console.log(decoded);
         if (decoded.role === "ADMIN") {
           setIsAuthorized(true);
         } else {

@@ -8,7 +8,7 @@ import { logout } from "../../Redux/Slice/authSlice";
 
 export default function LogoutButton() {
   const token = useSelector((state) => state.auth?.token);
-  console.log("token from logout", token);
+  // console.log("token from logout", token);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
